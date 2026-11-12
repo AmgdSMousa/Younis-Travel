@@ -9,6 +9,519 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://younistravel.site/sitemap.xml>; rel=\"sitemap\", <https://younistravel.site/llms.txt>; rel=\"describedby\"; type=\"text/plain\", <https://younistravel.site/.well-known/api-catalog>; rel=\"api-catalog\"; type=\"application/linkset+json\""
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    },
+    {
+      "source": "/md/index.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "684"
+        }
+      ]
+    },
+    {
+      "source": "/md/visas.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "327"
+        }
+      ]
+    },
+    {
+      "source": "/md/flights.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "286"
+        }
+      ]
+    },
+    {
+      "source": "/md/hotels.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "307"
+        }
+      ]
+    },
+    {
+      "source": "/md/trips.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "263"
+        }
+      ]
+    },
+    {
+      "source": "/md/request.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "63"
+        }
+      ]
+    },
+    {
+      "source": "/md/en/index.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "858"
+        }
+      ]
+    },
+    {
+      "source": "/md/en/visas.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "414"
+        }
+      ]
+    },
+    {
+      "source": "/md/en/flights.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "360"
+        }
+      ]
+    },
+    {
+      "source": "/md/en/hotels.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "382"
+        }
+      ]
+    },
+    {
+      "source": "/md/en/trips.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "365"
+        }
+      ]
+    },
+    {
+      "source": "/md/en/request.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "86"
+        }
+      ]
+    },
+    {
+      "source": "/md/visas/saudi.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "298"
+        }
+      ]
+    },
+    {
+      "source": "/md/visas/turkey.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "266"
+        }
+      ]
+    },
+    {
+      "source": "/md/visas/uae.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "265"
+        }
+      ]
+    },
+    {
+      "source": "/md/visas/vietnam.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "261"
+        }
+      ]
+    },
+    {
+      "source": "/md/visas/kenya.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "257"
+        }
+      ]
+    },
+    {
+      "source": "/md/visas/albania.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "258"
+        }
+      ]
+    },
+    {
+      "source": "/md/en/visas/saudi.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "411"
+        }
+      ]
+    },
+    {
+      "source": "/md/en/visas/turkey.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "353"
+        }
+      ]
+    },
+    {
+      "source": "/md/en/visas/uae.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "351"
+        }
+      ]
+    },
+    {
+      "source": "/md/en/visas/vietnam.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "347"
+        }
+      ]
+    },
+    {
+      "source": "/md/en/visas/kenya.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "336"
+        }
+      ]
+    },
+    {
+      "source": "/md/en/visas/albania.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "342"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/ai-catalog.json",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/agent-skills/index.json",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/api-catalog",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/linkset+json"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/admin.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/md/track.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "35"
+        }
+      ]
+    },
+    {
+      "source": "/md/en/track.md",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "x-markdown-tokens",
+          "value": "35"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "destination": "/md/index.md",
+      "statusCode": 307
+    },
+    {
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "destination": "/md/index.md",
+      "statusCode": 307
+    },
+    {
+      "source": "/en",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "destination": "/md/en/index.md",
+      "statusCode": 307
+    },
+    {
+      "source": "/en/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "destination": "/md/en/index.md",
+      "statusCode": 307
+    },
+    {
+      "source": "/en/index.html",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "destination": "/md/en/index.md",
+      "statusCode": 307
+    },
+    {
+      "source": "/visas/:c.html",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "destination": "/md/visas/:c.md",
+      "statusCode": 307
+    },
+    {
+      "source": "/en/visas/:c.html",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "destination": "/md/en/visas/:c.md",
+      "statusCode": 307
+    },
+    {
+      "source": "/en/:p.html",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "destination": "/md/en/:p.md",
+      "statusCode": 307
+    },
+    {
+      "source": "/:p.html",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "destination": "/md/:p.md",
+      "statusCode": 307
     }
   ]
 }

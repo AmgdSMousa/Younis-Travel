@@ -1,0 +1,44 @@
+# Younis Travel
+
+> Younis Travel is an Egyptian travel agency offering visa issuance, flight bookings, hotel bookings, travel insurance and complete tour programs. The website is available in Arabic (default) and English. Bookings start with a request: the traveler sends a message on the agency's Facebook Page or fills in the request form on the website, receives an offer, confirms and pays, then receives the tickets and visa before travel. There are no prices published on the website.
+
+## Services
+
+- Visa issuance: instant electronic visas (e-Visa) and embassy / visa-center appointment booking, with full file review and preparation.
+- Flight bookings: instant comparison across more than 500 airlines, flexible changes and cancellations, multiple payment methods, ticket delivered in minutes on WhatsApp and email.
+- Hotel bookings: closed corporate (B2B) rates cheaper than open booking portals, strategic locations, official receipts accepted at embassies and airports.
+- Trips & insurance: complete tour programs (flight + hotel + visa + tours) and travel insurance with comprehensive coverage.
+
+## Visa coverage
+
+- Electronic visas (e-Visa): Turkey, Vietnam, Albania, Kenya, UAE, and more.
+- Embassy and visa-center appointments: USA, Schengen, United Kingdom, Saudi Arabia (Tasheer centers).
+- File preparation: professional application filling, employment letters, certified translation, and confirmed preliminary flight and hotel bookings that comply with embassy requirements.
+
+## Key pages
+
+- [Home (Arabic)](https://younistravel.site/)
+- [Home (English)](https://younistravel.site/en/)
+- [Visa services](https://younistravel.site/visas.html)
+- [Flight bookings](https://younistravel.site/flights.html)
+- [Hotel bookings](https://younistravel.site/hotels.html)
+- [Trips & insurance](https://younistravel.site/trips.html)
+- [Request form](https://younistravel.site/request.html)
+
+## Contact
+
+- [Facebook Page](https://www.facebook.com/profile.php?id=61596173995345)
+- All booking requests go through the Facebook Page messages or the website request form.
+
+## Visa landing pages
+
+- [Saudi Arabia](https://younistravel.site/visas/saudi.html)
+- [Turkey](https://younistravel.site/visas/turkey.html)
+- [UAE](https://younistravel.site/visas/uae.html)
+- [Vietnam](https://younistravel.site/visas/vietnam.html)
+- [Kenya](https://younistravel.site/visas/kenya.html)
+- [Albania](https://younistravel.site/visas/albania.html)
+
+## Booking system
+
+Travellers book on the site and receive a booking reference (e.g. YT-AB12CD): book at https://younistravel.site/request.html (English: https://younistravel.site/en/request.html), track status at https://younistravel.site/track.html with the reference and the booking phone number. Agents may use the Booking API (OpenAPI: https://younistravel.site/api/openapi) or the MCP server at https://younistravel.site/api/mcp. The team reviews every booking and replies with exact prices — no prices are published and no payment is taken online.

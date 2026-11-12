@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Flight Bookings — Comparing 500+ Airlines | Younis Travel</title>
 <meta name="description" content="Instant comparison across more than 500 airlines, the best baggage and layover options, flexible changes and cancellations, multiple payment methods, and ticket delivery in minutes.">
+<meta name="google-site-verification" content="zL5GI78-wG1QwSc5pazIywubl7DFkN_UbVySmW5A-Us">
 <link rel="canonical" href="https://younistravel.site/en/flights.html">
 <link rel="alternate" hreflang="ar" href="https://younistravel.site/flights.html">
 <link rel="alternate" hreflang="en" href="https://younistravel.site/en/flights.html">
@@ -14,6 +15,7 @@
 <meta property="og:description" content="Instant comparison across more than 500 airlines, the best baggage and layover options, flexible changes and cancellations, multiple payment methods, and ticket delivery in minutes.">
 <meta property="og:url" content="https://younistravel.site/en/flights.html">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://younistravel.site/images/hero.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='28' y='28' width='44' height='44' fill='none' stroke='%23e8b84b' stroke-width='8' transform='rotate(45 50 50)'/></svg>">
 <style>
 @font-face{font-family:'Plex';src:url('/fonts/IBMPlexSansArabic-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
@@ -62,29 +64,88 @@ button.cta-btn{border:none;cursor:pointer;font-family:inherit;font-size:17px}
 footer{border-top:1px solid rgba(232,184,75,.22);padding:30px 0;margin-top:30px;text-align:center;color:var(--gray);font-size:15.5px}
 footer a{color:var(--goldlt)}
 @media(max-width:640px){.hero h1{font-size:32px}.page-hero h1{font-size:29px}h2{font-size:25px}}
+
+.hero3{position:relative;padding:96px 0 120px;text-align:center;background:url('/images/hero.webp') center 30%/cover no-repeat}
+.hero3::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,22,38,.72),rgba(7,22,38,.88))}
+.hero3 .wrap{position:relative}
+.hero3 h1{font-size:46px;line-height:1.7;color:var(--goldlt);text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.hero3 p{font-size:20px;max-width:780px;margin:14px auto 0;color:var(--cream)}
+.widget{position:relative;max-width:960px;margin:-84px auto 0;background:#fdfbf5;color:#12242f;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:22px 22px 26px;text-align:start}
+.widget h2{color:#0b2237;font-size:22px;margin-bottom:4px;line-height:1.6}
+.widget .wsub{color:#5a7182;font-size:15px;margin-bottom:14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab{border:2px solid rgba(11,34,55,.18);background:transparent;color:#0b2237;font-family:inherit;font-weight:700;font-size:16px;padding:8px 18px;border-radius:999px;cursor:pointer}
+.tab.on{background:var(--gold);border-color:var(--gold);color:#1a1405}
+.panel{display:none}
+.panel.on{display:block}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.widget label{color:#40586b;font-size:14.5px;display:block;margin-bottom:4px}
+.widget input,.widget select{width:100%;background:#fff;border:1px solid #c9d6de;border-radius:10px;color:#12242f;padding:11px 12px;font-family:inherit;font-size:16px}
+.widget .chk{display:flex;align-items:center;gap:8px;font-size:15px;color:#40586b}
+.widget .chk input{width:auto}
+.wsum{display:none;margin-top:16px;background:#0d2a42;color:var(--cream);border-radius:12px;padding:18px}
+.wsum h3{color:var(--gold);margin-bottom:6px;font-size:19px}
+.usps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px}
+.usp{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid rgba(94,200,190,.2);border-radius:14px;padding:16px 18px}
+.usp .ic{font-size:24px;line-height:1.4}
+.usp p{font-size:16px}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:28px}
+.dcard{background:var(--card);border:1px solid rgba(232,184,75,.18);border-radius:16px;overflow:hidden}
+.dcard img{width:100%;height:190px;object-fit:cover;display:block}
+.dcard .db{padding:18px 20px 20px}
+.dcard h3{color:var(--gold);font-size:21px;margin-bottom:4px}
+.badge{display:inline-block;background:rgba(94,200,190,.16);color:var(--teal);border:1px solid rgba(94,200,190,.4);font-size:13.5px;padding:2px 10px;border-radius:999px;margin-bottom:8px}
+.dcard p{font-size:16px;color:var(--cream)}
+.dcard a{font-weight:700}
+details.faq{background:var(--card);border:1px solid rgba(232,184,75,.18);border-radius:12px;padding:16px 20px;margin-top:12px}
+details.faq summary{cursor:pointer;font-weight:700;color:var(--goldlt);font-size:17.5px}
+details.faq p{margin-top:8px;color:var(--cream);font-size:16.5px}
+.floatmsg{position:fixed;bottom:20px;inset-inline-end:20px;z-index:50;background:var(--gold);color:#1a1405;font-weight:700;padding:12px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.floatmsg:hover{background:var(--goldlt);color:#1a1405}
+.stickybar{display:none}
+@media(max-width:640px){.hero3 h1{font-size:31px}.hero3{padding:64px 0 104px}
+.stickybar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:49;background:rgba(7,22,38,.97);border-top:1px solid rgba(232,184,75,.35);padding:10px 14px;gap:10px}
+.stickybar a{flex:1;text-align:center}
+.floatmsg{bottom:76px}
+body{padding-bottom:64px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TravelAgency", "name": "Younis Travel", "url": "https://younistravel.site/", "description": "Instant comparison across more than 500 airlines, the best baggage and layover options, flexible changes and cancellations, multiple payment methods, and ticket delivery in minutes.", "sameAs": ["https://www.facebook.com/profile.php?id=61596173995345"], "areaServed": "EG", "inLanguage": "en"}</script>
-
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://younistravel.site/en/"}, {"@type": "ListItem", "position": 2, "name": "Flights", "item": "https://younistravel.site/en/flights.html"}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do you find the cheapest ticket?", "acceptedAnswer": {"@type": "Answer", "text": "Through an instant comparison across more than 500 airlines — we weigh budget and full-service carriers to land the best price for your trip."}}, {"@type": "Question", "name": "Are there hidden fees?", "acceptedAnswer": {"@type": "Answer", "text": "No — we choose comfortable layover times and baggage packages that suit you, with the full cost clear before confirmation and no hidden fees."}}, {"@type": "Question", "name": "How do I receive my ticket?", "acceptedAnswer": {"@type": "Answer", "text": "You receive your ticket in minutes on WhatsApp and email after confirming the booking and payment."}}, {"@type": "Question", "name": "What payment methods are available?", "acceptedAnswer": {"@type": "Answer", "text": "Easy, multiple payment methods: cash, bank transfer, or electronic payment."}}, {"@type": "Question", "name": "Can I change or cancel my booking?", "acceptedAnswer": {"@type": "Answer", "text": "We give you full support for changing dates, upgrading seats or cancelling, under the airline conditions — without the complications of dealing with airlines directly."}}]}</script>
+<link rel="ai-catalog" href="/.well-known/ai-catalog.json">
 </head>
 <body>
 <header><div class="wrap nav">
 <a class="logo" href="/en/"><span class="diamond"></span> Younis Travel</a>
 <nav class="links"><a href="/en/">Home</a><a href="/en/visas.html">Visas</a><a href="/en/flights.html">Flights</a><a href="/en/hotels.html">Hotels</a><a href="/en/trips.html">Trips & Insurance</a></nav>
 <a class="cta-btn" href="/en/request.html">Book Now</a>
-</div></header>
+</div></header><main>
 
 <section class="page-hero"><div class="wrap">
 <h1>Flight Bookings</h1>
 <p>Flight prices go up every second? With our direct booking system, we get you the cheapest ticket with the best perks.</p>
-</div></section>
+</div></section><section style="padding:28px 0 0"><div class="wrap"><div class="band" style="text-align:start;margin-top:0"><p style="font-size:18px">Book your flight with Younis Travel through an instant comparison across more than 500 airlines to land the best price, with baggage packages and comfortable layover times and no hidden fees — plus flexible changes and cancellations, payment by cash, bank transfer or electronic payment, and your ticket delivered in minutes on WhatsApp and email.</p></div></div></section>
 <section><div class="wrap">
 <h2>Why Book Your Flight With Us?</h2>
 <div class="grid"><div class="card"><h3>Instant Comparison</h3><p>Instant comparison across more than 500 airlines — we weigh budget and full-service carriers to land the best price for your trip.</p></div><div class="card"><h3>Best Baggage & Most Convenient Times</h3><p>We choose comfortable layover times and baggage packages that suit you — with no hidden fees.</p></div><div class="card"><h3>Flexible Changes & Cancellations</h3><p>Full support for changing dates or upgrading seats, without the complications of dealing with airlines directly.</p></div><div class="card"><h3>Multiple Payment & Instant Delivery</h3><p>Easy, multiple payment methods: cash, bank transfer, or electronic payment — with your ticket delivered in minutes on WhatsApp and email.</p></div></div><div class="band"><h2>Ready to See the Cheapest Options for Your Trip?</h2><p class="lead" style="margin:0 auto">Leave your route (from where to where) and travel date on the booking page, and we will reply with the 3 cheapest options currently available.</p><p style="margin-top:18px"><a class="cta-btn" href="/en/request.html">Book Now</a></p></div>
 </div></section>
-
-<footer><div class="wrap">
+<section><div class="wrap"><h2>Frequently Asked Questions</h2><details class="faq"><summary>How do you find the cheapest ticket?</summary><p>Through an instant comparison across more than 500 airlines — we weigh budget and full-service carriers to land the best price for your trip.</p></details><details class="faq"><summary>Are there hidden fees?</summary><p>No — we choose comfortable layover times and baggage packages that suit you, with the full cost clear before confirmation and no hidden fees.</p></details><details class="faq"><summary>How do I receive my ticket?</summary><p>You receive your ticket in minutes on WhatsApp and email after confirming the booking and payment.</p></details><details class="faq"><summary>What payment methods are available?</summary><p>Easy, multiple payment methods: cash, bank transfer, or electronic payment.</p></details><details class="faq"><summary>Can I change or cancel my booking?</summary><p>We give you full support for changing dates, upgrading seats or cancelling, under the airline conditions — without the complications of dealing with airlines directly.</p></details></div></section>
+</main><footer><div class="wrap">
 <p>Younis Travel — visas, flights, hotels, and tour programs.</p>
 <p><a href="https://www.facebook.com/profile.php?id=61596173995345" target="_blank" rel="noopener">Our Facebook Page</a> · <a href="/en/request.html">Book Your Trip</a> · <a href="/flights.html">العربية</a></p>
 </div></footer>
+<a class="floatmsg" href="https://www.facebook.com/profile.php?id=61596173995345" target="_blank" rel="noopener">💬 Message Us</a>
+<div class="stickybar"><a class="cta-btn" href="/en/request.html">Book Now</a></div>
+
+<script>
+(function(){var mc=document.modelContext||(window.navigator&&navigator.modelContext);if(!mc||typeof mc.registerTool!=='function')return;
+var en=(document.documentElement.lang||'').indexOf('en')===0;
+function reqUrl(svc,dest){var p=new URLSearchParams();if(svc)p.set('s',svc);if(dest)p.set('d',dest);var q=p.toString();return (en?'/en/request.html':'/request.html')+(q?('?'+q):'');}
+var tools=[
+{name:'prepare_travel_request',description:'Open the Younis Travel request form prefilled with a service and destination so the traveller can review it and send a booking request. Younis Travel is request-based: no online payment and no prices on the website; the team replies on Facebook Messenger with exact prices and next steps.',inputSchema:{type:'object',properties:{service:{type:'string',enum:['visa','flight','hotel','trip','insurance'],description:'The requested service'},destination:{type:'string',description:'Destination country or city'}},required:['service']},execute:function(a){var u=reqUrl(a&&a.service,a&&a.destination);window.location.href=u;return{opened:u,next:'The traveller reviews the prefilled form, adds name, dates and travellers, then sends the request to the team via Facebook Messenger.'};}},
+{name:'younis_travel_services',description:'List the services Younis Travel offers and how requesting works.',inputSchema:{type:'object',properties:{}},execute:function(){return{services:['e-Visas: Turkey, Vietnam, Albania, Kenya, United Arab Emirates','Embassy and Tasheer appointment booking: USA, Schengen countries, United Kingdom, Saudi Arabia','Flights: comparison across 500+ airlines; payment by cash, bank transfer or electronic payment; ticket delivered by WhatsApp and email','Hotels: closed B2B rates, official receipts accepted by embassies and airports','Trips and travel insurance'],how:'Prepare a request on the website request form; it is sent to the team via Facebook Messenger, and the team replies with exact prices and steps.'};}}
+];
+tools.forEach(function(t){try{var r=mc.registerTool(t);if(r&&r.catch)r.catch(function(){});}catch(e){}});
+})();
+</script>
 </body>
 </html>

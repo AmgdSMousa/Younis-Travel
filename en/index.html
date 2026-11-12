@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Younis Travel — Visas, Flights, Hotels & Tour Programs | Younis Travel</title>
 <meta name="description" content="Younis Travel: visa issuance, flight and hotel bookings, travel insurance and complete tour programs — from the first message to boarding the plane.">
+<meta name="google-site-verification" content="zL5GI78-wG1QwSc5pazIywubl7DFkN_UbVySmW5A-Us">
 <link rel="canonical" href="https://younistravel.site/en/">
 <link rel="alternate" hreflang="ar" href="https://younistravel.site/">
 <link rel="alternate" hreflang="en" href="https://younistravel.site/en/">
@@ -14,6 +15,7 @@
 <meta property="og:description" content="Younis Travel: visa issuance, flight and hotel bookings, travel insurance and complete tour programs — from the first message to boarding the plane.">
 <meta property="og:url" content="https://younistravel.site/en/">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://younistravel.site/images/hero.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='28' y='28' width='44' height='44' fill='none' stroke='%23e8b84b' stroke-width='8' transform='rotate(45 50 50)'/></svg>">
 <style>
 @font-face{font-family:'Plex';src:url('/fonts/IBMPlexSansArabic-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
@@ -62,36 +64,138 @@ button.cta-btn{border:none;cursor:pointer;font-family:inherit;font-size:17px}
 footer{border-top:1px solid rgba(232,184,75,.22);padding:30px 0;margin-top:30px;text-align:center;color:var(--gray);font-size:15.5px}
 footer a{color:var(--goldlt)}
 @media(max-width:640px){.hero h1{font-size:32px}.page-hero h1{font-size:29px}h2{font-size:25px}}
+
+.hero3{position:relative;padding:96px 0 120px;text-align:center;background:url('/images/hero.webp') center 30%/cover no-repeat}
+.hero3::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,22,38,.72),rgba(7,22,38,.88))}
+.hero3 .wrap{position:relative}
+.hero3 h1{font-size:46px;line-height:1.7;color:var(--goldlt);text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.hero3 p{font-size:20px;max-width:780px;margin:14px auto 0;color:var(--cream)}
+.widget{position:relative;max-width:960px;margin:-84px auto 0;background:#fdfbf5;color:#12242f;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:22px 22px 26px;text-align:start}
+.widget h2{color:#0b2237;font-size:22px;margin-bottom:4px;line-height:1.6}
+.widget .wsub{color:#5a7182;font-size:15px;margin-bottom:14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab{border:2px solid rgba(11,34,55,.18);background:transparent;color:#0b2237;font-family:inherit;font-weight:700;font-size:16px;padding:8px 18px;border-radius:999px;cursor:pointer}
+.tab.on{background:var(--gold);border-color:var(--gold);color:#1a1405}
+.panel{display:none}
+.panel.on{display:block}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.widget label{color:#40586b;font-size:14.5px;display:block;margin-bottom:4px}
+.widget input,.widget select{width:100%;background:#fff;border:1px solid #c9d6de;border-radius:10px;color:#12242f;padding:11px 12px;font-family:inherit;font-size:16px}
+.widget .chk{display:flex;align-items:center;gap:8px;font-size:15px;color:#40586b}
+.widget .chk input{width:auto}
+.wsum{display:none;margin-top:16px;background:#0d2a42;color:var(--cream);border-radius:12px;padding:18px}
+.wsum h3{color:var(--gold);margin-bottom:6px;font-size:19px}
+.usps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px}
+.usp{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid rgba(94,200,190,.2);border-radius:14px;padding:16px 18px}
+.usp .ic{font-size:24px;line-height:1.4}
+.usp p{font-size:16px}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:28px}
+.dcard{background:var(--card);border:1px solid rgba(232,184,75,.18);border-radius:16px;overflow:hidden}
+.dcard img{width:100%;height:190px;object-fit:cover;display:block}
+.dcard .db{padding:18px 20px 20px}
+.dcard h3{color:var(--gold);font-size:21px;margin-bottom:4px}
+.badge{display:inline-block;background:rgba(94,200,190,.16);color:var(--teal);border:1px solid rgba(94,200,190,.4);font-size:13.5px;padding:2px 10px;border-radius:999px;margin-bottom:8px}
+.dcard p{font-size:16px;color:var(--cream)}
+.dcard a{font-weight:700}
+details.faq{background:var(--card);border:1px solid rgba(232,184,75,.18);border-radius:12px;padding:16px 20px;margin-top:12px}
+details.faq summary{cursor:pointer;font-weight:700;color:var(--goldlt);font-size:17.5px}
+details.faq p{margin-top:8px;color:var(--cream);font-size:16.5px}
+.floatmsg{position:fixed;bottom:20px;inset-inline-end:20px;z-index:50;background:var(--gold);color:#1a1405;font-weight:700;padding:12px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.floatmsg:hover{background:var(--goldlt);color:#1a1405}
+.stickybar{display:none}
+@media(max-width:640px){.hero3 h1{font-size:31px}.hero3{padding:64px 0 104px}
+.stickybar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:49;background:rgba(7,22,38,.97);border-top:1px solid rgba(232,184,75,.35);padding:10px 14px;gap:10px}
+.stickybar a{flex:1;text-align:center}
+.floatmsg{bottom:76px}
+body{padding-bottom:64px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TravelAgency", "name": "Younis Travel", "url": "https://younistravel.site/", "description": "Younis Travel: visa issuance, flight and hotel bookings, travel insurance and complete tour programs — from the first message to boarding the plane.", "sameAs": ["https://www.facebook.com/profile.php?id=61596173995345"], "areaServed": "EG", "inLanguage": "en"}</script>
-
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I start booking?", "acceptedAnswer": {"@type": "Answer", "text": "Send us a message on the Facebook Page, or fill in the request form here with the destination, dates and number of travelers, and we will reply with the details and available options."}}, {"@type": "Question", "name": "What documents does a visa need?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the country and visa type, but the basics are usually: a valid passport, recent personal photos, and confirmed preliminary flight and hotel bookings. Send us your destination country and we will send you the exact document list for your file."}}, {"@type": "Question", "name": "How does payment work?", "acceptedAnswer": {"@type": "Answer", "text": "Once you confirm the offer that suits you, payment is available through easy, multiple methods: cash, bank transfer, or electronic payment — and you receive your ticket in minutes on WhatsApp and email."}}, {"@type": "Question", "name": "Can I change or cancel my booking?", "acceptedAnswer": {"@type": "Answer", "text": "We give you full support for changing dates, upgrading seats or cancelling, under the airline or hotel conditions — without the complications of dealing with them directly."}}, {"@type": "Question", "name": "Do the hotel receipts work for embassies?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — we issue booking receipts and official invoices that are fully accepted at embassies and airports."}}, {"@type": "Question", "name": "Is travel insurance really important?", "acceptedAnswer": {"@type": "Answer", "text": "It is required by many embassies, and it is also one of the documents that strengthens your visa file — besides covering you comprehensively throughout your trip."}}]}</script><link rel="preload" as="image" href="/images/hero.webp">
+<link rel="ai-catalog" href="/.well-known/ai-catalog.json">
 </head>
 <body>
 <header><div class="wrap nav">
 <a class="logo" href="/en/"><span class="diamond"></span> Younis Travel</a>
 <nav class="links"><a href="/en/">Home</a><a href="/en/visas.html">Visas</a><a href="/en/flights.html">Flights</a><a href="/en/hotels.html">Hotels</a><a href="/en/trips.html">Trips & Insurance</a></nav>
 <a class="cta-btn" href="/en/request.html">Book Now</a>
-</div></header>
+</div></header><main>
 
-<section class="hero"><div class="wrap">
+<section class="hero3"><div class="wrap">
 <h1>Your Trip Starts Here — No Running Around</h1>
 <p>From the first step of thinking about travel until you're back home safe, we're with you with a complete travel service package: visas, flights, hotels, travel insurance and tour programs — comfortably and at the best price.</p>
-<a class="cta-btn" href="/en/request.html">Book Now</a>
-<a class="cta-btn" href="/en/visas.html" style="background:transparent;border:2px solid var(--gold);color:var(--goldlt);margin-inline-start:10px">Visa Services</a>
+</div></section>
+<section style="padding-top:0"><div class="wrap">
+
+<div class="widget" id="widget">
+<h2>Plan Your Trip Now</h2><p class="wsub">Fill in your trip details and we will reply with the best options — no payment now, this is a request only.</p>
+<div class="tabs"><button type="button" class="tab on" data-tab="flights">✈ Flights</button><button type="button" class="tab" data-tab="hotels">🏨 Hotels</button><button type="button" class="tab" data-tab="visas">🛂 Visas</button><button type="button" class="tab" data-tab="trips">🧳 Trips & Insurance</button></div>
+<div style="margin-bottom:12px"><label for="w-name">Your name (optional)</label><input id="w-name" data-label="Your name (optional)"></div>
+<div class="panel on" id="panel-flights"><div class="wgrid"><div><label for="f-type">Trip type</label><select id="f-type" data-label="Trip type"><option>Round trip</option><option>One way</option></select></div><div><label for="f-from">From</label><input id="f-from" data-label="From" type="text" placeholder="City"></div><div><label for="f-to">To</label><input id="f-to" data-label="To" type="text" placeholder="City"></div><div><label for="f-dep">Departure date</label><input id="f-dep" data-label="Departure date" type="date" placeholder=""></div><div><label for="f-ret">Return date</label><input id="f-ret" data-label="Return date" type="date" placeholder=""></div><div><label for="f-pax">Travelers</label><input id="f-pax" data-label="Travelers" type="number" placeholder="2"></div><div><label for="f-class">Class</label><select id="f-class" data-label="Class"><option>Economy</option><option>Business</option></select></div><div class="chk"><input type="checkbox" id="f-flex" data-label="My dates are flexible — find me the cheapest date"><label for="f-flex" style="margin:0">My dates are flexible — find me the cheapest date</label></div></div></div><div class="panel" id="panel-hotels"><div class="wgrid"><div><label for="h-city">City / destination</label><input id="h-city" data-label="City / destination" type="text" placeholder="e.g. Dubai"></div><div><label for="h-in">Check-in date</label><input id="h-in" data-label="Check-in date" type="date" placeholder=""></div><div><label for="h-out">Check-out date</label><input id="h-out" data-label="Check-out date" type="date" placeholder=""></div><div><label for="h-rooms">Rooms</label><input id="h-rooms" data-label="Rooms" type="number" placeholder="1"></div><div><label for="h-guests">Guests</label><input id="h-guests" data-label="Guests" type="number" placeholder="2"></div><div><label for="h-stars">Preferred hotel class</label><select id="h-stars" data-label="Preferred hotel class"><option>Any</option><option>3 stars</option><option>4 stars</option><option>5 stars</option></select></div></div></div><div class="panel" id="panel-visas"><div class="wgrid"><div><label for="v-country">Country</label><input id="v-country" data-label="Country" type="text" placeholder="e.g. Turkey"></div><div><label for="v-type">Visa type</label><select id="v-type" data-label="Visa type"><option>Tourist</option><option>Visit</option><option>Business</option><option>Umrah</option></select></div><div><label for="v-date">Expected travel date</label><input id="v-date" data-label="Expected travel date" type="date" placeholder=""></div><div><label for="v-pax">Number of applicants</label><input id="v-pax" data-label="Number of applicants" type="number" placeholder="1"></div></div></div><div class="panel" id="panel-trips"><div class="wgrid"><div><label for="t-dest">Destination</label><input id="t-dest" data-label="Destination" type="text" placeholder="e.g. Saudi Arabia"></div><div><label for="t-type">Request type</label><select id="t-type" data-label="Request type"><option>Travel insurance</option><option>Complete tour program</option></select></div><div><label for="t-start">Trip start date</label><input id="t-start" data-label="Trip start date" type="date" placeholder=""></div><div><label for="t-end">Trip end date</label><input id="t-end" data-label="Trip end date" type="date" placeholder=""></div><div><label for="t-pax">Travelers</label><input id="t-pax" data-label="Travelers" type="number" placeholder="2"></div></div></div>
+<p style="margin-top:16px"><button type="button" class="cta-btn" id="w-go" style="border:none;cursor:pointer;font-family:inherit;font-size:17px">Prepare My Request</button></p>
+<div class="wsum" id="w-sum"><h3>Your Request Is Ready</h3><p id="w-sum-text" style="white-space:pre-line"></p>
+<p style="margin-top:12px"><a class="cta-btn" href="https://www.facebook.com/profile.php?id=61596173995345" target="_blank" rel="noopener">Send via Page Messages</a></p></div>
+</div>
+<script>
+var SVC = {"flights": "Flight", "hotels": "Hotel", "visas": "Visa", "trips": "Trip / Insurance"};
+var curTab = 'flights';
+document.querySelectorAll('.tab').forEach(function(b){ b.addEventListener('click', function(){
+  document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('on'); });
+  document.querySelectorAll('.panel').forEach(function(x){ x.classList.remove('on'); });
+  b.classList.add('on'); curTab = b.getAttribute('data-tab');
+  document.getElementById('panel-' + curTab).classList.add('on');
+}); });
+document.getElementById('w-go').addEventListener('click', function(){
+  var lines = ['Booking request — Younis Travel website', 'Service: ' + SVC[curTab]];
+  var nm = document.getElementById('w-name');
+  if (nm.value.trim()) lines.push(nm.getAttribute('data-label') + ': ' + nm.value.trim());
+  document.querySelectorAll('#panel-' + curTab + ' [data-label]').forEach(function(el){
+    if (el.type === 'checkbox') { if (el.checked) lines.push(el.getAttribute('data-label') + ': ✓'); }
+    else if (el.value && el.value.trim()) lines.push(el.getAttribute('data-label') + ': ' + el.value.trim());
+  });
+  document.getElementById('w-sum-text').textContent = lines.join('\n');
+  var s = document.getElementById('w-sum'); s.style.display = 'block'; s.scrollIntoView({behavior:'smooth'});
+});
+</script>
+<div class="usps"><div class="usp"><div class="ic">🔍</div><p>Instant comparison across 500+ airlines in one place</p></div><div class="usp"><div class="ic">🏷️</div><p>B2B hotel rates — cheaper than the open booking portals</p></div><div class="usp"><div class="ic">🧾</div><p>Official receipts accepted at embassies and airports</p></div><div class="usp"><div class="ic">🛟</div><p>Change & cancellation support — with you until you are back</p></div></div>
 </div></section>
 <section><div class="wrap">
 <h2>Our Services</h2>
 <p class="lead">Four core services from one place, so your trip is sorted from start to finish.</p>
-<div class="grid"><div class="card"><h3>Visa Issuance</h3><p>Electronic and regular visas, with help preparing all the documents and booking appointments — no mistakes, no rejections.</p><p><a href="/en/visas.html">Learn more →</a></p></div><div class="card"><h3>Flight Bookings</h3><p>We compare hundreds of airlines to get you the lowest ticket price and the best route for your trip.</p><p><a href="/en/flights.html">Learn more →</a></p></div><div class="card"><h3>Hotel Bookings</h3><p>Exclusive discounts and instant confirmations at the finest and most suitable hotels and resorts around the world.</p><p><a href="/en/hotels.html">Learn more →</a></p></div><div class="card"><h3>Insurance & Tour Programs</h3><p>Travel insurance with comprehensive coverage, plus tours and leisure programs that fit your budget.</p><p><a href="/en/trips.html">Learn more →</a></p></div></div>
+<div class="grid"><div class="card"><h3>Visa Issuance</h3><p>Electronic and regular visas, with help preparing all the documents and booking appointments — no mistakes, no rejections.</p><p><a href="/en/visas.html">Learn more about visas →</a></p></div><div class="card"><h3>Flight Bookings</h3><p>We compare hundreds of airlines to get you the lowest ticket price and the best route for your trip.</p><p><a href="/en/flights.html">Learn more about flights →</a></p></div><div class="card"><h3>Hotel Bookings</h3><p>Exclusive discounts and instant confirmations at the finest and most suitable hotels and resorts around the world.</p><p><a href="/en/hotels.html">Learn more about hotels →</a></p></div><div class="card"><h3>Insurance & Tour Programs</h3><p>Travel insurance with comprehensive coverage, plus tours and leisure programs that fit your budget.</p><p><a href="/en/trips.html">Learn more about trips & insurance →</a></p></div></div>
+</div></section>
+<section><div class="wrap"><h2>Destinations Our Travelers Love</h2><p class="lead">Real places we build trips and visas for — pick a destination and ask us about its program.</p><div class="dgrid"><div class="dcard"><img src="/images/saudi.webp" alt="Saudi Arabia — AlUla" loading="lazy"><div class="db"><span class="badge">Tasheer & embassy appointments</span><h3>Saudi Arabia — AlUla</h3><p>Archaeology, history and desert nature — from AlUla to Historic Jeddah and Abha.</p><p style="margin-top:8px"><a href="/en/request.html?d=Saudi Arabia&s=visa">Ask about this destination →</a></p></div></div><div class="dcard"><img src="/images/turkey.webp" alt="Turkey — Istanbul" loading="lazy"><div class="db"><span class="badge">Electronic visa</span><h3>Turkey — Istanbul</h3><p>A city between two continents: history, markets and shopping.</p><p style="margin-top:8px"><a href="/en/request.html?d=Turkey&s=visa">Ask about this destination →</a></p></div></div><div class="dcard"><img src="/images/uae.webp" alt="UAE — Dubai" loading="lazy"><div class="db"><span class="badge">Electronic visa</span><h3>UAE — Dubai</h3><p>Towers, shopping and entertainment for the whole family.</p><p style="margin-top:8px"><a href="/en/request.html?d=UAE&s=visa">Ask about this destination →</a></p></div></div><div class="dcard"><img src="/images/vietnam.webp" alt="Vietnam — Ha Long Bay" loading="lazy"><div class="db"><span class="badge">Electronic visa</span><h3>Vietnam — Ha Long Bay</h3><p>A bay of green islands and calm nature.</p><p style="margin-top:8px"><a href="/en/request.html?d=Vietnam&s=visa">Ask about this destination →</a></p></div></div><div class="dcard"><img src="/images/kenya.webp" alt="Kenya — Safari" loading="lazy"><div class="db"><span class="badge">Electronic visa</span><h3>Kenya — Safari</h3><p>Wildlife and a real African safari.</p><p style="margin-top:8px"><a href="/en/request.html?d=Kenya&s=trip">Ask about this destination →</a></p></div></div><div class="dcard"><img src="/images/albania.webp" alt="Albania — The Riviera" loading="lazy"><div class="db"><span class="badge">Electronic visa</span><h3>Albania — The Riviera</h3><p>European beaches on the Adriatic Sea.</p><p style="margin-top:8px"><a href="/en/request.html?d=Albania&s=visa">Ask about this destination →</a></p></div></div></div></div></section>
+<section><div class="wrap">
+<h2>Visas, Sorted — Without Embassy Queues</h2>
+<p class="lead">Countries whose visas we issue electronically, and countries whose embassy and visa-center appointments we book for you — with your file reviewed before submission.</p>
+<div class="grid"><div class="card"><h3>Instant Electronic Visas</h3><ul><li>Turkey</li><li>Vietnam</li><li>Albania</li><li>Kenya</li><li>UAE</li><li>and more</li></ul></div><div class="card"><h3>Embassy & Visa Center Appointments</h3><ul><li>USA</li><li>Schengen</li><li>United Kingdom</li><li>Saudi Arabia — Tasheer</li></ul></div></div>
+<p style="margin-top:16px"><a href="/en/visas.html">All visa service details →</a></p>
 </div></section>
 <section><div class="wrap">
 <h2>How We Work — From the First Message to Boarding the Plane</h2>
-<div class="step"><div class="n">1</div><p>You send us a message with the destination and dates.</p></div><div class="step"><div class="n">2</div><p>We send you the flight + hotel + visa offer.</p></div><div class="step"><div class="n">3</div><p>You confirm the booking and pay.</p></div><div class="step"><div class="n">4</div><p>You receive your tickets and visa before travel.</p></div><div class="step"><div class="n">5</div><p>You travel — and we are with you until you are back.</p></div><div class="band"><h2>Where Are You Thinking of Traveling Next?</h2><p class="lead" style="margin:0 auto">Leave your request on the booking page with the destination and dates, and we will get started with you right away.</p><p style="margin-top:18px"><a class="cta-btn" href="/en/request.html">Book Now</a></p></div>
+<div class="step"><div class="n">1</div><p>You send us a message with the destination and dates.</p></div><div class="step"><div class="n">2</div><p>We send you the flight + hotel + visa offer.</p></div><div class="step"><div class="n">3</div><p>You confirm the booking and pay.</p></div><div class="step"><div class="n">4</div><p>You receive your tickets and visa before travel.</p></div><div class="step"><div class="n">5</div><p>You travel — and we are with you until you are back.</p></div>
+</div></section>
+<section><div class="wrap"><h2>Frequently Asked Questions</h2><details class="faq"><summary>How do I start booking?</summary><p>Send us a message on the Facebook Page, or fill in the request form here with the destination, dates and number of travelers, and we will reply with the details and available options.</p></details><details class="faq"><summary>What documents does a visa need?</summary><p>It depends on the country and visa type, but the basics are usually: a valid passport, recent personal photos, and confirmed preliminary flight and hotel bookings. Send us your destination country and we will send you the exact document list for your file.</p></details><details class="faq"><summary>How does payment work?</summary><p>Once you confirm the offer that suits you, payment is available through easy, multiple methods: cash, bank transfer, or electronic payment — and you receive your ticket in minutes on WhatsApp and email.</p></details><details class="faq"><summary>Can I change or cancel my booking?</summary><p>We give you full support for changing dates, upgrading seats or cancelling, under the airline or hotel conditions — without the complications of dealing with them directly.</p></details><details class="faq"><summary>Do the hotel receipts work for embassies?</summary><p>Yes — we issue booking receipts and official invoices that are fully accepted at embassies and airports.</p></details><details class="faq"><summary>Is travel insurance really important?</summary><p>It is required by many embassies, and it is also one of the documents that strengthens your visa file — besides covering you comprehensively throughout your trip.</p></details></div></section>
+<section><div class="wrap">
+<div class="band"><h2>Where Are You Thinking of Traveling Next?</h2><p class="lead" style="margin:0 auto">Leave your request on the booking page with the destination and dates, and we will get started with you right away.</p><p style="margin-top:18px"><a class="cta-btn" href="/en/request.html">Book Now</a></p></div>
 </div></section>
 
-<footer><div class="wrap">
+</main><footer><div class="wrap">
 <p>Younis Travel — visas, flights, hotels, and tour programs.</p>
 <p><a href="https://www.facebook.com/profile.php?id=61596173995345" target="_blank" rel="noopener">Our Facebook Page</a> · <a href="/en/request.html">Book Your Trip</a> · <a href="/">العربية</a></p>
 </div></footer>
+<a class="floatmsg" href="https://www.facebook.com/profile.php?id=61596173995345" target="_blank" rel="noopener">💬 Message Us</a>
+<div class="stickybar"><a class="cta-btn" href="/en/request.html">Book Now</a></div>
+
+<script>
+(function(){var mc=document.modelContext||(window.navigator&&navigator.modelContext);if(!mc||typeof mc.registerTool!=='function')return;
+var en=(document.documentElement.lang||'').indexOf('en')===0;
+function reqUrl(svc,dest){var p=new URLSearchParams();if(svc)p.set('s',svc);if(dest)p.set('d',dest);var q=p.toString();return (en?'/en/request.html':'/request.html')+(q?('?'+q):'');}
+var tools=[
+{name:'prepare_travel_request',description:'Open the Younis Travel request form prefilled with a service and destination so the traveller can review it and send a booking request. Younis Travel is request-based: no online payment and no prices on the website; the team replies on Facebook Messenger with exact prices and next steps.',inputSchema:{type:'object',properties:{service:{type:'string',enum:['visa','flight','hotel','trip','insurance'],description:'The requested service'},destination:{type:'string',description:'Destination country or city'}},required:['service']},execute:function(a){var u=reqUrl(a&&a.service,a&&a.destination);window.location.href=u;return{opened:u,next:'The traveller reviews the prefilled form, adds name, dates and travellers, then sends the request to the team via Facebook Messenger.'};}},
+{name:'younis_travel_services',description:'List the services Younis Travel offers and how requesting works.',inputSchema:{type:'object',properties:{}},execute:function(){return{services:['e-Visas: Turkey, Vietnam, Albania, Kenya, United Arab Emirates','Embassy and Tasheer appointment booking: USA, Schengen countries, United Kingdom, Saudi Arabia','Flights: comparison across 500+ airlines; payment by cash, bank transfer or electronic payment; ticket delivered by WhatsApp and email','Hotels: closed B2B rates, official receipts accepted by embassies and airports','Trips and travel insurance'],how:'Prepare a request on the website request form; it is sent to the team via Facebook Messenger, and the team replies with exact prices and steps.'};}}
+];
+tools.forEach(function(t){try{var r=mc.registerTool(t);if(r&&r.catch)r.catch(function(){});}catch(e){}});
+})();
+</script>
 </body>
 </html>
