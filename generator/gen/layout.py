@@ -5,10 +5,9 @@ message button + mobile sticky CTA. Copy stays Amged's approved texts only — n
 invented prices, stats, or testimonials. Images: Wikimedia Commons (free licenses).
 Output: site_v3/ (v2 site/ untouched)."""
 import os, json, sys, shutil
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import build_site as B
+from gen import base as B
 
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site_v3')
+OUT = os.path.join(B.PROJECT_DIR, 'site_v3')
 FB_PAGE = B.FB_PAGE
 BASE = B.BASE
 
@@ -385,10 +384,24 @@ PREFILL_EN = """
 </script>
 """
 
+def _seed_images():
+    # Master destination photos live in generator/assets/images/; later stages
+    # derive WebP copies and resized variants from the JPGs inside the output
+    # tree, so seed any missing JPG before they run.
+    import glob as _glob
+    src = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets', 'images')
+    dst = os.path.join(OUT, 'images')
+    os.makedirs(dst, exist_ok=True)
+    for f in _glob.glob(os.path.join(src, '*.jpg')):
+        t = os.path.join(dst, os.path.basename(f))
+        if not os.path.exists(t):
+            shutil.copy(f, t)
+
 def main():
     os.makedirs(OUT, exist_ok=True)
+    _seed_images()
     os.makedirs(os.path.join(OUT, 'fonts'), exist_ok=True)
-    src_fonts = os.path.expanduser('~/workspace/lead-gen/fonts')
+    src_fonts = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets', 'fonts')
     for f in ('IBMPlexSansArabic-Regular.woff2', 'IBMPlexSansArabic-Bold.woff2'):
         shutil.copy(os.path.join(src_fonts, f), os.path.join(OUT, 'fonts', f))
     bodies_ar = {'/': home3, '/visas.html': B.visas_body, '/flights.html': B.flights_body,

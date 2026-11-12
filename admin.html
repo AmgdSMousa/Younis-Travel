@@ -150,6 +150,7 @@ body{padding-bottom:64px}}
 </div>
 </div></section>
 <script>
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 var SVC={visa:'تأشيرة',flight:'طيران',hotel:'فندق',trip:'رحلة',insurance:'تأمين'};
 var STL={NEW:'جديد',CONTACTED:'تم التواصل',CONFIRMED:'مؤكد',COMPLETED:'مكتمل',CANCELLED:'ملغي'};
 var TOK=sessionStorage.getItem('yt_admin')||''; var DATA=[];
@@ -160,9 +161,9 @@ function load(){ api('GET').then(function(x){ if(x.s!==200){document.getElementB
   document.getElementById('gate').style.display='none';document.getElementById('panel').style.display='block'; DATA=x.j.bookings; render(); }); }
 function render(){ var f=document.getElementById('fstatus').value; var rows=DATA.filter(function(b){return !f||b.status===f;});
   document.getElementById('count').textContent=rows.length+' حجز';
-  document.getElementById('list').innerHTML=rows.map(function(b){return '<div class="abk"><strong>'+b.ref+'</strong> · '+SVC[b.service]+' · '+b.destination+' · '+(b.dates||'—')+' · '+b.people+' مسافر<br>'+b.name+' — '+b.phone+(b.notes?'<br>ملاحظات العميل: '+b.notes:'')+'<br><span style="color:#777">'+b.created_at.slice(0,16).replace('T',' ')+'</span><br>'+
+  document.getElementById('list').innerHTML=rows.map(function(b){return '<div class="abk"><strong>'+b.ref+'</strong> · '+SVC[b.service]+' · '+esc(b.destination)+' · '+esc(b.dates||'—')+' · '+esc(b.people)+' مسافر<br>'+esc(b.name)+' — '+esc(b.phone)+(b.notes?'<br>ملاحظات العميل: '+esc(b.notes):'')+'<br><span style="color:#777">'+b.created_at.slice(0,16).replace('T',' ')+'</span><br>'+
   '<select id="st-'+b.ref+'">'+['NEW','CONTACTED','CONFIRMED','COMPLETED','CANCELLED'].map(function(s){return '<option value="'+s+'"'+(b.status===s?' selected':'')+'>'+STL[s]+'</option>';}).join('')+'</select> '+
-  '<input id="nt-'+b.ref+'" placeholder="ملاحظة داخلية" value="'+(b.admin_notes||'').replace(/"/g,'&quot;')+'" style="min-width:220px"> '+
+  '<input id="nt-'+b.ref+'" placeholder="ملاحظة داخلية" value="'+esc(b.admin_notes||'')+'" style="min-width:220px"> '+
   '<button class="btn" onclick="save(''+b.ref+'')">حفظ</button> <button class="btn" onclick="del(''+b.ref+'')">حذف</button></div>';}).join('')||'<p>لا توجد حجوزات مطابقة.</p>'; }
 function save(ref){ api('PATCH',{ref:ref,status:document.getElementById('st-'+ref).value,admin_notes:document.getElementById('nt-'+ref).value}).then(function(x){ if(x.s===200){alert('اتحفظ ✓');load();} else alert('حصلت مشكلة'); }); }
 function del(ref){ if(confirm('حذف الحجز '+ref+' نهائيًا؟')){ fetch('/api/bookings?ref='+ref,{method:'DELETE',headers:{'x-admin-token':TOK}}).then(function(){load();}); } }

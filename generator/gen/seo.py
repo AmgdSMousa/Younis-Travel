@@ -4,9 +4,8 @@ direct-answer lead blocks, BreadcrumbList on subpages, HowTo schema on the visas
 page, WebP images + hero preload. All copy from Amged's approved texts only.
 Output: regenerates site_v3/ (same folder v3 deploys from)."""
 import os, json, sys, shutil
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import build_site as B
-import build_site_v3 as V3
+from gen import base as B
+from gen import layout as V3
 from PIL import Image
 
 OUT = V3.OUT
@@ -194,7 +193,7 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     os.makedirs(os.path.join(OUT, 'fonts'), exist_ok=True)
     os.makedirs(os.path.join(OUT, 'images'), exist_ok=True)
-    src_fonts = os.path.expanduser('~/workspace/lead-gen/fonts')
+    src_fonts = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets', 'fonts')
     for f in ('IBMPlexSansArabic-Regular.woff2', 'IBMPlexSansArabic-Bold.woff2'):
         shutil.copy(os.path.join(src_fonts, f), os.path.join(OUT, 'fonts', f))
     for n in ('hero', 'saudi', 'turkey', 'uae', 'vietnam', 'kenya', 'albania'):

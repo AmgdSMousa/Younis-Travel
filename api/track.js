@@ -8,6 +8,11 @@ module.exports = async (req, res) => {
   if (req.method !== 'GET') { L.send(res, 405, { error: 'method_not_allowed' }); return; }
   if (!L.storageReady()) { L.send(res, 503, { error: 'storage_not_configured' }); return; }
   try {
+    if (!(await L.rateLimit('track', req, 60, 3600))) {
+      res.setHeader('Retry-After', '3600');
+      L.send(res, 429, { error: 'rate_limited' }, L.browserCors(req));
+      return;
+    }
     const q = req.query || {};
     const ref = L.clean(q.ref || '', 12).toUpperCase();
     const b = ref ? await L.getBooking(ref) : null;

@@ -5,9 +5,8 @@ operations alongside the team token; agents register via a real endpoint and
 the team provisions credentials after review. Metadata documents describe
 exactly this system — nothing more. Runs the v3.5 build first."""
 import os, sys, json, shutil
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import build_site_v3 as V3
-import build_site_v35 as V35
+from gen import layout as V3
+from gen import booking as V35
 
 OUT = V3.OUT
 BASE = 'https://younistravel.site'
@@ -108,7 +107,7 @@ Younis Travel team via the Facebook Page: https://www.facebook.com/profile.php?i
 
 def main():
     V35.main()
-    src = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'api_src')
+    src = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'api_src')
     api_out = os.path.join(OUT, 'api')
     shutil.copy(os.path.join(src, '_oauth.js'), os.path.join(api_out, '_oauth.js'))
     os.makedirs(os.path.join(api_out, 'oauth'), exist_ok=True)

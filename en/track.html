@@ -151,6 +151,7 @@ body{padding-bottom:64px}}
 </div>
 </div></div></section>
 <script>
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 var SVC={visa:'Visa',flight:'Flight',hotel:'Hotel',trip:'Trip',insurance:'Travel insurance'};
 var NEXT={NEW:'Your request arrived; the team will review it and contact you shortly.',CONTACTED:'The team has contacted you (or is trying to reach you) — check your phone and WhatsApp.',CONFIRMED:'Your booking is confirmed — the team is preparing execution and will send the final details.',COMPLETED:'Booking completed — safe travels! We are here if you need anything.',CANCELLED:'This booking is cancelled. If that was not at your request, message us on the Facebook Page.'};
 var q=new URLSearchParams(location.search); if(q.get('ref'))document.getElementById('ref').value=q.get('ref');
@@ -165,7 +166,7 @@ function doTrack(){
     if(x.s!==200){e.textContent='No booking matches those details — check the reference and the mobile you booked with';e.style.display='block';document.getElementById('tres').style.display='none';return;}
     var b=x.j.booking; var order=['NEW','CONTACTED','CONFIRMED','COMPLETED']; var idx=order.indexOf(b.status);
     document.querySelectorAll('#ttl div').forEach(function(d,i){d.classList.toggle('done', idx>=i && b.status!=='CANCELLED');});
-    document.getElementById('tdet').innerHTML='<dt>Reference</dt><dd>'+b.ref+'</dd><dt>Service</dt><dd>'+SVC[b.service]+'</dd><dt>Destination</dt><dd>'+b.destination+'</dd><dt>Dates</dt><dd>'+(b.dates||'—')+'</dd><dt>Travellers</dt><dd>'+b.people+'</dd><dt>Booked on</dt><dd>'+b.created_at.slice(0,10)+'</dd><dt>Last update</dt><dd>'+b.updated_at.slice(0,10)+'</dd>';
+    document.getElementById('tdet').innerHTML='<dt>Reference</dt><dd>'+b.ref+'</dd><dt>Service</dt><dd>'+SVC[b.service]+'</dd><dt>Destination</dt><dd>'+esc(b.destination)+'</dd><dt>Dates</dt><dd>'+esc(b.dates||'—')+'</dd><dt>Travellers</dt><dd>'+esc(b.people)+'</dd><dt>Booked on</dt><dd>'+b.created_at.slice(0,10)+'</dd><dt>Last update</dt><dd>'+b.updated_at.slice(0,10)+'</dd>';
     document.getElementById('tnext').textContent=NEXT[b.status]||'';
     document.getElementById('tres').style.display='block';
   }).catch(function(){e.textContent='Connection problem — please try again';e.style.display='block';});

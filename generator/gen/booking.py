@@ -5,10 +5,9 @@ admin dashboard. Adds the now-real API layer artifacts: OpenAPI spec, RFC 9727
 API catalog, MCP server + server card. Runs the v3.4 build first, then overlays.
 API sources live in api_src/ and are copied into site_v3/api/."""
 import os, sys, json, hashlib, shutil
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import build_site as B
-import build_site_v3 as V3
-import build_site_v34 as V34
+from gen import base as B
+from gen import layout as V3
+from gen import agents as V34
 
 OUT = V3.OUT
 BASE = B.BASE
@@ -79,6 +78,7 @@ BOOK_AR = """<section class="page-hero"><div class="wrap"><h1>احجز طلبك<
 </div>
 </div></div></section>
 <script>
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 var SVC={visa:'تأشيرة',flight:'طيران',hotel:'فندق',trip:'رحلة سياحية',insurance:'تأمين سفر'};
 var q=new URLSearchParams(location.search);
 if(q.get('s'))document.getElementById('service').value=q.get('s');
@@ -93,8 +93,8 @@ function goStep(n){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function bookingData(){return {service:val('service'),destination:val('dest'),dates:val('dates'),people:parseInt(val('people')||'1',10),name:val('name'),phone:val('phone'),notes:val('notes')};}
-function summaryText(b,ref){return 'حجز يونس ترافيل'+(ref?' — رقم الحجز: '+ref:'')+'\\nالخدمة: '+SVC[b.service]+'\\nالوجهة: '+b.destination+'\\nالتواريخ: '+(b.dates||'—')+'\\nعدد المسافرين: '+b.people+'\\nالاسم: '+b.name+'\\nالموبايل: '+b.phone+(b.notes?'\\nملاحظات: '+b.notes:'');}
-function fillReview(){var b=bookingData();document.getElementById('review').innerHTML='<dt>الخدمة</dt><dd>'+SVC[b.service]+'</dd><dt>الوجهة</dt><dd>'+b.destination+'</dd><dt>التواريخ</dt><dd>'+(b.dates||'—')+'</dd><dt>المسافرون</dt><dd>'+b.people+'</dd><dt>الاسم</dt><dd>'+b.name+'</dd><dt>الموبايل</dt><dd>'+b.phone+'</dd>'+(b.notes?'<dt>ملاحظات</dt><dd>'+b.notes+'</dd>':'');}
+function summaryText(b,ref){return 'حجز يونس ترافيل'+(ref?' — رقم الحجز: '+ref:'')+'\\nالخدمة: '+SVC[b.service]+'\\nالوجهة: '+esc(b.destination)+'\\nالتواريخ: '+esc(b.dates||'—')+'\\nعدد المسافرين: '+esc(b.people)+'\\nالاسم: '+esc(b.name)+'\\nالموبايل: '+esc(b.phone)+(b.notes?'\\nملاحظات: '+esc(b.notes):'');}
+function fillReview(){var b=bookingData();document.getElementById('review').innerHTML='<dt>الخدمة</dt><dd>'+SVC[b.service]+'</dd><dt>الوجهة</dt><dd>'+esc(b.destination)+'</dd><dt>التواريخ</dt><dd>'+esc(b.dates||'—')+'</dd><dt>المسافرون</dt><dd>'+esc(b.people)+'</dd><dt>الاسم</dt><dd>'+esc(b.name)+'</dd><dt>الموبايل</dt><dd>'+esc(b.phone)+'</dd>'+(b.notes?'<dt>ملاحظات</dt><dd>'+esc(b.notes)+'</dd>':'');}
 var lastRef='';
 function submitBooking(){
   var b=bookingData();var btn=document.getElementById('confirmBtn');btn.disabled=true;btn.textContent='جاري تسجيل الحجز...';
@@ -129,6 +129,7 @@ TRACK_AR = """<section class="page-hero"><div class="wrap"><h1>تابع حالة
 </div>
 </div></div></section>
 <script>
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 var SVC={visa:'تأشيرة',flight:'طيران',hotel:'فندق',trip:'رحلة سياحية',insurance:'تأمين سفر'};
 var NEXT={NEW:'طلبك وصل والفريق هيراجعه ويتواصل معاك في أقرب وقت.',CONTACTED:'الفريق تواصل معاك (أو بيحاول يوصلك) — راجع موبايلك وواتساب.',CONFIRMED:'حجزك مؤكد — الفريق بيجهز التنفيذ وهيبعتلك التفاصيل النهائية.',COMPLETED:'الحجز اكتمل — سفر سعيد! لو احتجت أي حاجة إحنا موجودين.',CANCELLED:'الحجز ده ملغي. لو ده مش بطلبك، كلمنا على صفحة فيسبوك.'};
 var q=new URLSearchParams(location.search); if(q.get('ref'))document.getElementById('ref').value=q.get('ref');
@@ -143,7 +144,7 @@ function doTrack(){
     if(x.s!==200){e.textContent='ملقيناش حجز بالبيانات دي — اتأكد من رقم الحجز والموبايل اللي حجزت بيه';e.style.display='block';document.getElementById('tres').style.display='none';return;}
     var b=x.j.booking; var order=['NEW','CONTACTED','CONFIRMED','COMPLETED']; var idx=order.indexOf(b.status);
     document.querySelectorAll('#ttl div').forEach(function(d,i){d.classList.toggle('done', idx>=i && b.status!=='CANCELLED');});
-    document.getElementById('tdet').innerHTML='<dt>رقم الحجز</dt><dd>'+b.ref+'</dd><dt>الخدمة</dt><dd>'+SVC[b.service]+'</dd><dt>الوجهة</dt><dd>'+b.destination+'</dd><dt>التواريخ</dt><dd>'+(b.dates||'—')+'</dd><dt>المسافرون</dt><dd>'+b.people+'</dd><dt>تاريخ الحجز</dt><dd>'+b.created_at.slice(0,10)+'</dd><dt>آخر تحديث</dt><dd>'+b.updated_at.slice(0,10)+'</dd>';
+    document.getElementById('tdet').innerHTML='<dt>رقم الحجز</dt><dd>'+b.ref+'</dd><dt>الخدمة</dt><dd>'+SVC[b.service]+'</dd><dt>الوجهة</dt><dd>'+esc(b.destination)+'</dd><dt>التواريخ</dt><dd>'+esc(b.dates||'—')+'</dd><dt>المسافرون</dt><dd>'+esc(b.people)+'</dd><dt>تاريخ الحجز</dt><dd>'+b.created_at.slice(0,10)+'</dd><dt>آخر تحديث</dt><dd>'+b.updated_at.slice(0,10)+'</dd>';
     document.getElementById('tnext').textContent=NEXT[b.status]||'';
     document.getElementById('tres').style.display='block';
   }).catch(function(){e.textContent='حصلت مشكلة في الاتصال — حاول تاني';e.style.display='block';});
@@ -164,6 +165,7 @@ ADMIN_AR = """<section class="page-hero"><div class="wrap"><h1>لوحة إدار
 </div>
 </div></section>
 <script>
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 var SVC={visa:'تأشيرة',flight:'طيران',hotel:'فندق',trip:'رحلة',insurance:'تأمين'};
 var STL={NEW:'جديد',CONTACTED:'تم التواصل',CONFIRMED:'مؤكد',COMPLETED:'مكتمل',CANCELLED:'ملغي'};
 var TOK=sessionStorage.getItem('yt_admin')||''; var DATA=[];
@@ -174,9 +176,9 @@ function load(){ api('GET').then(function(x){ if(x.s!==200){document.getElementB
   document.getElementById('gate').style.display='none';document.getElementById('panel').style.display='block'; DATA=x.j.bookings; render(); }); }
 function render(){ var f=document.getElementById('fstatus').value; var rows=DATA.filter(function(b){return !f||b.status===f;});
   document.getElementById('count').textContent=rows.length+' حجز';
-  document.getElementById('list').innerHTML=rows.map(function(b){return '<div class="abk"><strong>'+b.ref+'</strong> · '+SVC[b.service]+' · '+b.destination+' · '+(b.dates||'—')+' · '+b.people+' مسافر<br>'+b.name+' — '+b.phone+(b.notes?'<br>ملاحظات العميل: '+b.notes:'')+'<br><span style="color:#777">'+b.created_at.slice(0,16).replace('T',' ')+'</span><br>'+
+  document.getElementById('list').innerHTML=rows.map(function(b){return '<div class="abk"><strong>'+b.ref+'</strong> · '+SVC[b.service]+' · '+esc(b.destination)+' · '+esc(b.dates||'—')+' · '+esc(b.people)+' مسافر<br>'+esc(b.name)+' — '+esc(b.phone)+(b.notes?'<br>ملاحظات العميل: '+esc(b.notes):'')+'<br><span style="color:#777">'+b.created_at.slice(0,16).replace('T',' ')+'</span><br>'+
   '<select id="st-'+b.ref+'">'+['NEW','CONTACTED','CONFIRMED','COMPLETED','CANCELLED'].map(function(s){return '<option value="'+s+'"'+(b.status===s?' selected':'')+'>'+STL[s]+'</option>';}).join('')+'</select> '+
-  '<input id="nt-'+b.ref+'" placeholder="ملاحظة داخلية" value="'+(b.admin_notes||'').replace(/"/g,'&quot;')+'" style="min-width:220px"> '+
+  '<input id="nt-'+b.ref+'" placeholder="ملاحظة داخلية" value="'+esc(b.admin_notes||'')+'" style="min-width:220px"> '+
   '<button class="btn" onclick="save(\''+b.ref+'\')">حفظ</button> <button class="btn" onclick="del(\''+b.ref+'\')">حذف</button></div>';}).join('')||'<p>لا توجد حجوزات مطابقة.</p>'; }
 function save(ref){ api('PATCH',{ref:ref,status:document.getElementById('st-'+ref).value,admin_notes:document.getElementById('nt-'+ref).value}).then(function(x){ if(x.s===200){alert('اتحفظ ✓');load();} else alert('حصلت مشكلة'); }); }
 function del(ref){ if(confirm('حذف الحجز '+ref+' نهائيًا؟')){ fetch('/api/bookings?ref='+ref,{method:'DELETE',headers:{'x-admin-token':TOK}}).then(function(){load();}); } }
@@ -230,6 +232,7 @@ BOOK_EN = """<section class="page-hero"><div class="wrap"><h1>Book your request<
 </div>
 </div></div></section>
 <script>
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 var SVC={visa:'Visa',flight:'Flight',hotel:'Hotel',trip:'Trip',insurance:'Travel insurance'};
 var q=new URLSearchParams(location.search);
 if(q.get('s'))document.getElementById('service').value=q.get('s');
@@ -244,8 +247,8 @@ function goStep(n){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function bookingData(){return {service:val('service'),destination:val('dest'),dates:val('dates'),people:parseInt(val('people')||'1',10),name:val('name'),phone:val('phone'),notes:val('notes')};}
-function summaryText(b,ref){return 'Younis Travel booking'+(ref?' — reference: '+ref:'')+'\\nService: '+SVC[b.service]+'\\nDestination: '+b.destination+'\\nDates: '+(b.dates||'—')+'\\nTravellers: '+b.people+'\\nName: '+b.name+'\\nMobile: '+b.phone+(b.notes?'\\nNotes: '+b.notes:'');}
-function fillReview(){var b=bookingData();document.getElementById('review').innerHTML='<dt>Service</dt><dd>'+SVC[b.service]+'</dd><dt>Destination</dt><dd>'+b.destination+'</dd><dt>Dates</dt><dd>'+(b.dates||'—')+'</dd><dt>Travellers</dt><dd>'+b.people+'</dd><dt>Name</dt><dd>'+b.name+'</dd><dt>Mobile</dt><dd>'+b.phone+'</dd>'+(b.notes?'<dt>Notes</dt><dd>'+b.notes+'</dd>':'');}
+function summaryText(b,ref){return 'Younis Travel booking'+(ref?' — reference: '+ref:'')+'\\nService: '+SVC[b.service]+'\\nDestination: '+esc(b.destination)+'\\nDates: '+esc(b.dates||'—')+'\\nTravellers: '+esc(b.people)+'\\nName: '+esc(b.name)+'\\nMobile: '+esc(b.phone)+(b.notes?'\\nNotes: '+esc(b.notes):'');}
+function fillReview(){var b=bookingData();document.getElementById('review').innerHTML='<dt>Service</dt><dd>'+SVC[b.service]+'</dd><dt>Destination</dt><dd>'+esc(b.destination)+'</dd><dt>Dates</dt><dd>'+esc(b.dates||'—')+'</dd><dt>Travellers</dt><dd>'+esc(b.people)+'</dd><dt>Name</dt><dd>'+esc(b.name)+'</dd><dt>Mobile</dt><dd>'+esc(b.phone)+'</dd>'+(b.notes?'<dt>Notes</dt><dd>'+esc(b.notes)+'</dd>':'');}
 var lastRef='';
 function submitBooking(){
   var b=bookingData();var btn=document.getElementById('confirmBtn');btn.disabled=true;btn.textContent='Saving your booking...';
@@ -280,6 +283,7 @@ TRACK_EN = """<section class="page-hero"><div class="wrap"><h1>Track your bookin
 </div>
 </div></div></section>
 <script>
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 var SVC={visa:'Visa',flight:'Flight',hotel:'Hotel',trip:'Trip',insurance:'Travel insurance'};
 var NEXT={NEW:'Your request arrived; the team will review it and contact you shortly.',CONTACTED:'The team has contacted you (or is trying to reach you) — check your phone and WhatsApp.',CONFIRMED:'Your booking is confirmed — the team is preparing execution and will send the final details.',COMPLETED:'Booking completed — safe travels! We are here if you need anything.',CANCELLED:'This booking is cancelled. If that was not at your request, message us on the Facebook Page.'};
 var q=new URLSearchParams(location.search); if(q.get('ref'))document.getElementById('ref').value=q.get('ref');
@@ -294,7 +298,7 @@ function doTrack(){
     if(x.s!==200){e.textContent='No booking matches those details — check the reference and the mobile you booked with';e.style.display='block';document.getElementById('tres').style.display='none';return;}
     var b=x.j.booking; var order=['NEW','CONTACTED','CONFIRMED','COMPLETED']; var idx=order.indexOf(b.status);
     document.querySelectorAll('#ttl div').forEach(function(d,i){d.classList.toggle('done', idx>=i && b.status!=='CANCELLED');});
-    document.getElementById('tdet').innerHTML='<dt>Reference</dt><dd>'+b.ref+'</dd><dt>Service</dt><dd>'+SVC[b.service]+'</dd><dt>Destination</dt><dd>'+b.destination+'</dd><dt>Dates</dt><dd>'+(b.dates||'—')+'</dd><dt>Travellers</dt><dd>'+b.people+'</dd><dt>Booked on</dt><dd>'+b.created_at.slice(0,10)+'</dd><dt>Last update</dt><dd>'+b.updated_at.slice(0,10)+'</dd>';
+    document.getElementById('tdet').innerHTML='<dt>Reference</dt><dd>'+b.ref+'</dd><dt>Service</dt><dd>'+SVC[b.service]+'</dd><dt>Destination</dt><dd>'+esc(b.destination)+'</dd><dt>Dates</dt><dd>'+esc(b.dates||'—')+'</dd><dt>Travellers</dt><dd>'+esc(b.people)+'</dd><dt>Booked on</dt><dd>'+b.created_at.slice(0,10)+'</dd><dt>Last update</dt><dd>'+b.updated_at.slice(0,10)+'</dd>';
     document.getElementById('tnext').textContent=NEXT[b.status]||'';
     document.getElementById('tres').style.display='block';
   }).catch(function(){e.textContent='Connection problem — please try again';e.style.display='block';});
@@ -371,7 +375,7 @@ def main():
     api_out = os.path.join(OUT, 'api')
     os.makedirs(api_out, exist_ok=True)
     for fn in ('_lib.js', 'bookings.js', 'track.js', 'health.js', 'openapi.js', 'mcp.js'):
-        shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'api_src', fn),
+        shutil.copy(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'api_src', fn),
                     os.path.join(api_out, fn))
     _write('package.json', json.dumps({"name": "younistravel-site", "private": True}, indent=2))
 

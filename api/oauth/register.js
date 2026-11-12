@@ -7,6 +7,11 @@ module.exports = async (req, res) => {
   if (!L.storageReady()) { L.send(res, 503, { error: 'storage_not_configured' }); return; }
   try {
     if (req.method === 'POST') {
+      if (!(await L.rateLimit('oauthreg', req, 5, 3600))) {
+        res.setHeader('Retry-After', '3600');
+        L.send(res, 429, { error: 'rate_limited' });
+        return;
+      }
       const b = await L.readJson(req);
       const r = await O.createRegistrationRequest(b);
       if (!r.ok) { L.send(res, 400, { error: 'validation', message: 'name and a contact (email or phone) are required' }); return; }

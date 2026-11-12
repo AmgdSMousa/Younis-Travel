@@ -151,6 +151,7 @@ body{padding-bottom:64px}}
 </div>
 </div></div></section>
 <script>
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 var SVC={visa:'تأشيرة',flight:'طيران',hotel:'فندق',trip:'رحلة سياحية',insurance:'تأمين سفر'};
 var NEXT={NEW:'طلبك وصل والفريق هيراجعه ويتواصل معاك في أقرب وقت.',CONTACTED:'الفريق تواصل معاك (أو بيحاول يوصلك) — راجع موبايلك وواتساب.',CONFIRMED:'حجزك مؤكد — الفريق بيجهز التنفيذ وهيبعتلك التفاصيل النهائية.',COMPLETED:'الحجز اكتمل — سفر سعيد! لو احتجت أي حاجة إحنا موجودين.',CANCELLED:'الحجز ده ملغي. لو ده مش بطلبك، كلمنا على صفحة فيسبوك.'};
 var q=new URLSearchParams(location.search); if(q.get('ref'))document.getElementById('ref').value=q.get('ref');
@@ -165,7 +166,7 @@ function doTrack(){
     if(x.s!==200){e.textContent='ملقيناش حجز بالبيانات دي — اتأكد من رقم الحجز والموبايل اللي حجزت بيه';e.style.display='block';document.getElementById('tres').style.display='none';return;}
     var b=x.j.booking; var order=['NEW','CONTACTED','CONFIRMED','COMPLETED']; var idx=order.indexOf(b.status);
     document.querySelectorAll('#ttl div').forEach(function(d,i){d.classList.toggle('done', idx>=i && b.status!=='CANCELLED');});
-    document.getElementById('tdet').innerHTML='<dt>رقم الحجز</dt><dd>'+b.ref+'</dd><dt>الخدمة</dt><dd>'+SVC[b.service]+'</dd><dt>الوجهة</dt><dd>'+b.destination+'</dd><dt>التواريخ</dt><dd>'+(b.dates||'—')+'</dd><dt>المسافرون</dt><dd>'+b.people+'</dd><dt>تاريخ الحجز</dt><dd>'+b.created_at.slice(0,10)+'</dd><dt>آخر تحديث</dt><dd>'+b.updated_at.slice(0,10)+'</dd>';
+    document.getElementById('tdet').innerHTML='<dt>رقم الحجز</dt><dd>'+b.ref+'</dd><dt>الخدمة</dt><dd>'+SVC[b.service]+'</dd><dt>الوجهة</dt><dd>'+esc(b.destination)+'</dd><dt>التواريخ</dt><dd>'+esc(b.dates||'—')+'</dd><dt>المسافرون</dt><dd>'+esc(b.people)+'</dd><dt>تاريخ الحجز</dt><dd>'+b.created_at.slice(0,10)+'</dd><dt>آخر تحديث</dt><dd>'+b.updated_at.slice(0,10)+'</dd>';
     document.getElementById('tnext').textContent=NEXT[b.status]||'';
     document.getElementById('tres').style.display='block';
   }).catch(function(){e.textContent='حصلت مشكلة في الاتصال — حاول تاني';e.style.display='block';});

@@ -4,11 +4,10 @@ descriptive service link names, llms.txt links in markdown form, robots.txt
 Content Signals + explicit AI-bot rules, Link + basic security headers.
 Runs the v3.2 build, then post-processes its output in site_v3/."""
 import os, json, sys, re
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import build_site as B
-import build_site_v3 as V3
-import build_site_v31 as V31
-import build_site_v32 as V32
+from gen import base as B
+from gen import layout as V3
+from gen import seo as V31
+from gen import countries as V32
 from PIL import Image
 
 OUT = V3.OUT

@@ -5,10 +5,9 @@ extends sitemap.xml and llms files. Copy: Amged's approved service texts only â€
 no invented visa durations, fees or requirements; country specifics stay at the
 level of his approved copy (service type + destination highlights he published)."""
 import os, json, sys, secrets
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import build_site as B
-import build_site_v3 as V3
-import build_site_v31 as V31
+from gen import base as B
+from gen import layout as V3
+from gen import seo as V31
 
 OUT = V3.OUT
 BASE = B.BASE
@@ -225,7 +224,7 @@ def main():
         with open(os.path.join(OUT, f), 'a', encoding='utf-8') as fh:
             fh.write(extra_llms)
     # IndexNow key file
-    key_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'indexnow-key.txt')
+    key_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'indexnow-key.txt')
     if os.path.exists(key_file):
         key = open(key_file).read().strip()
     else:

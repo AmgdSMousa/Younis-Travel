@@ -12,15 +12,21 @@ async function authorized(req, scope) {
   return Boolean(await O.bearerAuth(req, scope));
 }
 module.exports = async (req, res) => {
-  if (req.method === 'OPTIONS') { L.send(res, 204, {}); return; }
+  if (req.method === 'OPTIONS') { L.send(res, 204, {}, L.browserCors(req)); return; }
   if (!L.storageReady()) { L.send(res, 503, { error: 'storage_not_configured', message: 'Booking storage is being activated.' }); return; }
   try {
     if (req.method === 'POST') {
+      // anti-spam: at most 10 booking creations per IP per hour
+      if (!(await L.rateLimit('bkcreate', req, 10, 3600))) {
+        res.setHeader('Retry-After', '3600');
+        L.send(res, 429, { error: 'rate_limited', message: 'Too many requests — please try again later, or message the team on Facebook.' }, L.browserCors(req));
+        return;
+      }
       const input = await L.readJson(req);
       const r = await L.createBooking(input);
-      if (!r.ok) { L.send(res, 400, { error: 'validation', fields: r.errors }); return; }
+      if (!r.ok) { L.send(res, 400, { error: 'validation', fields: r.errors }, L.browserCors(req)); return; }
       L.send(res, 201, { ref: r.booking.ref, status: r.booking.status, created_at: r.booking.created_at,
-                         track_url: '/track.html?ref=' + r.booking.ref });
+                         track_url: '/track.html?ref=' + r.booking.ref }, L.browserCors(req));
       return;
     }
     const scope = req.method === 'GET' ? 'bookings:read' : 'bookings:write';

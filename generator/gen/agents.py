@@ -8,11 +8,10 @@ Deliberately NOT implemented (would be fabrication — no such systems exist on 
 API catalog, OAuth/OIDC metadata, auth.md, MCP server card.
 Runs the v3.3 build first, then post-processes site_v3/."""
 import os, sys, json, re, html as htmllib, hashlib
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import build_site as B
-import build_site_v3 as V3
-import build_site_v33 as V33
-import build_site_v32 as V32
+from gen import base as B
+from gen import layout as V3
+from gen import publish_fixes as V33
+from gen import countries as V32
 
 OUT = V3.OUT
 BASE = B.BASE
