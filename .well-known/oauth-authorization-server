@@ -1,0 +1,34 @@
+{
+  "issuer": "https://younistravel.site",
+  "token_endpoint": "https://younistravel.site/api/oauth/token",
+  "jwks_uri": "https://younistravel.site/api/oauth/jwks",
+  "revocation_endpoint": "https://younistravel.site/api/oauth/revoke",
+  "grant_types_supported": [
+    "client_credentials"
+  ],
+  "response_types_supported": [],
+  "token_endpoint_auth_methods_supported": [
+    "client_secret_basic",
+    "client_secret_post"
+  ],
+  "scopes_supported": [
+    "bookings:read",
+    "bookings:write"
+  ],
+  "agent_auth": {
+    "skill": "https://younistravel.site/auth.md",
+    "register_uri": "https://younistravel.site/api/oauth/register",
+    "identity_types_supported": [
+      "identity_assertion"
+    ],
+    "identity_assertion": {
+      "assertion_types_supported": [
+        "verified_email"
+      ],
+      "credential_types_supported": [
+        "client_secret"
+      ]
+    },
+    "claim_uri": "https://younistravel.site/auth.md"
+  }
+}

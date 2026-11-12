@@ -13,9 +13,9 @@ const SPEC = {
               responses: { '201': { description: 'Booking created', content: { 'application/json': { schema: { type: 'object', properties: { ref: { type: 'string', example: 'YT-AB12CD' }, status: { type: 'string', example: 'NEW' }, track_url: { type: 'string' } } } } } },
                            '400': { description: 'Validation error — response lists the invalid fields' },
                            '503': { description: 'Booking storage not yet activated' } } },
-      get: { summary: 'List bookings (admin only, x-admin-token header)', security: [{ adminToken: [] }],
+      get: { summary: 'List bookings (admin token, or OAuth bearer with bookings:read)', security: [{ adminToken: [] }, { oauth2: ['bookings:read'] }],
              responses: { '200': { description: 'Newest bookings first' }, '401': { description: 'Missing or wrong admin token' } } },
-      patch: { summary: 'Update booking status or admin notes (admin only)', security: [{ adminToken: [] }],
+      patch: { summary: 'Update booking status or admin notes (admin token, or OAuth bearer with bookings:write)', security: [{ adminToken: [] }, { oauth2: ['bookings:write'] }],
                responses: { '200': { description: 'Updated booking' }, '401': { description: 'Missing or wrong admin token' }, '404': { description: 'Unknown reference' } } },
     },
     '/api/track': {
@@ -28,7 +28,9 @@ const SPEC = {
     '/api/health': { get: { summary: 'Service and storage status', responses: { '200': { description: 'Status object' } } } },
   },
   components: {
-    securitySchemes: { adminToken: { type: 'apiKey', in: 'header', name: 'x-admin-token' } },
+    securitySchemes: { adminToken: { type: 'apiKey', in: 'header', name: 'x-admin-token' },
+                       oauth2: { type: 'oauth2', flows: { clientCredentials: { tokenUrl: 'https://younistravel.site/api/oauth/token',
+                                 scopes: { 'bookings:read': 'List bookings (admin view)', 'bookings:write': 'Update or delete bookings' } } } } },
     schemas: { BookingInput: { type: 'object', required: ['service', 'destination', 'name', 'phone'],
       properties: { service: { type: 'string', enum: ['visa', 'flight', 'hotel', 'trip', 'insurance'] },
                     destination: { type: 'string' }, dates: { type: 'string' },
