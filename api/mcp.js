@@ -59,6 +59,12 @@ module.exports = async (req, res) => {
         return;
       }
       if (name === 'create_booking') {
+        // Same 10/hour/IP bucket as POST /api/bookings ('bkcreate') — without
+        // this, the MCP tool would bypass the REST rate limit entirely.
+        if (!(await L.rateLimit('bkcreate', req, 10, 3600))) {
+          rpc(res, id, { content: [{ type: 'text', text: 'Rate limited: too many booking requests — please try again later, or message the team on Facebook.' }], isError: true });
+          return;
+        }
         const r = await L.createBooking(args);
         if (!r.ok) { rpc(res, id, { content: [{ type: 'text', text: 'Validation failed for fields: ' + r.errors.join(', ') }], isError: true }); return; }
         rpc(res, id, { content: [{ type: 'text', text: JSON.stringify({ ref: r.booking.ref, status: r.booking.status, track_url: 'https://younistravel.site/track.html?ref=' + r.booking.ref }, null, 2) }] });

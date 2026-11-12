@@ -16,6 +16,12 @@ module.exports = async (req, res) => {
   if (req.method !== 'POST') { L.send(res, 405, { error: 'method_not_allowed' }); return; }
   if (!L.storageReady()) { L.send(res, 503, { error: 'temporarily_unavailable' }); return; }
   try {
+    // throttle credential guessing: 30 token requests per IP per hour
+    if (!(await L.rateLimit('oauthtoken', req, 30, 3600))) {
+      res.setHeader('Retry-After', '3600');
+      L.send(res, 429, { error: 'rate_limited' });
+      return;
+    }
     const body = await readBody(req);
     if (body.grant_type !== 'client_credentials') { L.send(res, 400, { error: 'unsupported_grant_type' }); return; }
     const client = await O.authenticateClient(req, body);

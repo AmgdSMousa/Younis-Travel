@@ -183,6 +183,7 @@ body{padding-bottom:64px}}
 </div>
 </div></div></section>
 <script>
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 var SVC={visa:'Visa',flight:'Flight',hotel:'Hotel',trip:'Trip',insurance:'Travel insurance'};
 var q=new URLSearchParams(location.search);
 if(q.get('s'))document.getElementById('service').value=q.get('s');
@@ -197,8 +198,8 @@ function goStep(n){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function bookingData(){return {service:val('service'),destination:val('dest'),dates:val('dates'),people:parseInt(val('people')||'1',10),name:val('name'),phone:val('phone'),notes:val('notes')};}
-function summaryText(b,ref){return 'Younis Travel booking'+(ref?' — reference: '+ref:'')+'\nService: '+SVC[b.service]+'\nDestination: '+b.destination+'\nDates: '+(b.dates||'—')+'\nTravellers: '+b.people+'\nName: '+b.name+'\nMobile: '+b.phone+(b.notes?'\nNotes: '+b.notes:'');}
-function fillReview(){var b=bookingData();document.getElementById('review').innerHTML='<dt>Service</dt><dd>'+SVC[b.service]+'</dd><dt>Destination</dt><dd>'+b.destination+'</dd><dt>Dates</dt><dd>'+(b.dates||'—')+'</dd><dt>Travellers</dt><dd>'+b.people+'</dd><dt>Name</dt><dd>'+b.name+'</dd><dt>Mobile</dt><dd>'+b.phone+'</dd>'+(b.notes?'<dt>Notes</dt><dd>'+b.notes+'</dd>':'');}
+function summaryText(b,ref){return 'Younis Travel booking'+(ref?' — reference: '+ref:'')+'\nService: '+SVC[b.service]+'\nDestination: '+esc(b.destination)+'\nDates: '+esc(b.dates||'—')+'\nTravellers: '+esc(b.people)+'\nName: '+esc(b.name)+'\nMobile: '+esc(b.phone)+(b.notes?'\nNotes: '+esc(b.notes):'');}
+function fillReview(){var b=bookingData();document.getElementById('review').innerHTML='<dt>Service</dt><dd>'+SVC[b.service]+'</dd><dt>Destination</dt><dd>'+esc(b.destination)+'</dd><dt>Dates</dt><dd>'+esc(b.dates||'—')+'</dd><dt>Travellers</dt><dd>'+esc(b.people)+'</dd><dt>Name</dt><dd>'+esc(b.name)+'</dd><dt>Mobile</dt><dd>'+esc(b.phone)+'</dd>'+(b.notes?'<dt>Notes</dt><dd>'+esc(b.notes)+'</dd>':'');}
 var lastRef='';
 function submitBooking(){
   var b=bookingData();var btn=document.getElementById('confirmBtn');btn.disabled=true;btn.textContent='Saving your booking...';

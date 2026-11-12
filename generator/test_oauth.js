@@ -1,7 +1,7 @@
 // Local end-to-end test of the OAuth layer + protected bookings (in-memory driver).
 process.env.YT_ALLOW_MOCK = '1';
 process.env.ADMIN_TOKEN = 'test-admin-token';
-const A = '/home/hatch/workspace/younis-website/api_src/';
+const A = '/home/hatch/workspace/younis-website/generator/api_src/';
 const bookings = require(A + 'bookings.js');
 const clients = require(A + 'oauth/clients.js');
 const tokenEp = require(A + 'oauth/token.js');

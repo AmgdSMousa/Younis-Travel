@@ -29,6 +29,8 @@ function mockCmd([op, ...a]) {
   if (op === 'ZADD') { if (!memIndex.includes(a[2])) memIndex.push(a[2]); return 1; }
   if (op === 'ZREVRANGE') { const s = [...memIndex].reverse(); return s.slice(Number(a[0]), Number(a[1]) + 1); }
   if (op === 'ZREM') { const i = memIndex.indexOf(a[0]); if (i >= 0) memIndex.splice(i, 1); return 1; }
+  if (op === 'INCR') { const v = (parseInt(mem.get(a[0]) || '0', 10) || 0) + 1; mem.set(a[0], String(v)); return v; }
+  if (op === 'EXPIRE') return 1;
   if (op === 'PING') return 'PONG';
   throw new Error('mock: unsupported ' + op);
 }
@@ -42,7 +44,11 @@ function genRef() {
   for (let i = 0; i < 6; i++) s += REF_ALPHABET[Math.floor(Math.random() * REF_ALPHABET.length)];
   return 'YT-' + s;
 }
-const clean = (v, max) => String(v == null ? '' : v).trim().slice(0, max);
+// Normalize whitespace, then strip markup-significant and control characters:
+// stored values are later rendered in the team dashboard, so nothing that can
+// become HTML ever reaches storage (the dashboard also escapes on render).
+const clean = (v, max) => String(v == null ? '' : v).replace(/\s+/g, ' ').trim()
+  .replace(/[<>"'`]/g, '').replace(/[\u0000-\u001f\u007f]/g, '').slice(0, max);
 function digits(v) { return String(v || '').replace(/\D/g, ''); }
 function phoneKey(v) { const d = digits(v); return d.length > 9 ? d.slice(-9) : d; }
 
@@ -93,7 +99,7 @@ async function updateBooking(ref, patch) {
   const b = await getBooking(ref);
   if (!b) return null;
   if (patch.status && STATUSES.includes(patch.status)) b.status = patch.status;
-  if (typeof patch.admin_notes === 'string') b.admin_notes = patch.admin_notes.slice(0, 1000);
+  if (typeof patch.admin_notes === 'string') b.admin_notes = clean(patch.admin_notes, 1000);
   b.updated_at = new Date().toISOString();
   await redis(['SET', 'bk:' + b.ref, JSON.stringify(b)]);
   return b;
@@ -113,11 +119,35 @@ function isAdmin(req) {
   const t = process.env.ADMIN_TOKEN || '';
   return Boolean(t) && (req.headers['x-admin-token'] || '') === t;
 }
-function send(res, code, obj) {
+function send(res, code, obj, corsOrigin) {
   res.statusCode = code;
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', corsOrigin || '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-admin-token, Authorization');
+  res.setHeader('Cache-Control', 'no-store');
   res.end(JSON.stringify(obj));
+}
+// Browser-facing endpoints (booking form, tracking page) accept browser calls
+// only from the site's own origins. Machine clients send no Origin header and
+// are unaffected; the agent APIs (MCP/OAuth/discovery) keep the open default.
+const SITE_ORIGINS = ['https://younistravel.site', 'https://www.younistravel.site'];
+function browserCors(req) {
+  const o = (req.headers && (req.headers.origin || req.headers.Origin)) || '';
+  if (!o) return '*';
+  return SITE_ORIGINS.includes(o) ? o : SITE_ORIGINS[1];
+}
+function clientIp(req) {
+  const xff = (req.headers && req.headers['x-forwarded-for']) || '';
+  return (String(xff).split(',')[0] || 'unknown').trim().slice(0, 64);
+}
+// Fixed-window rate limit in the shared store. Resolves true when allowed.
+async function rateLimit(name, req, limit, windowSec) {
+  const bucket = Math.floor(Date.now() / 1000 / windowSec);
+  const key = 'rl:' + name + ':' + clientIp(req) + ':' + bucket;
+  const n = await redis(['INCR', key]);
+  if (Number(n) === 1) { try { await redis(['EXPIRE', key, String(windowSec + 60)]); } catch {} }
+  return Number(n) <= limit;
 }
 async function readJson(req) {
   if (req.body && typeof req.body === 'object') return req.body;
@@ -129,4 +159,4 @@ async function readJson(req) {
 }
 module.exports = { redis, storageReady, SERVICES, STATUSES, createBooking, getBooking,
                    listBookings, updateBooking, deleteBooking, publicView, isAdmin, send,
-                   readJson, phoneKey, clean };
+                   readJson, phoneKey, clean, browserCors, clientIp, rateLimit };
