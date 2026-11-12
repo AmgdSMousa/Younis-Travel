@@ -3,17 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Book Your Trip | Younis Travel</title>
-<meta name="description" content="Request your visa, flight ticket or hotel from Younis Travel — leave the destination and dates and we will get started.">
-<link rel="canonical" href="https://younistravel.site/en/request.html">
-<link rel="alternate" hreflang="ar" href="https://younistravel.site/request.html">
-<link rel="alternate" hreflang="en" href="https://younistravel.site/en/request.html">
-<link rel="alternate" hreflang="x-default" href="https://younistravel.site/request.html">
+<title>Book your request | Younis Travel</title>
+<meta name="description" content="Book your visa, flight or hotel in three steps and get a booking reference to track your request.">
+<meta name="google-site-verification" content="zL5GI78-wG1QwSc5pazIywubl7DFkN_UbVySmW5A-Us">
+<link rel="canonical" href="https://younistravel.site/en/en/request.html">
+<link rel="alternate" hreflang="ar" href="https://younistravel.site/en/request.html">
+<link rel="alternate" hreflang="en" href="https://younistravel.site/en/en/request.html">
+<link rel="alternate" hreflang="x-default" href="https://younistravel.site/en/request.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Book Your Trip | Younis Travel">
-<meta property="og:description" content="Request your visa, flight ticket or hotel from Younis Travel — leave the destination and dates and we will get started.">
-<meta property="og:url" content="https://younistravel.site/en/request.html">
+<meta property="og:title" content="Book your request | Younis Travel">
+<meta property="og:description" content="Book your visa, flight or hotel in three steps and get a booking reference to track your request.">
+<meta property="og:url" content="https://younistravel.site/en/en/request.html">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://younistravel.site/images/hero.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='28' y='28' width='44' height='44' fill='none' stroke='%23e8b84b' stroke-width='8' transform='rotate(45 50 50)'/></svg>">
 <style>
 @font-face{font-family:'Plex';src:url('/fonts/IBMPlexSansArabic-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
@@ -62,60 +64,176 @@ button.cta-btn{border:none;cursor:pointer;font-family:inherit;font-size:17px}
 footer{border-top:1px solid rgba(232,184,75,.22);padding:30px 0;margin-top:30px;text-align:center;color:var(--gray);font-size:15.5px}
 footer a{color:var(--goldlt)}
 @media(max-width:640px){.hero h1{font-size:32px}.page-hero h1{font-size:29px}h2{font-size:25px}}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TravelAgency", "name": "Younis Travel", "url": "https://younistravel.site/", "description": "Request your visa, flight ticket or hotel from Younis Travel — leave the destination and dates and we will get started.", "sameAs": ["https://www.facebook.com/profile.php?id=61596173995345"], "areaServed": "EG", "inLanguage": "en"}</script>
 
+.hero3{position:relative;padding:96px 0 120px;text-align:center;background:url('/images/hero.webp') center 30%/cover no-repeat}
+.hero3::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,22,38,.72),rgba(7,22,38,.88))}
+.hero3 .wrap{position:relative}
+.hero3 h1{font-size:46px;line-height:1.7;color:var(--goldlt);text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.hero3 p{font-size:20px;max-width:780px;margin:14px auto 0;color:var(--cream)}
+.widget{position:relative;max-width:960px;margin:-84px auto 0;background:#fdfbf5;color:#12242f;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:22px 22px 26px;text-align:start}
+.widget h2{color:#0b2237;font-size:22px;margin-bottom:4px;line-height:1.6}
+.widget .wsub{color:#5a7182;font-size:15px;margin-bottom:14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab{border:2px solid rgba(11,34,55,.18);background:transparent;color:#0b2237;font-family:inherit;font-weight:700;font-size:16px;padding:8px 18px;border-radius:999px;cursor:pointer}
+.tab.on{background:var(--gold);border-color:var(--gold);color:#1a1405}
+.panel{display:none}
+.panel.on{display:block}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.widget label{color:#40586b;font-size:14.5px;display:block;margin-bottom:4px}
+.widget input,.widget select{width:100%;background:#fff;border:1px solid #c9d6de;border-radius:10px;color:#12242f;padding:11px 12px;font-family:inherit;font-size:16px}
+.widget .chk{display:flex;align-items:center;gap:8px;font-size:15px;color:#40586b}
+.widget .chk input{width:auto}
+.wsum{display:none;margin-top:16px;background:#0d2a42;color:var(--cream);border-radius:12px;padding:18px}
+.wsum h3{color:var(--gold);margin-bottom:6px;font-size:19px}
+.usps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px}
+.usp{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid rgba(94,200,190,.2);border-radius:14px;padding:16px 18px}
+.usp .ic{font-size:24px;line-height:1.4}
+.usp p{font-size:16px}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:28px}
+.dcard{background:var(--card);border:1px solid rgba(232,184,75,.18);border-radius:16px;overflow:hidden}
+.dcard img{width:100%;height:190px;object-fit:cover;display:block}
+.dcard .db{padding:18px 20px 20px}
+.dcard h3{color:var(--gold);font-size:21px;margin-bottom:4px}
+.badge{display:inline-block;background:rgba(94,200,190,.16);color:var(--teal);border:1px solid rgba(94,200,190,.4);font-size:13.5px;padding:2px 10px;border-radius:999px;margin-bottom:8px}
+.dcard p{font-size:16px;color:var(--cream)}
+.dcard a{font-weight:700}
+details.faq{background:var(--card);border:1px solid rgba(232,184,75,.18);border-radius:12px;padding:16px 20px;margin-top:12px}
+details.faq summary{cursor:pointer;font-weight:700;color:var(--goldlt);font-size:17.5px}
+details.faq p{margin-top:8px;color:var(--cream);font-size:16.5px}
+.floatmsg{position:fixed;bottom:20px;inset-inline-end:20px;z-index:50;background:var(--gold);color:#1a1405;font-weight:700;padding:12px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.floatmsg:hover{background:var(--goldlt);color:#1a1405}
+.stickybar{display:none}
+@media(max-width:640px){.hero3 h1{font-size:31px}.hero3{padding:64px 0 104px}
+.stickybar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:49;background:rgba(7,22,38,.97);border-top:1px solid rgba(232,184,75,.35);padding:10px 14px;gap:10px}
+.stickybar a{flex:1;text-align:center}
+.floatmsg{bottom:76px}
+body{padding-bottom:64px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TravelAgency", "name": "Younis Travel", "url": "https://younistravel.site/", "description": "Book your visa, flight or hotel in three steps and get a booking reference to track your request.", "sameAs": ["https://www.facebook.com/profile.php?id=61596173995345"], "areaServed": "EG", "inLanguage": "en"}</script>
+<style>
+.sbar{display:flex;gap:6px;margin:18px 0}
+.sbar div{flex:1;text-align:center;padding:9px 4px;border-radius:10px;background:#efe9dc;color:#7a6a45;font-weight:700;font-size:.86rem}
+.sbar div.on{background:#0f2b46;color:#fff}
+.bstep{display:none}.bstep.on{display:block}
+.refbig{font-size:2rem;font-weight:800;letter-spacing:2px;color:#0f2b46;text-align:center;margin:8px 0}
+.tl{display:flex;gap:0;margin:16px 0}
+.tl div{flex:1;text-align:center;font-size:.8rem;color:#999;padding-top:16px;position:relative}
+.tl div:before{content:'';position:absolute;top:4px;inset-inline-start:calc(50% - 7px);width:14px;height:14px;border-radius:50%;background:#ddd}
+.tl div.done{color:#0f2b46;font-weight:700}.tl div.done:before{background:#c9a24d}
+.msg{display:none;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:.95rem}
+.msg.err{display:block;background:#fdecec;color:#8c1d1d}
+.msg.ok{display:block;background:#e9f7ee;color:#14532d}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:10px 0}
+.kv dt{color:#777}.kv dd{margin:0;font-weight:600}
+.abk{border:1px solid #e5ddc9;border-radius:12px;padding:14px;margin:10px 0;background:#fff}
+.abk select,.abk input{padding:8px;border:1px solid #d8d2c2;border-radius:8px}
+</style>
+<link rel="ai-catalog" href="/.well-known/ai-catalog.json">
 </head>
 <body>
 <header><div class="wrap nav">
 <a class="logo" href="/en/"><span class="diamond"></span> Younis Travel</a>
 <nav class="links"><a href="/en/">Home</a><a href="/en/visas.html">Visas</a><a href="/en/flights.html">Flights</a><a href="/en/hotels.html">Hotels</a><a href="/en/trips.html">Trips & Insurance</a></nav>
 <a class="cta-btn" href="/en/request.html">Book Now</a>
-</div></header>
-
-<section class="page-hero"><div class="wrap">
-<h1>Book Your Trip</h1>
-<p>Fill in these details, and at the end you will find a summary of your request ready — send it to us in a message on the Facebook Page and we will get started with you right away.</p>
-</div></section>
-<section><div class="wrap">
-<form id="reqForm">
-<div><label for="name">Name</label><input id="name" required placeholder="Your name"></div>
-<div><label for="service">Service needed</label>
-<select id="service">
-<option>Visa</option><option>Flight</option><option>Hotel</option>
-<option>Complete tour program</option><option>Travel insurance</option>
-</select></div>
-<div><label for="dest">Destination</label><input id="dest" required placeholder="e.g. Saudi Arabia, Dubai, Turkey..."></div>
-<div><label for="dates">Approximate travel dates</label><input id="dates" placeholder="e.g. early December, 5 days"></div>
-<div><label for="people">Number of travelers</label><input id="people" inputmode="numeric" placeholder="e.g. 2"></div>
-<div><label for="notes">Additional details</label><textarea id="notes" placeholder="Anything you want us to know about your request"></textarea></div>
-<button class="cta-btn" type="submit">Prepare Request Summary</button>
-</form>
-<div id="summary" style="display:none;max-width:640px;margin:22px auto 0" class="card">
-<h3>Your Request Summary Is Ready</h3>
-<p id="summaryText" style="white-space:pre-line"></p>
-<p style="margin-top:14px"><a class="cta-btn" id="fbSend" href="#" target="_blank" rel="noopener">Send via Page Messages</a></p>
+</div></header><main>
+<section class="page-hero"><div class="wrap"><h1>Book your request</h1><p>Three simple steps and you get a booking reference to track your request. The team reviews every booking and contacts you with the final price and next steps.</p></div></section>
+<section class="section"><div class="wrap"><div class="card">
+<div class="sbar"><div id="sb1" class="on">1 · Service & details</div><div id="sb2">2 · Your details</div><div id="sb3">3 · Review & confirm</div></div>
+<div class="bstep on" id="st1">
+<div class="field-grid">
+<div class="fg"><label for="service">Service</label><select id="service"><option value="visa">Visa</option><option value="flight">Flight</option><option value="hotel">Hotel</option><option value="trip">Trip</option><option value="insurance">Travel insurance</option></select></div>
+<div class="fg"><label for="dest">Destination</label><input id="dest" placeholder="e.g. Saudi Arabia, Dubai, Turkey..."></div>
+<div class="fg"><label for="dates">Dates & duration</label><input id="dates" placeholder="e.g. early December, 5 days"></div>
+<div class="fg"><label for="people">Travellers</label><input id="people" type="number" min="1" max="50" value="1"></div>
 </div>
-<p class="note">Or message us directly on <a href="https://www.facebook.com/profile.php?id=61596173995345" target="_blank" rel="noopener">our Facebook Page</a>.</p>
-</div></section>
+<div class="msg err" id="e1"></div>
+<button class="btn btn-gold" onclick="goStep(2)">Next →</button>
+</div>
+<div class="bstep" id="st2">
+<div class="field-grid">
+<div class="fg"><label for="name">Full name</label><input id="name" placeholder="Your full name"></div>
+<div class="fg"><label for="phone">Mobile (WhatsApp)</label><input id="phone" inputmode="tel" placeholder="+20 1x xxxx xxxx"></div>
+</div>
+<div class="fg"><label for="notes">Notes for the team</label><textarea id="notes" rows="3" placeholder="Hotel area or class, preferred times, visa purpose..."></textarea></div>
+<p style="color:#777;font-size:.9rem">Your details are used only to process the booking and contact you; they are never shared.</p>
+<div class="msg err" id="e2"></div>
+<button class="btn" onclick="goStep(1)">← Back</button> <button class="btn btn-gold" onclick="goStep(3)">Review booking →</button>
+</div>
+<div class="bstep" id="st3">
+<h3 style="margin-top:0">Review your booking</h3>
+<dl class="kv" id="review"></dl>
+<div class="msg err" id="e3"></div>
+<button class="btn" onclick="goStep(2)">← Edit</button> <button class="btn btn-gold" id="confirmBtn" onclick="submitBooking()">Confirm booking ✓</button>
+</div>
+<div class="bstep" id="stDone">
+<div class="msg ok" style="display:block">Booking received ✅</div>
+<p style="text-align:center">Your booking reference — keep it safe:</p>
+<div class="refbig" id="refOut"></div>
+<p style="text-align:center">Status now: <strong>New</strong> — the team will review it and contact you on your number with the final price and steps.</p>
+<div style="text-align:center;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+<a class="btn btn-gold" id="trackLink" href="/en/track.html">Track your booking</a>
+<button class="btn" onclick="copySummary()">Copy booking summary</button>
+<a class="btn" href="https://m.me/61596173995345" target="_blank" rel="noopener">Send a copy on Facebook</a>
+</div>
+</div>
+<div class="bstep" id="stFallback">
+<div class="msg err" style="display:block">The online booking system is being activated right now — your request is not lost: send it to the team on Facebook and it will be registered the same way.</div>
+<dl class="kv" id="review2"></dl>
+<a class="btn btn-gold" href="https://www.facebook.com/profile.php?id=61596173995345" target="_blank" rel="noopener">Send the request on Facebook</a>
+</div>
+</div></div></section>
 <script>
-document.getElementById('reqForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  var v = function(id){ return document.getElementById(id).value.trim(); };
-  var lines = ['Booking request — Younis Travel website','Name: ' + v('name'),'Service: ' + v('service'),'Destination: ' + v('dest')];
-  if (v('dates')) lines.push('Dates: ' + v('dates'));
-  if (v('people')) lines.push('Travelers: ' + v('people'));
-  if (v('notes')) lines.push('Details: ' + v('notes'));
-  document.getElementById('summaryText').textContent = lines.join('\n');
-  document.getElementById('fbSend').href = 'https://www.facebook.com/profile.php?id=61596173995345';
-  var s = document.getElementById('summary'); s.style.display = 'block';
-  s.scrollIntoView({behavior:'smooth'});
-});
+var SVC={visa:'Visa',flight:'Flight',hotel:'Hotel',trip:'Trip',insurance:'Travel insurance'};
+var q=new URLSearchParams(location.search);
+if(q.get('s'))document.getElementById('service').value=q.get('s');
+if(q.get('d'))document.getElementById('dest').value=q.get('d');
+function val(id){return document.getElementById(id).value.trim();}
+function showErr(id,txt){var e=document.getElementById(id);if(txt){e.textContent=txt;e.style.display='block';}else{e.style.display='none';}}
+function goStep(n){
+  if(n===2){ if(!val('dest')){showErr('e1','Please enter the destination');return;} showErr('e1',''); }
+  if(n===3){ if(val('name').length<3){showErr('e2','Please enter your full name');return;}
+    var ph=val('phone').replace(/[\s-]/g,''); if(ph.replace(/\D/g,'').length<9){showErr('e2','Please enter a valid mobile number — the team will contact you on it');return;} showErr('e2',''); fillReview(); }
+  [1,2,3].forEach(function(i){document.getElementById('st'+i).classList.toggle('on',i===n);document.getElementById('sb'+i).classList.toggle('on',i===n);});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function bookingData(){return {service:val('service'),destination:val('dest'),dates:val('dates'),people:parseInt(val('people')||'1',10),name:val('name'),phone:val('phone'),notes:val('notes')};}
+function summaryText(b,ref){return 'Younis Travel booking'+(ref?' — reference: '+ref:'')+'\nService: '+SVC[b.service]+'\nDestination: '+b.destination+'\nDates: '+(b.dates||'—')+'\nTravellers: '+b.people+'\nName: '+b.name+'\nMobile: '+b.phone+(b.notes?'\nNotes: '+b.notes:'');}
+function fillReview(){var b=bookingData();document.getElementById('review').innerHTML='<dt>Service</dt><dd>'+SVC[b.service]+'</dd><dt>Destination</dt><dd>'+b.destination+'</dd><dt>Dates</dt><dd>'+(b.dates||'—')+'</dd><dt>Travellers</dt><dd>'+b.people+'</dd><dt>Name</dt><dd>'+b.name+'</dd><dt>Mobile</dt><dd>'+b.phone+'</dd>'+(b.notes?'<dt>Notes</dt><dd>'+b.notes+'</dd>':'');}
+var lastRef='';
+function submitBooking(){
+  var b=bookingData();var btn=document.getElementById('confirmBtn');btn.disabled=true;btn.textContent='Saving your booking...';
+  fetch('/api/bookings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)})
+  .then(function(r){return r.json().then(function(j){return {s:r.status,j:j};});})
+  .then(function(x){
+    if(x.s===201){ lastRef=x.j.ref; document.getElementById('refOut').textContent=x.j.ref;
+      document.getElementById('trackLink').href='/en/track.html?ref='+x.j.ref;
+      [1,2,3].forEach(function(i){document.getElementById('st'+i).classList.remove('on');});
+      document.getElementById('stDone').classList.add('on'); window.scrollTo({top:0,behavior:'smooth'});
+    } else { fallback(b); }
+  }).catch(function(){ fallback(b); });
+}
+function fallback(b){ [1,2,3].forEach(function(i){document.getElementById('st'+i).classList.remove('on');});
+  document.getElementById('review2').innerHTML=document.getElementById('review').innerHTML;
+  document.getElementById('stFallback').classList.add('on'); window.scrollTo({top:0,behavior:'smooth'}); }
+function copySummary(){ if(lastRef&&navigator.clipboard){navigator.clipboard.writeText(summaryText(bookingData(),lastRef)); alert('Booking summary copied ✓');} }
 </script>
-
-<footer><div class="wrap">
+</main><footer><div class="wrap">
 <p>Younis Travel — visas, flights, hotels, and tour programs.</p>
-<p><a href="https://www.facebook.com/profile.php?id=61596173995345" target="_blank" rel="noopener">Our Facebook Page</a> · <a href="/en/request.html">Book Your Trip</a> · <a href="/request.html">العربية</a></p>
+<p><a href="https://www.facebook.com/profile.php?id=61596173995345" target="_blank" rel="noopener">Our Facebook Page</a> · <a href="/en/request.html">Book Your Trip</a> · <a href="/en/request.html">العربية</a></p>
 </div></footer>
+<a class="floatmsg" href="https://www.facebook.com/profile.php?id=61596173995345" target="_blank" rel="noopener">💬 Message Us</a>
+<div class="stickybar"><a class="cta-btn" href="/en/request.html">Book Now</a></div>
+
+<script>
+(function(){var mc=document.modelContext||(window.navigator&&navigator.modelContext);if(!mc||typeof mc.registerTool!=='function')return;
+var en=(document.documentElement.lang||'').indexOf('en')===0;
+function reqUrl(svc,dest){var p=new URLSearchParams();if(svc)p.set('s',svc);if(dest)p.set('d',dest);var q=p.toString();return (en?'/en/request.html':'/request.html')+(q?('?'+q):'');}
+var tools=[
+{name:'prepare_travel_request',description:'Open the Younis Travel request form prefilled with a service and destination so the traveller can review it and send a booking request. Younis Travel is request-based: no online payment and no prices on the website; the team replies on Facebook Messenger with exact prices and next steps.',inputSchema:{type:'object',properties:{service:{type:'string',enum:['visa','flight','hotel','trip','insurance'],description:'The requested service'},destination:{type:'string',description:'Destination country or city'}},required:['service']},execute:function(a){var u=reqUrl(a&&a.service,a&&a.destination);window.location.href=u;return{opened:u,next:'The traveller reviews the prefilled form, adds name, dates and travellers, then sends the request to the team via Facebook Messenger.'};}},
+{name:'younis_travel_services',description:'List the services Younis Travel offers and how requesting works.',inputSchema:{type:'object',properties:{}},execute:function(){return{services:['e-Visas: Turkey, Vietnam, Albania, Kenya, United Arab Emirates','Embassy and Tasheer appointment booking: USA, Schengen countries, United Kingdom, Saudi Arabia','Flights: comparison across 500+ airlines; payment by cash, bank transfer or electronic payment; ticket delivered by WhatsApp and email','Hotels: closed B2B rates, official receipts accepted by embassies and airports','Trips and travel insurance'],how:'Prepare a request on the website request form; it is sent to the team via Facebook Messenger, and the team replies with exact prices and steps.'};}}
+];
+tools.forEach(function(t){try{var r=mc.registerTool(t);if(r&&r.catch)r.catch(function(){});}catch(e){}});
+})();
+</script>
 </body>
 </html>

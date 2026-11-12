@@ -1,0 +1,21 @@
+{
+  "serverInfo": {
+    "name": "younis-travel",
+    "version": "1.0.0"
+  },
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://younistravel.site/api/mcp"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false
+  },
+  "description": "Younis Travel booking tools for AI agents: list services, create real booking requests, and track booking status. Bookings are reviewed by the human team; no prices are published.",
+  "tools": [
+    "younis_travel_services",
+    "create_booking",
+    "track_booking"
+  ]
+}

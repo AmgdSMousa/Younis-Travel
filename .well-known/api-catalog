@@ -1,0 +1,25 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://younistravel.site/api",
+      "service-desc": [
+        {
+          "href": "https://younistravel.site/api/openapi",
+          "type": "application/vnd.oai.openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://younistravel.site/llms-full.txt",
+          "type": "text/plain"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://younistravel.site/api/health",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}

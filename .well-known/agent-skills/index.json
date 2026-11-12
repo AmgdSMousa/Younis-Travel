@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "younis-travel-services",
+      "type": "skill-md",
+      "description": "Factual guide to Younis Travel services (e-visas, Tasheer/embassy appointments, flights, hotels, trips, insurance), what the site does and does not publish, and how requests work.",
+      "url": "https://younistravel.site/skills/younis-travel-services/SKILL.md",
+      "digest": "sha256:72a4edcb3ed3b2ca535dba7b0653e6c36a4ad045f9446ccf068c49ec95046e8a"
+    },
+    {
+      "name": "prepare-booking-request",
+      "type": "skill-md",
+      "description": "How an agent creates and tracks a real Younis Travel booking: the booking API and MCP tools, booking references, and status tracking.",
+      "url": "https://younistravel.site/skills/prepare-booking-request/SKILL.md",
+      "digest": "sha256:4844ef0905e8a5d16fd19e036e78276ececae411d838f4cff2022a5972b207d1"
+    }
+  ]
+}

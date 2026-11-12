@@ -1,3 +1,27 @@
+# Younis Travel — robots.txt
+# Content signals: we welcome search indexing and AI answers that cite and link to our pages.
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://younistravel.site/sitemap.xml
+
+Agentmap: https://younistravel.site/.well-known/ai-catalog.json

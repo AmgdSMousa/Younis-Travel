@@ -1,0 +1,61 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Younis Travel",
+    "identifier": "did:web:younistravel.site"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:younistravel.site:site:main",
+      "displayName": "Younis Travel website (Arabic & English)",
+      "type": "text/html",
+      "url": "https://younistravel.site/",
+      "representativeQueries": [
+        "احجز تأشيرة لتركيا",
+        "book a flight to Dubai with Younis Travel",
+        "hotels in Istanbul with official receipts"
+      ]
+    },
+    {
+      "identifier": "urn:air:younistravel.site:docs:llms-full",
+      "displayName": "Younis Travel factual brief for AI systems (llms-full.txt)",
+      "type": "text/plain",
+      "url": "https://younistravel.site/llms-full.txt",
+      "representativeQueries": [
+        "what services does Younis Travel offer",
+        "ما هي خدمات يونس ترافيل للتأشيرات"
+      ]
+    },
+    {
+      "identifier": "urn:air:younistravel.site:skills:index",
+      "displayName": "Younis Travel agent skills index",
+      "type": "application/json",
+      "url": "https://younistravel.site/.well-known/agent-skills/index.json",
+      "representativeQueries": [
+        "how can an agent prepare a booking request with Younis Travel",
+        "agent skill for Younis Travel services"
+      ]
+    },
+    {
+      "identifier": "urn:air:younistravel.site:form:request",
+      "displayName": "Younis Travel booking request form",
+      "type": "text/html",
+      "url": "https://younistravel.site/request.html",
+      "representativeQueries": [
+        "اطلب حجز طيران",
+        "request a Saudi Tasheer appointment",
+        "احجز فندق عن طريق يونس ترافيل"
+      ]
+    },
+    {
+      "identifier": "urn:air:younistravel.site:api:bookings",
+      "displayName": "Younis Travel Booking API (OpenAPI)",
+      "type": "application/vnd.oai.openapi+json",
+      "url": "https://younistravel.site/api/openapi",
+      "representativeQueries": [
+        "create a booking with Younis Travel via API",
+        "track a Younis Travel booking"
+      ]
+    }
+  ]
+}
