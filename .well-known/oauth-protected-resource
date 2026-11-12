@@ -1,0 +1,14 @@
+{
+  "resource": "https://www.younistravel.site",
+  "authorization_servers": [
+    "https://younistravel.site"
+  ],
+  "scopes_supported": [
+    "bookings:read",
+    "bookings:write"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ],
+  "resource_documentation": "https://younistravel.site/llms-full.txt"
+}

@@ -71,3 +71,7 @@
 ## Booking system
 
 Travellers book on the site and receive a booking reference (e.g. YT-AB12CD): book at https://younistravel.site/request.html (English: https://younistravel.site/en/request.html), track status at https://younistravel.site/track.html with the reference and the booking phone number. Agents may use the Booking API (OpenAPI: https://younistravel.site/api/openapi) or the MCP server at https://younistravel.site/api/mcp. The team reviews every booking and replies with exact prices — no prices are published and no payment is taken online.
+
+## API authentication
+
+Protected booking operations accept OAuth 2.0 client-credentials tokens (scopes: bookings:read, bookings:write). Discovery: https://younistravel.site/.well-known/oauth-authorization-server and https://younistravel.site/.well-known/oauth-protected-resource. Agent registration is documented at https://younistravel.site/auth.md (team-reviewed provisioning — no instant signup).
