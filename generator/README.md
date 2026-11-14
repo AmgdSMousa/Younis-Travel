@@ -14,6 +14,7 @@ One entry point: `build_site.py` (runs the whole pipeline into `../site_v3/`).
   WebMCP tools, AI catalog (ARD).
 - `gen/booking.py` — booking system pages + Vercel serverless API sources
   (copied from `api_src/`).
+- `gen/faq_page.py` — expanded FAQ pages (AR/EN + FAQPage schema) from approved copy only.
 - `gen/oauth.py` — OAuth 2.0 layer (real client-credentials server) +
   discovery metadata + auth.md.
 - `api_src/` — the serverless functions (bookings, tracking, MCP, OAuth).
