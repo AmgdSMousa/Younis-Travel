@@ -1,7 +1,7 @@
 """Younis Travel — site generator (single entry point).
 
 Pipeline stages live in the gen/ package and run in order:
-base -> layout -> seo -> countries -> publish_fixes -> agents -> booking -> oauth.
+base -> layout -> seo -> countries -> publish_fixes -> agents -> booking -> oauth -> faq_page.
 Each stage layers its features onto the same output tree (site_v3/).
 
 Run:  python3 generator/build_site.py
@@ -23,7 +23,7 @@ def _seed_images():
             shutil.copy(f, t)
 
 _seed_images()
-from gen.oauth import main
+from gen.faq_page import main
 
 if __name__ == '__main__':
     main()

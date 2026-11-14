@@ -75,3 +75,35 @@ Travellers book on the site and receive a booking reference (e.g. YT-AB12CD): bo
 ## API authentication
 
 Protected booking operations accept OAuth 2.0 client-credentials tokens (scopes: bookings:read, bookings:write). Discovery: https://younistravel.site/.well-known/oauth-authorization-server and https://younistravel.site/.well-known/oauth-protected-resource. Agent registration is documented at https://younistravel.site/auth.md (team-reviewed provisioning — no instant signup).
+
+## Frequently Asked Questions
+
+Q: What services does Younis Travel offer?
+A: Younis Travel offers electronic and regular visas with embassy appointment booking, flight bookings, hotel bookings, tour programs, and travel insurance.
+
+Q: Which countries have electronic visas?
+A: E-visas are available for Turkey, Vietnam, Albania, Kenya, and the UAE — you apply online without visiting an embassy.
+
+Q: Which visas need an embassy or Tasheer appointment?
+A: USA, Schengen, UK, and Saudi visas need an embassy or visa-centre (Tasheer) appointment, and we help you prepare the documents and book the appointment.
+
+Q: How do I place a request or book?
+A: Fill in the request form on the website in three steps: service and details, then your details, then review and confirm. You receive a booking reference immediately, and the team reviews your request and contacts you with the confirmation and final price.
+
+Q: Are final prices shown on the website?
+A: No. Prices change with dates and availability, so the team confirms the final price with you personally before any payment, and nothing is paid online on the website.
+
+Q: How do I track my request?
+A: Use the "Track your booking" page on the website with your booking reference and the mobile number you registered with. Statuses: New, Contacted, Confirmed, Completed, or Cancelled.
+
+Q: Do you book flights to any destination?
+A: Yes. We compare more than 500 airlines to find the best price and route for your trip, and your ticket is delivered via WhatsApp and email.
+
+Q: How do your hotel rates work?
+A: We work with closed B2B rates that are not available to the public, and every hotel booking comes with an official receipt.
+
+Q: Do you offer travel insurance?
+A: Yes, travel insurance is one of Younis Travel's services and can be added to any trip on request.
+
+Q: How do I contact the team?
+A: Message our Facebook Page, or fill in the request form on the website, and the team will reply and review your request.

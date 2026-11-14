@@ -63,7 +63,7 @@ def layout3(title, desc, path, body, lang='ar', extra_head=''):
     en_path = '/en' + path if path != '/' else '/en/'
     if en:
         nav = [('Home', '/'), ('Visas', '/visas.html'), ('Flights', '/flights.html'),
-               ('Hotels', '/hotels.html'), ('Trips & Insurance', '/trips.html')]
+               ('Hotels', '/hotels.html'), ('Trips & Insurance', '/trips.html'), ('FAQ', '/faq.html')]
         cta = 'Book Now'
         foot = 'Younis Travel — visas, flights, hotels, and tour programs.'
         fb_label = 'Our Facebook Page'
@@ -73,7 +73,7 @@ def layout3(title, desc, path, body, lang='ar', extra_head=''):
         float_label = '💬 Message Us'
     else:
         nav = [('الرئيسية', '/'), ('التأشيرات', '/visas.html'), ('الطيران', '/flights.html'),
-               ('الفنادق', '/hotels.html'), ('الرحلات والتأمين', '/trips.html')]
+               ('الفنادق', '/hotels.html'), ('الرحلات والتأمين', '/trips.html'), ('الأسئلة الشائعة', '/faq.html')]
         cta = 'اطلب حجزك'
         foot = 'Younis Travel — تأشيرات، طيران، فنادق، وبرامج سياحية.'
         fb_label = 'صفحتنا على فيسبوك'
