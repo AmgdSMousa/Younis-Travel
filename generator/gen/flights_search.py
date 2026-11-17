@@ -62,6 +62,7 @@ STR = {
   'approx': 'التواريخ دي بالذات مفيهاش أسعار متاحة حاليًا — دي أرخص الأسعار المتاحة في نفس الشهر حوالين تواريخك، وتاريخ كل رحلة مكتوب عليها بالظبط.',
   'kiwi': 'احجز أونلاين فورًا',
   'nextday': '+1 يوم',
+  'bag': 'الأمتعة والوزن المسموح بيتم تأكيدهم عند الحجز حسب شركة الطيران ودرجة التذكرة — وبيظهروا بالتفصيل في صفحة Kiwi لو حجزت أونلاين.',
  },
  'en': {
   'loading': 'Searching for the cheapest fares…',
@@ -83,6 +84,7 @@ STR = {
   'approx': 'No fares are available for those exact dates right now — these are the cheapest fares in the same month around your dates, and each card shows its exact dates.',
   'kiwi': 'Book Online Instantly',
   'nextday': '+1 day',
+  'bag': 'Baggage allowance is confirmed at booking — it depends on the airline and fare class, and Kiwi shows the exact allowance on its booking page.',
  },
 }
 
@@ -180,6 +182,7 @@ function leg(label, fromN, fromC, toN, toC, depIso, durMin, stopsN){
       html += '<div class="fcard"><div class="fmain"><div class="fair">' + esc(an) + (f.flight_number ? ' · ' + esc(f.flight_number) : '') + '</div>' +
         leg(S.dep, oname, f.origin_airport || origin, dname, f.destination_airport || dest, f.departure_at, f.duration_min, f.transfers) +
         (f.return_at ? leg(S.ret, dname, f.destination_airport || dest, oname, f.origin_airport || origin, f.return_at, f.duration_back_min, f.return_transfers) : '') +
+        '<div class="fmeta" style="margin-top:8px">🧳 ' + esc(S.bag) + '</div>' +
         '</div><div class="fprice"><div><span class="amt">' + fmt(f.price_egp_total) + '</span> <span class="cur">EGP</span></div>' +
         '<div class="fmeta">' + esc(S.total) + ' · ' + fmt(f.price_egp_per_person) + ' ' + esc(S.per) + '</div>' +
         '<p style="margin-top:10px"><a class="cta-btn" href="' + reqLink(note) + '">' + esc(S.book) + '</a></p>' +
