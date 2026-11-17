@@ -8,6 +8,12 @@ global.fetch = async (url) => {
   const u = String(url);
   fetchCalls.push(u);
   if (u.includes('prices_for_dates')) {
+    if (u.includes('destination=JED')) {
+      if (u.includes('departure_at=2026-12-10')) return { json: async () => ({ success: true, currency: 'eur', data: [] }) };
+      return { json: async () => ({ success: true, currency: 'eur', data: [
+        { airline: 'SV', flight_number: 'SV306', departure_at: '2026-12-20T10:00:00', return_at: '2026-12-27T12:00:00', price: 174, transfers: 0, return_transfers: 0, duration_to: 180, link: '/search/SECRET3' },
+      ] }) };
+    }
     return { json: async () => ({ success: true, currency: 'eur', data: [
       { airline: 'MS', flight_number: 'MS964', departure_at: '2026-12-10T06:30:00', return_at: '2026-12-17T11:05:00', price: 100, transfers: 0, return_transfers: 1, duration_to: 240, link: '/search/SECRET' },
       { airline: 'MS', flight_number: 'MS964', departure_at: '2026-12-10T06:30:00', return_at: '2026-12-17T11:05:00', price: 100, transfers: 0, return_transfers: 1, duration_to: 240, link: '/search/SECRET' },
@@ -49,6 +55,11 @@ function check(name, cond, extra = '') { console.log((cond ? 'PASS' : 'FAIL'), n
   check('ceil5: 121 EUR -> 6655/person', r.json.results[1].price_egp_per_person === 6655, String(r.json.results[1].price_egp_per_person));
   check('provider link never exposed', !JSON.stringify(r.json).includes('SECRET') && !('link' in f0));
   check('token sent upstream, currency eur', fetchCalls.some(u => u.includes('token=test-token') && u.includes('currency=eur')));
+
+  r = await call({ url: '/api/flights?origin=CAI&destination=JED&departure_at=2026-12-10&return_at=2026-12-17&passengers=1' });
+  check('exact empty -> month fallback', r.status === 200 && r.json.results.length === 1, JSON.stringify(r.json).slice(0, 160));
+  check('fallback flagged approximate', r.json.approximate === true);
+  check('fallback fare converted: 174 x 50 x 1.10 = 9570', r.json.results[0].price_egp_per_person === 9570, String(r.json.results[0].price_egp_per_person));
 
   console.log(fails === 0 ? 'ALL PASS' : fails + ' FAILURES');
   process.exit(fails ? 1 : 0);

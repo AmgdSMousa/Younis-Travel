@@ -49,30 +49,47 @@ module.exports = async (req, res) => {
   }
   const pax = Math.min(9, Math.max(1, parseInt(q.get('passengers') || '1', 10) || 1));
   const tclass = q.get('class') === 'business' ? '1' : '0';
-  const cacheKey = 'fl:' + [origin, destination, dep, ret, pax, tclass].join(':');
+  const cacheKey = 'fl2:' + [origin, destination, dep, ret, pax, tclass].join(':');
   try {
     const c = await L.redis(['GET', cacheKey]);
     if (c) { L.send(res, 200, JSON.parse(c), L.browserCors(req)); return; }
   } catch (e) { /* cache is best-effort */ }
   try {
-    const u = new URL('https://api.travelpayouts.com/aviasales/v3/prices_for_dates');
-    u.searchParams.set('origin', origin);
-    u.searchParams.set('destination', destination);
-    u.searchParams.set('departure_at', dep);
-    if (ret) u.searchParams.set('return_at', ret);
-    u.searchParams.set('one_way', ret ? 'false' : 'true');
-    u.searchParams.set('currency', 'eur');
-    u.searchParams.set('sorting', 'price');
-    u.searchParams.set('limit', '30');
-    u.searchParams.set('trip_class', tclass);
-    u.searchParams.set('token', token);
-    const r = await fetch(u);
-    const j = await r.json();
-    if (!j || !j.success) throw new Error('upstream_error');
+    // The upstream data API holds cached fares, so an exact date pair is often
+    // empty even on busy routes. Fall back: same month (round trip), then the
+    // month one-way — and flag the answer as approximate so the page can say
+    // these are the cheapest fares around the requested dates.
+    const fetchFares = async (depAt, retAt, oneWay) => {
+      const u = new URL('https://api.travelpayouts.com/aviasales/v3/prices_for_dates');
+      u.searchParams.set('origin', origin);
+      u.searchParams.set('destination', destination);
+      u.searchParams.set('departure_at', depAt);
+      if (retAt) u.searchParams.set('return_at', retAt);
+      u.searchParams.set('one_way', oneWay ? 'true' : 'false');
+      u.searchParams.set('currency', 'eur');
+      u.searchParams.set('sorting', 'price');
+      u.searchParams.set('limit', '30');
+      u.searchParams.set('trip_class', tclass);
+      u.searchParams.set('token', token);
+      const r = await fetch(u);
+      const j = await r.json();
+      if (!j || !j.success) throw new Error('upstream_error');
+      return j.data || [];
+    };
+    let data = await fetchFares(dep, ret || null, !ret);
+    let approximate = false;
+    if (!data.length) {
+      data = await fetchFares(dep.slice(0, 7), ret ? ret.slice(0, 7) : null, !ret);
+      approximate = data.length > 0;
+    }
+    if (!data.length && ret) {
+      data = await fetchFares(dep.slice(0, 7), null, true);
+      approximate = data.length > 0;
+    }
     const rate = await fxEurEgp();
     const seen = new Set();
     const results = [];
-    for (const f of j.data || []) {
+    for (const f of data) {
       const key = [f.airline, f.flight_number, f.departure_at].join('|');
       if (seen.has(key)) continue;
       seen.add(key);
@@ -90,8 +107,8 @@ module.exports = async (req, res) => {
       });
       if (results.length >= 10) break;
     }
-    const out = { currency: 'EGP', origin, destination, departure_at: dep, return_at: ret || null, passengers: pax, results };
-    try { await L.redis(['SET', cacheKey, JSON.stringify(out), 'EX', 1200]); } catch (e) {}
+    const out = { currency: 'EGP', origin, destination, departure_at: dep, return_at: ret || null, passengers: pax, approximate, results };
+    if (results.length) { try { await L.redis(['SET', cacheKey, JSON.stringify(out), 'EX', 1200]); } catch (e) {} }
     L.send(res, 200, out, L.browserCors(req));
   } catch (e) {
     L.send(res, 502, { error: 'upstream', message: 'Price search is unavailable right now.' }, L.browserCors(req));

@@ -34,6 +34,7 @@ STYLE = """
 .fbox{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;text-align:center;box-shadow:var(--sh-card);margin-top:16px}
 .fspin{color:var(--mute);text-align:center;padding:34px 0;font-size:18px}
 .fdisc{color:var(--mute);font-size:14.5px;margin-top:18px;text-align:center}
+.fnote{background:var(--field);border-radius:14px;padding:12px 18px;color:var(--ink);font-size:15.5px;margin-top:16px;text-align:center}
 </style>
 """
 
@@ -55,6 +56,8 @@ STR = {
   'cta': 'ابعت طلب حجز',
   'note': 'رحلة مختارة من بحث الأسعار: {air} {fno} — من {oname} ({oc}) إلى {dname} ({dc})، ذهاب {dep}{retpart}، السعر المعروض {total} ج.م لـ{pax} مسافر ({per} ج.م للفرد).',
   'note_ret': '، عودة {ret}',
+  'approx': 'التواريخ دي بالذات مفيهاش أسعار متاحة حاليًا — دي أرخص الأسعار المتاحة في نفس الشهر حوالين تواريخك، وتاريخ كل رحلة مكتوب عليها بالظبط.',
+  'kiwi': 'احجز أونلاين فورًا',
  },
  'en': {
   'loading': 'Searching for the cheapest fares…',
@@ -73,6 +76,8 @@ STR = {
   'cta': 'Send a Booking Request',
   'note': 'Flight picked from price search: {air} {fno} — from {oname} ({oc}) to {dname} ({dc}), outbound {dep}{retpart}, displayed price EGP {total} for {pax} traveler(s) (EGP {per} per person).',
   'note_ret': ', return {ret}',
+  'approx': 'No fares are available for those exact dates right now — these are the cheapest fares in the same month around your dates, and each card shows its exact dates.',
+  'kiwi': 'Book Online Instantly',
  },
 }
 
@@ -109,13 +114,21 @@ function stops(n){ return n===0 ? S.direct : n===1 ? S.stop1 : n===2 ? S.stop2 :
   var sum = document.getElementById('fsum'), box = document.getElementById('fresults'), st = document.getElementById('fstatus');
   sum.textContent = S.summary.replace('{oname}', oname).replace('{dname}', dname) + ' — ' + S.dep + ': ' + fdate(dep) + (ret ? ' · ' + S.ret + ': ' + fdate(ret) : '') + ' · ' + (pax === 1 ? S.pax1 : S.paxn.replace('{n}', pax));
   var reqBase = (document.documentElement.lang === 'ar' ? '/request.html' : '/en/request.html');
+  var AFFIL = 'travelpayoutsdeeplink_www.younistravel.site_0174eed9e1904e2a9e5be2ea2-807576';
+  function ddmmyyyy(iso){ if (!iso) return ''; var p = String(iso).slice(0, 10).split('-'); return p[2] + '-' + p[1] + '-' + p[0]; }
+  function kiwiLink(depIso, retIso){
+    var u = 'https://www.kiwi.com/deep?affilid=' + AFFIL + '&from=' + origin + '&to=' + dest + '&departure=' + ddmmyyyy(depIso);
+    if (retIso) u += '&return=' + ddmmyyyy(retIso);
+    return u;
+  }
   function reqLink(note){
     return reqBase + '?s=flight&d=' + encodeURIComponent(dname) + '&p=' + pax + '&n=' + encodeURIComponent(note);
   }
   function fallback(h, p){
     st.style.display = 'none';
     box.innerHTML = '<div class="fbox"><h2>' + esc(h) + '</h2><p class="lead" style="margin:8px auto 18px">' + esc(p) + '</p>' +
-      '<a class="cta-btn" href="' + reqLink(S.summary.replace('{oname}', oname).replace('{dname}', dname) + ' — ' + dep + (ret ? ' / ' + ret : '')) + '">' + esc(S.cta) + '</a></div>';
+      '<a class="cta-btn" href="' + reqLink(S.summary.replace('{oname}', oname).replace('{dname}', dname) + ' — ' + dep + (ret ? ' / ' + ret : '')) + '">' + esc(S.cta) + '</a>' +
+      '<p style="margin-top:10px"><a class="btn-gold" target="_blank" rel="noopener" href="' + kiwiLink(dep, ret) + '">' + esc(S.kiwi) + '</a></p></div>';
   }
   if (!/^[A-Z]{3}$/.test(origin) || !/^[A-Z]{3}$/.test(dest) || !dep) { fallback(S.err_h, S.err_p); return; }
   var u = '/api/flights?origin=' + origin + '&destination=' + dest + '&departure_at=' + encodeURIComponent(dep) + '&passengers=' + pax + '&class=' + encodeURIComponent(cls);
@@ -125,7 +138,7 @@ function stops(n){ return n===0 ? S.direct : n===1 ? S.stop1 : n===2 ? S.stop2 :
     if (x.s !== 200 || !x.j.results) { fallback(S.err_h, S.err_p); return; }
     if (!x.j.results.length) { fallback(S.empty_h, S.empty_p); return; }
     st.style.display = 'none';
-    var html = '';
+    var html = x.j.approximate ? '<div class="fnote">' + esc(S.approx) + '</div>' : '';
     x.j.results.forEach(function(f){
       var an = (AL[f.airline] || [f.airline, f.airline])[document.documentElement.lang === 'ar' ? 0 : 1];
       var note = S.note.replace('{air}', an).replace('{fno}', f.flight_number).replace('{oname}', oname).replace('{oc}', origin)
@@ -139,7 +152,8 @@ function stops(n){ return n===0 ? S.direct : n===1 ? S.stop1 : n===2 ? S.stop2 :
         (f.return_at ? '<div class="fmeta">' + esc(S.ret) + ': ' + esc(fdate(f.return_at)) + '<span class="fstop">' + esc(stops(f.return_transfers)) + '</span></div>' : '') +
         '</div><div class="fprice"><div><span class="amt">' + fmt(f.price_egp_total) + '</span> <span class="cur">EGP</span></div>' +
         '<div class="fmeta">' + esc(S.total) + ' · ' + fmt(f.price_egp_per_person) + ' ' + esc(S.per) + '</div>' +
-        '<p style="margin-top:10px"><a class="cta-btn" href="' + reqLink(note) + '">' + esc(S.book) + '</a></p></div></div>';
+        '<p style="margin-top:10px"><a class="cta-btn" href="' + reqLink(note) + '">' + esc(S.book) + '</a></p>' +
+        '<p style="margin-top:8px"><a class="btn-gold" target="_blank" rel="noopener" href="' + kiwiLink(f.departure_at, f.return_at) + '">' + esc(S.kiwi) + '</a></p></div></div>';
     });
     box.innerHTML = html + '<p class="fdisc">' + esc(S.disc) + '</p>';
   }).catch(function(){ fallback(S.err_h, S.err_p); });
