@@ -56,7 +56,7 @@ CSS = B.CSS + """
 .dcard:nth-child(1) p{display:block}
 .dcard a{color:var(--goldlt);font-weight:700}
 @media(max-width:760px){.dgrid{grid-template-columns:1fr;grid-auto-rows:230px}.dcard{grid-column:span 1!important;grid-row:span 1!important}.dcard p{display:block}}
-.photoband{position:relative;border-radius:var(--r-lg);overflow:hidden;padding:86px 30px;text-align:center;background:url('/images/saudi.jpg') center 40%/cover no-repeat;box-shadow:var(--sh-lift)}
+.photoband{position:relative;border-radius:var(--r-lg);overflow:hidden;padding:86px 30px;text-align:center;background:url('/images/saudi.webp') center 40%/cover no-repeat;box-shadow:var(--sh-lift)}
 .photoband::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,32,63,.45),rgba(0,32,63,.78))}
 .photoband .in{position:relative}
 .photoband h2{color:#fff;font-size:38px;margin-bottom:8px}
@@ -66,7 +66,7 @@ details.faq summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:17
 details.faq summary::after{content:'+';float:inline-end;color:var(--gold);font-size:22px;line-height:1.2}
 details.faq[open ] summary::after{content:'−'}
 details.faq p{margin-top:8px;color:var(--soft);font-size:16.5px}
-.floatmsg{position:fixed;bottom:20px;inset-inline-end:20px;z-index:50;background:var(--gold);color:#fff;font-weight:700;padding:12px 22px;border-radius:999px;box-shadow:0 14px 34px -8px rgba(205,142,41,.65)}
+.floatmsg{position:fixed;bottom:20px;inset-inline-end:20px;z-index:50;background:var(--gold);color:#00203f;font-weight:700;padding:12px 22px;border-radius:999px;box-shadow:0 14px 34px -8px rgba(205,142,41,.65)}
 .floatmsg:hover{background:var(--goldlt);color:var(--night)}
 .stickybar{display:none}
 @media(max-width:640px){.hero3 h1{font-size:33px}.hero3{padding:72px 0 120px}.photoband h2{font-size:27px}
@@ -135,7 +135,7 @@ def layout3(title, desc, path, body, lang='ar', extra_head=''):
 </head>
 <body>
 <header><div class="wrap nav">
-<a class="logo" href="{prefix}/"><img class="logo-img" src="{BASE}/logo.png" alt="Younis Travel"> Younis Travel</a>
+<a class="logo" href="{prefix}/"><img class="logo-img" src="{BASE}/logo-96.png" alt="Younis Travel"> Younis Travel</a>
 <nav class="links">{links}</nav>
 <a class="cta-btn" href="{prefix}/request.html">{cta}</a>
 </div></header>

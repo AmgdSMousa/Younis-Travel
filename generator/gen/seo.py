@@ -200,7 +200,7 @@ def main():
         jpg = os.path.join(OUT, 'images', n + '.jpg')
         webp = os.path.join(OUT, 'images', n + '.webp')
         if os.path.exists(jpg):
-            Image.open(jpg).convert('RGB').save(webp, 'WEBP', quality=78)
+            Image.open(jpg).convert('RGB').save(webp, 'WEBP', quality=72)
     bodies_ar = {'/': V3.home3, '/visas.html': B.visas_body, '/flights.html': B.flights_body,
                  '/hotels.html': B.hotels_body, '/trips.html': B.trips_body,
                  '/request.html': B.request_body + V3.PREFILL_AR}
@@ -210,7 +210,7 @@ def main():
     for fname, title, desc, path, _b in B.PAGES:
         body, extra = bodies_ar[path], ''
         if path == '/':
-            extra = V3.faq_schema('ar') + '<link rel="preload" as="image" href="/images/hero.webp">'
+            extra = V3.faq_schema('ar') + '<link rel="preload" as="image" fetchpriority="high" href="/images/hero.webp">'
         else:
             extra = breadcrumb_schema(path, 'ar')
             if path in FAQ_PAGES:
@@ -225,7 +225,7 @@ def main():
     for fname, title, desc, path, _b in B.PAGES_EN:
         body, extra = bodies_en[path], ''
         if path == '/':
-            extra = V3.faq_schema('en') + '<link rel="preload" as="image" href="/images/hero.webp">'
+            extra = V3.faq_schema('en') + '<link rel="preload" as="image" fetchpriority="high" href="/images/hero.webp">'
         else:
             extra = breadcrumb_schema(path, 'en')
             if path in FAQ_PAGES:

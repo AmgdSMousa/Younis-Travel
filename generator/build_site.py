@@ -29,7 +29,7 @@ def _seed_brand():
     here = os.path.dirname(os.path.abspath(__file__))
     src = os.path.join(here, 'assets', 'brand')
     dst = os.path.join(here, '..', 'site_v3')
-    for name in ('logo.png', 'favicon.png'):
+    for name in ('logo.png', 'favicon.png', 'logo-96.png'):
         f = os.path.join(src, name)
         if os.path.exists(f):
             shutil.copy(f, os.path.join(dst, name))

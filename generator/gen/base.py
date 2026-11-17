@@ -13,8 +13,8 @@ CSS = """
 @font-face{font-family:'Plex';src:url('/fonts/IBMPlexSansArabic-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
 :root{
 --fog:#f7f3ea;--paper:#ffffff;--fogdeep:#efe9dc;--line:#e3dcc9;
---ink:#003262;--ink2:#0a4a80;--soft:#3d5a75;--mute:#71879a;
---gold:#cd8e29;--goldlt:#e5b45c;--golddk:#a8741f;--field:#f5e7c8;--field2:#efd9a7;
+--ink:#003262;--ink2:#0a4a80;--soft:#3d5a75;--mute:#58707f;
+--gold:#cd8e29;--goldlt:#e5b45c;--golddk:#8a5a10;--field:#f5e7c8;--field2:#efd9a7;
 --night:#00203f;--sky:#7fb0e0;
 --sh-card:0 1px 2px rgba(0,50,98,.05),0 18px 48px -18px rgba(0,50,98,.25);
 --sh-lift:0 30px 70px -30px rgba(0,32,63,.5);
@@ -38,7 +38,7 @@ nav.links a:hover{color:var(--gold)}
 .btn:hover{background:var(--ink2);color:#fff}
 .btn-gold{background:var(--gold);color:#fff;font-weight:700;padding:11px 26px;border-radius:var(--r-pill);display:inline-block;border:none;cursor:pointer;font-family:inherit;font-size:16.5px;box-shadow:0 10px 24px -10px rgba(205,142,41,.6)}
 .btn-gold:hover{background:var(--goldlt);color:var(--night)}
-.label{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.label{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--golddk);text-transform:uppercase;margin-bottom:8px}
 .hero{padding:84px 0 64px;text-align:center}
 .hero h1{font-size:44px;line-height:1.6;color:var(--ink)}
 .hero p{font-size:20px;color:var(--soft);max-width:760px;margin:14px auto 26px}
@@ -134,7 +134,7 @@ def layout(title, desc, path, body, lang='ar', extra_head=''):
 </head>
 <body>
 <header><div class="wrap nav">
-<a class="logo" href="{prefix}/"><img class="logo-img" src="{BASE}/logo.png" alt="Younis Travel"> Younis Travel</a>
+<a class="logo" href="{prefix}/"><img class="logo-img" src="{BASE}/logo-96.png" alt="Younis Travel"> Younis Travel</a>
 <nav class="links">{links}</nav>
 <a class="cta-btn" href="{prefix}/request.html">{cta}</a>
 </div></header>
