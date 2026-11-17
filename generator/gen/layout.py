@@ -12,48 +12,67 @@ FB_PAGE = B.FB_PAGE
 BASE = B.BASE
 
 CSS = B.CSS + """
-.hero3{position:relative;padding:96px 0 120px;text-align:center;background:url('/images/hero.jpg') center 30%/cover no-repeat}
-.hero3::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,22,38,.72),rgba(7,22,38,.88))}
+/* ---- v4: Fjelvik design language x Younis identity (2026-11-17) ---- */
+.hero3{position:relative;padding:110px 0 150px;text-align:center;background:url('/images/hero.jpg') center 30%/cover no-repeat}
+.hero3::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,32,63,.52),rgba(0,32,63,.82))}
 .hero3 .wrap{position:relative}
-.hero3 h1{font-size:46px;line-height:1.7;color:var(--goldlt);text-shadow:0 2px 18px rgba(0,0,0,.5)}
-.hero3 p{font-size:20px;max-width:780px;margin:14px auto 0;color:var(--cream)}
-.widget{position:relative;max-width:960px;margin:-84px auto 0;background:#fdfbf5;color:#12242f;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:22px 22px 26px;text-align:start}
-.widget h2{color:#0b2237;font-size:22px;margin-bottom:4px;line-height:1.6}
-.widget .wsub{color:#5a7182;font-size:15px;margin-bottom:14px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.tab{border:2px solid rgba(11,34,55,.18);background:transparent;color:#0b2237;font-family:inherit;font-weight:700;font-size:16px;padding:8px 18px;border-radius:999px;cursor:pointer}
-.tab.on{background:var(--gold);border-color:var(--gold);color:#1a1405}
+.hero3 h1{font-size:52px;line-height:1.55;color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.45);font-weight:700}
+.hero3 p{font-size:20px;max-width:780px;margin:16px auto 0;color:rgba(255,255,255,.88)}
+.pill-img{display:inline-block;width:92px;height:44px;border-radius:999px;overflow:hidden;vertical-align:middle;margin:0 6px;box-shadow:0 4px 16px rgba(0,0,0,.35);border:2px solid rgba(255,255,255,.65)}
+.pill-img img{width:100%;height:100%;object-fit:cover;display:block}
+.widget{position:relative;max-width:980px;margin:-92px auto 0;background:var(--paper);color:var(--soft);border-radius:var(--r-lg);box-shadow:var(--sh-lift);padding:26px 26px 30px;text-align:start}
+.widget h2{color:var(--ink);font-size:23px;margin-bottom:4px;line-height:1.6}
+.widget .wsub{color:var(--mute);font-size:15px;margin-bottom:16px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;background:var(--fogdeep);padding:6px;border-radius:var(--r-pill)}
+.tab{border:none;background:transparent;color:var(--ink);font-family:inherit;font-weight:700;font-size:16px;padding:9px 20px;border-radius:999px;cursor:pointer;transition:background .16s,color .16s}
+.tab.on{background:var(--ink);color:#fff;box-shadow:0 8px 20px -8px rgba(0,50,98,.6)}
 .panel{display:none}
 .panel.on{display:block}
 .wgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-.widget label{color:#40586b;font-size:14.5px;display:block;margin-bottom:4px}
-.widget input,.widget select{width:100%;background:#fff;border:1px solid #c9d6de;border-radius:10px;color:#12242f;padding:11px 12px;font-family:inherit;font-size:16px}
-.widget .chk{display:flex;align-items:center;gap:8px;font-size:15px;color:#40586b}
+.widget label{color:var(--soft);font-size:14.5px;font-weight:600;display:block;margin-bottom:4px}
+.widget input,.widget select{width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;color:var(--ink);padding:11px 12px;font-family:inherit;font-size:16px}
+.widget input:focus,.widget select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--field)}
+.widget .chk{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--soft)}
 .widget .chk input{width:auto}
-.wsum{display:none;margin-top:16px;background:#0d2a42;color:var(--cream);border-radius:12px;padding:18px}
-.wsum h3{color:var(--gold);margin-bottom:6px;font-size:19px}
+.wsum{display:none;margin-top:16px;background:var(--field);color:var(--soft);border-radius:var(--r-md);padding:20px}
+.wsum h3{color:var(--ink);margin-bottom:6px;font-size:19px}
 .usps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px}
-.usp{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid rgba(94,200,190,.2);border-radius:14px;padding:16px 18px}
-.usp .ic{font-size:24px;line-height:1.4}
-.usp p{font-size:16px}
-.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:28px}
-.dcard{background:var(--card);border:1px solid rgba(232,184,75,.18);border-radius:16px;overflow:hidden}
-.dcard img{width:100%;height:190px;object-fit:cover;display:block}
-.dcard .db{padding:18px 20px 20px}
-.dcard h3{color:var(--gold);font-size:21px;margin-bottom:4px}
-.badge{display:inline-block;background:rgba(94,200,190,.16);color:var(--teal);border:1px solid rgba(94,200,190,.4);font-size:13.5px;padding:2px 10px;border-radius:999px;margin-bottom:8px}
-.dcard p{font-size:16px;color:var(--cream)}
-.dcard a{font-weight:700}
-details.faq{background:var(--card);border:1px solid rgba(232,184,75,.18);border-radius:12px;padding:16px 20px;margin-top:12px}
-details.faq summary{cursor:pointer;font-weight:700;color:var(--goldlt);font-size:17.5px}
-details.faq p{margin-top:8px;color:var(--cream);font-size:16.5px}
-.floatmsg{position:fixed;bottom:20px;inset-inline-end:20px;z-index:50;background:var(--gold);color:#1a1405;font-weight:700;padding:12px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-.floatmsg:hover{background:var(--goldlt);color:#1a1405}
+.usp{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:18px;box-shadow:var(--sh-card)}
+.usp .ic{font-size:22px;line-height:1.5;background:var(--field);border-radius:50%;width:46px;height:46px;flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+.usp p{font-size:16px;color:var(--soft)}
+.dgrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:245px;gap:16px;margin-top:28px}
+.dcard{position:relative;border-radius:var(--r-md);overflow:hidden;box-shadow:var(--sh-card)}
+.dcard:nth-child(1){grid-column:span 2;grid-row:span 2}
+.dcard:nth-child(2){grid-column:span 2}
+.dcard:nth-child(3){grid-column:span 1}
+.dcard:nth-child(4){grid-column:span 1}
+.dcard:nth-child(5){grid-column:span 2}
+.dcard:nth-child(6){grid-column:span 2}
+.dcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.dcard .db{position:absolute;inset-inline:0;bottom:0;padding:44px 20px 16px;background:linear-gradient(180deg,transparent,rgba(0,32,63,.88));color:#fff}
+.dcard h3{color:#fff;font-size:21px;margin-bottom:2px}
+.badge{display:inline-block;background:rgba(255,255,255,.18);backdrop-filter:blur(4px);color:#fff;border:1px solid rgba(255,255,255,.4);font-size:13px;font-weight:700;padding:2px 11px;border-radius:999px;margin-bottom:8px}
+.dcard p{font-size:15.5px;color:rgba(255,255,255,.85);display:none}
+.dcard:nth-child(1) p{display:block}
+.dcard a{color:var(--goldlt);font-weight:700}
+@media(max-width:760px){.dgrid{grid-template-columns:1fr;grid-auto-rows:230px}.dcard{grid-column:span 1!important;grid-row:span 1!important}.dcard p{display:block}}
+.photoband{position:relative;border-radius:var(--r-lg);overflow:hidden;padding:86px 30px;text-align:center;background:url('/images/saudi.jpg') center 40%/cover no-repeat;box-shadow:var(--sh-lift)}
+.photoband::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,32,63,.45),rgba(0,32,63,.78))}
+.photoband .in{position:relative}
+.photoband h2{color:#fff;font-size:38px;margin-bottom:8px}
+.photoband p{color:var(--goldlt);font-size:19px;font-weight:700}
+details.faq{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 22px;margin-top:12px;box-shadow:var(--sh-card)}
+details.faq summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:17.5px;list-style:none}
+details.faq summary::after{content:'+';float:inline-end;color:var(--gold);font-size:22px;line-height:1.2}
+details.faq[open ] summary::after{content:'−'}
+details.faq p{margin-top:8px;color:var(--soft);font-size:16.5px}
+.floatmsg{position:fixed;bottom:20px;inset-inline-end:20px;z-index:50;background:var(--gold);color:#fff;font-weight:700;padding:12px 22px;border-radius:999px;box-shadow:0 14px 34px -8px rgba(205,142,41,.65)}
+.floatmsg:hover{background:var(--goldlt);color:var(--night)}
 .stickybar{display:none}
-@media(max-width:640px){.hero3 h1{font-size:31px}.hero3{padding:64px 0 104px}
-.stickybar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:49;background:rgba(7,22,38,.97);border-top:1px solid rgba(232,184,75,.35);padding:10px 14px;gap:10px}
+@media(max-width:640px){.hero3 h1{font-size:33px}.hero3{padding:72px 0 120px}.photoband h2{font-size:27px}
+.stickybar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:49;background:rgba(255,255,255,.97);border-top:1px solid var(--line);padding:10px 14px;gap:10px;box-shadow:0 -8px 30px rgba(0,50,98,.12)}
 .stickybar a{flex:1;text-align:center}
-.floatmsg{bottom:76px}
+.floatmsg{bottom:78px}
 body{padding-bottom:64px}}
 """
 
@@ -108,14 +127,15 @@ def layout3(title, desc, path, body, lang='ar', extra_head=''):
 <meta property="og:url" content="{canonical}">
 <meta property="og:locale" content="{og_locale}">
 <meta property="og:image" content="{BASE}/images/hero.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='28' y='28' width='44' height='44' fill='none' stroke='%23e8b84b' stroke-width='8' transform='rotate(45 50 50)'/></svg>">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/logo.png">
 <style>{CSS}</style>
 <script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>
 {extra_head}
 </head>
 <body>
 <header><div class="wrap nav">
-<a class="logo" href="{prefix}/"><span class="diamond"></span> Younis Travel</a>
+<a class="logo" href="{prefix}/"><img class="logo-img" src="{BASE}/logo.png" alt="Younis Travel"> Younis Travel</a>
 <nav class="links">{links}</nav>
 <a class="cta-btn" href="{prefix}/request.html">{cta}</a>
 </div></header>
@@ -277,7 +297,7 @@ def steps_html(steps):
 
 home3 = """
 <section class="hero3"><div class="wrap">
-<h1>سفرك يبدأ من هنا — من غير لف ودوران</h1>
+<h1>سفرك يبدأ <span class="pill-img"><img src="/images/turkey.jpg" alt=""></span> من هنا — من غير لف ودوران</h1>
 <p>من أول خطوة للتفكير في السفر لحد ما ترجع بالسلامة، إحنا معاك بباقة خدمات سياحية متكاملة: تأشيرات، طيران، فنادق، تأمين سفر وبرامج سياحية — بالراحة وأحسن سعر.</p>
 </div></section>
 <section style="padding-top:0"><div class="wrap">
@@ -294,6 +314,12 @@ home3 = """
 ]) + """
 </div></section>
 """ + destinations('ar') + """
+<section><div class="wrap">
+<div class="photoband"><div class="in">
+<h2>رحلتك تبدأ مع يونس ترافيل</h2>
+<p>عمرة وحج · سياحة · حجز طيران وفنادق</p>
+</div></div>
+</div></section>
 <section><div class="wrap">
 <h2>التأشيرات على طول — من غير لف على السفارات</h2>
 <p class="lead">دول بنصدر تأشيراتها إلكترونيًا، ودول بنحجزلك مواعيد سفاراتها ومراكز التأشيرات — وملفك بيتراجع قبل التقديم.</p>
@@ -321,7 +347,7 @@ home3 = """
 
 home3_en = """
 <section class="hero3"><div class="wrap">
-<h1>Your Trip Starts Here — No Running Around</h1>
+<h1>Your Trip Starts <span class="pill-img"><img src="/images/turkey.jpg" alt=""></span> Here — No Running Around</h1>
 <p>From the first step of thinking about travel until you're back home safe, we're with you with a complete travel service package: visas, flights, hotels, travel insurance and tour programs — comfortably and at the best price.</p>
 </div></section>
 <section style="padding-top:0"><div class="wrap">
@@ -338,6 +364,12 @@ home3_en = """
 ]) + """
 </div></section>
 """ + destinations('en') + """
+<section><div class="wrap">
+<div class="photoband"><div class="in">
+<h2>Your Journey Begins with Younis Travel</h2>
+<p>Umrah &amp; Hajj · Tourism · Flights &amp; Hotels</p>
+</div></div>
+</div></section>
 <section><div class="wrap">
 <h2>Visas, Sorted — Without Embassy Queues</h2>
 <p class="lead">Countries whose visas we issue electronically, and countries whose embassy and visa-center appointments we book for you — with your file reviewed before submission.</p>
