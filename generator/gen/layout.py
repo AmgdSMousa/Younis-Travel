@@ -18,10 +18,10 @@ CSS = B.CSS + """
 .hero3 h1{font-size:46px;line-height:1.7;color:var(--goldlt);text-shadow:0 2px 18px rgba(0,0,0,.5)}
 .hero3 p{font-size:20px;max-width:780px;margin:14px auto 0;color:var(--cream)}
 .widget{position:relative;max-width:960px;margin:-84px auto 0;background:#fdfbf5;color:#12242f;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:22px 22px 26px;text-align:start}
-.widget h2{color:#0b2237;font-size:22px;margin-bottom:4px;line-height:1.6}
+.widget h2{color:#084a82;font-size:22px;margin-bottom:4px;line-height:1.6}
 .widget .wsub{color:#5a7182;font-size:15px;margin-bottom:14px}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.tab{border:2px solid rgba(11,34,55,.18);background:transparent;color:#0b2237;font-family:inherit;font-weight:700;font-size:16px;padding:8px 18px;border-radius:999px;cursor:pointer}
+.tab{border:2px solid rgba(11,34,55,.18);background:transparent;color:#084a82;font-family:inherit;font-weight:700;font-size:16px;padding:8px 18px;border-radius:999px;cursor:pointer}
 .tab.on{background:var(--gold);border-color:var(--gold);color:#1a1405}
 .panel{display:none}
 .panel.on{display:block}
@@ -30,28 +30,28 @@ CSS = B.CSS + """
 .widget input,.widget select{width:100%;background:#fff;border:1px solid #c9d6de;border-radius:10px;color:#12242f;padding:11px 12px;font-family:inherit;font-size:16px}
 .widget .chk{display:flex;align-items:center;gap:8px;font-size:15px;color:#40586b}
 .widget .chk input{width:auto}
-.wsum{display:none;margin-top:16px;background:#0d2a42;color:var(--cream);border-radius:12px;padding:18px}
+.wsum{display:none;margin-top:16px;background:#0a5296;color:var(--cream);border-radius:12px;padding:18px}
 .wsum h3{color:var(--gold);margin-bottom:6px;font-size:19px}
 .usps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px}
-.usp{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid rgba(94,200,190,.2);border-radius:14px;padding:16px 18px}
+.usp{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid rgba(127,176,224,.2);border-radius:14px;padding:16px 18px}
 .usp .ic{font-size:24px;line-height:1.4}
 .usp p{font-size:16px}
 .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:28px}
-.dcard{background:var(--card);border:1px solid rgba(232,184,75,.18);border-radius:16px;overflow:hidden}
+.dcard{background:var(--card);border:1px solid rgba(205,142,41,.18);border-radius:16px;overflow:hidden}
 .dcard img{width:100%;height:190px;object-fit:cover;display:block}
 .dcard .db{padding:18px 20px 20px}
 .dcard h3{color:var(--gold);font-size:21px;margin-bottom:4px}
-.badge{display:inline-block;background:rgba(94,200,190,.16);color:var(--teal);border:1px solid rgba(94,200,190,.4);font-size:13.5px;padding:2px 10px;border-radius:999px;margin-bottom:8px}
+.badge{display:inline-block;background:rgba(127,176,224,.16);color:var(--teal);border:1px solid rgba(127,176,224,.4);font-size:13.5px;padding:2px 10px;border-radius:999px;margin-bottom:8px}
 .dcard p{font-size:16px;color:var(--cream)}
 .dcard a{font-weight:700}
-details.faq{background:var(--card);border:1px solid rgba(232,184,75,.18);border-radius:12px;padding:16px 20px;margin-top:12px}
+details.faq{background:var(--card);border:1px solid rgba(205,142,41,.18);border-radius:12px;padding:16px 20px;margin-top:12px}
 details.faq summary{cursor:pointer;font-weight:700;color:var(--goldlt);font-size:17.5px}
 details.faq p{margin-top:8px;color:var(--cream);font-size:16.5px}
 .floatmsg{position:fixed;bottom:20px;inset-inline-end:20px;z-index:50;background:var(--gold);color:#1a1405;font-weight:700;padding:12px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
 .floatmsg:hover{background:var(--goldlt);color:#1a1405}
 .stickybar{display:none}
 @media(max-width:640px){.hero3 h1{font-size:31px}.hero3{padding:64px 0 104px}
-.stickybar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:49;background:rgba(7,22,38,.97);border-top:1px solid rgba(232,184,75,.35);padding:10px 14px;gap:10px}
+.stickybar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:49;background:rgba(7,22,38,.97);border-top:1px solid rgba(205,142,41,.35);padding:10px 14px;gap:10px}
 .stickybar a{flex:1;text-align:center}
 .floatmsg{bottom:76px}
 body{padding-bottom:64px}}
@@ -108,14 +108,15 @@ def layout3(title, desc, path, body, lang='ar', extra_head=''):
 <meta property="og:url" content="{canonical}">
 <meta property="og:locale" content="{og_locale}">
 <meta property="og:image" content="{BASE}/images/hero.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='28' y='28' width='44' height='44' fill='none' stroke='%23e8b84b' stroke-width='8' transform='rotate(45 50 50)'/></svg>">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/logo.png">
 <style>{CSS}</style>
 <script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>
 {extra_head}
 </head>
 <body>
 <header><div class="wrap nav">
-<a class="logo" href="{prefix}/"><span class="diamond"></span> Younis Travel</a>
+<a class="logo" href="{prefix}/"><img class="logo-img" src="{BASE}/logo.png" alt="Younis Travel"> Younis Travel</a>
 <nav class="links">{links}</nav>
 <a class="cta-btn" href="{prefix}/request.html">{cta}</a>
 </div></header>
