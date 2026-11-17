@@ -189,6 +189,8 @@ def widget(lang='ar'):
     tabs_html = ''.join(f'<button type="button" class="tab{" on" if i == 0 else ""}" data-tab="{k}">{v}</button>' for i, (k, v) in enumerate(tabs))
     panels_html = ''.join(f'<div class="panel{" on" if i == 0 else ""}" id="panel-{k}"><div class="wgrid">{panels[k]}</div></div>' for i, (k, v) in enumerate(tabs))
     svc_json = json.dumps(svc_names, ensure_ascii=False)
+    results_path = '/en/flight-results.html' if en else '/flight-results.html'
+    loc = 'en' if en else 'ar'
     html = f"""
 <div class="widget" id="widget">
 <h2>{title}</h2><p class="wsub">{sub}</p>
@@ -209,6 +211,19 @@ document.querySelectorAll('.tab').forEach(function(b){{ b.addEventListener('clic
   document.getElementById('panel-' + curTab).classList.add('on');
 }}); }});
 document.getElementById('w-go').addEventListener('click', function(){{
+  if (curTab === 'flights') {{
+    var gv = function(id){{ var e = document.getElementById(id); return e ? e.value.trim() : ''; }};
+    var gc = function(v){{ var m = v.match(/\\(([A-Za-z]{{3}})\\)\\s*$/); return m ? m[1].toUpperCase() : ''; }};
+    var gn = function(v){{ return v.replace(/\\s*\\([A-Za-z]{{3}}\\)\\s*$/, ''); }};
+    var oc = gc(gv('f-from')), dc = gc(gv('f-to')), dep = gv('f-dep');
+    if (oc && dc && dep) {{
+      var u = '{results_path}?origin=' + oc + '&destination=' + dc + '&departure_at=' + encodeURIComponent(dep) + '&oname=' + encodeURIComponent(gn(gv('f-from'))) + '&dname=' + encodeURIComponent(gn(gv('f-to')));
+      var rt = gv('f-ret'); if (rt) u += '&return_at=' + encodeURIComponent(rt);
+      var px = gv('f-pax'); if (px) u += '&passengers=' + encodeURIComponent(px);
+      var cs = document.getElementById('f-class'); u += '&class=' + (cs && cs.selectedIndex === 1 ? 'business' : 'economy');
+      location.href = u; return;
+    }}
+  }}
   var lines = ['{head}', 'Service: ' + SVC[curTab]];
   var nm = document.getElementById('w-name');
   if (nm.value.trim()) lines.push(nm.getAttribute('data-label') + ': ' + nm.value.trim());
@@ -219,6 +234,18 @@ document.getElementById('w-go').addEventListener('click', function(){{
   document.getElementById('w-sum-text').textContent = lines.join('\\n');
   var s = document.getElementById('w-sum'); s.style.display = 'block'; s.scrollIntoView({{behavior:'smooth'}});
 }});
+</script>
+"""
+    html = html.replace('id="f-from"', 'id="f-from" list="ac-from" autocomplete="off"')
+    html = html.replace('id="f-to"', 'id="f-to" list="ac-to" autocomplete="off"')
+    html = html.replace('<div class="wsum"', '<datalist id="ac-from"></datalist><datalist id="ac-to"></datalist><div class="wsum"')
+    html += f"""
+<script>
+function acWire(id, listId){{ var inp = document.getElementById(id), dl = document.getElementById(listId); if (!inp || !dl) return; var t;
+  inp.addEventListener('input', function(){{ clearTimeout(t); var v = inp.value.trim(); if (v.length < 2) return;
+    t = setTimeout(function(){{ fetch('https://autocomplete.travelpayouts.com/places2?term=' + encodeURIComponent(v) + '&locale={loc}&types[]=airport&types[]=city')
+      .then(function(r){{ return r.json(); }}).then(function(j){{ dl.innerHTML = ''; (j || []).slice(0, 8).forEach(function(p){{ var o = document.createElement('option'); o.value = p.name + ' (' + p.code + ')'; dl.appendChild(o); }}); }}).catch(function(){{}}); }}, 250); }}); }}
+acWire('f-from', 'ac-from'); acWire('f-to', 'ac-to');
 </script>
 """
     return html.replace('FBURL', FB_PAGE)
@@ -402,6 +429,9 @@ PREFILL_AR = """
   var map = {visa:'تأشيرة', flight:'طيران', hotel:'فندق', trip:'برنامج سياحي متكامل', insurance:'تأمين سفر'};
   if (d) document.getElementById('dest').value = d;
   if (s && map[s]) document.getElementById('service').value = map[s];
+  var n = q.get('n'), p = q.get('p');
+  if (n) { var ne = document.getElementById('notes'); if (ne) ne.value = n; }
+  if (p) { var pe = document.getElementById('people'); if (pe) pe.value = p; }
 })();
 </script>
 """
@@ -412,6 +442,9 @@ PREFILL_EN = """
   var map = {visa:'Visa', flight:'Flight', hotel:'Hotel', trip:'Complete tour program', insurance:'Travel insurance'};
   if (d) document.getElementById('dest').value = d;
   if (s && map[s]) document.getElementById('service').value = map[s];
+  var n = q.get('n'), p = q.get('p');
+  if (n) { var ne = document.getElementById('notes'); if (ne) ne.value = n; }
+  if (p) { var pe = document.getElementById('people'); if (pe) pe.value = p; }
 })();
 </script>
 """

@@ -36,7 +36,7 @@ def _seed_brand():
 
 _seed_images()
 _seed_brand()
-from gen.faq_page import main
+from gen.flights_search import main
 
 if __name__ == '__main__':
     main()

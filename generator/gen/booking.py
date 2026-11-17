@@ -374,7 +374,7 @@ def main():
     # --- API functions + package marker
     api_out = os.path.join(OUT, 'api')
     os.makedirs(api_out, exist_ok=True)
-    for fn in ('_lib.js', 'bookings.js', 'track.js', 'health.js', 'openapi.js', 'mcp.js'):
+    for fn in ('_lib.js', 'bookings.js', 'track.js', 'health.js', 'openapi.js', 'mcp.js', 'flights.js'):
         shutil.copy(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'api_src', fn),
                     os.path.join(api_out, fn))
     _write('package.json', json.dumps({"name": "younistravel-site", "private": True}, indent=2))
