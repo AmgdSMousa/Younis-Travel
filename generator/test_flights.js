@@ -15,8 +15,8 @@ global.fetch = async (url) => {
       ] }) };
     }
     return { json: async () => ({ success: true, currency: 'eur', data: [
-      { airline: 'MS', flight_number: 'MS964', departure_at: '2026-12-10T06:30:00', return_at: '2026-12-17T11:05:00', price: 100, transfers: 0, return_transfers: 1, duration_to: 240, link: '/search/SECRET' },
-      { airline: 'MS', flight_number: 'MS964', departure_at: '2026-12-10T06:30:00', return_at: '2026-12-17T11:05:00', price: 100, transfers: 0, return_transfers: 1, duration_to: 240, link: '/search/SECRET' },
+      { airline: 'MS', flight_number: 'MS964', departure_at: '2026-12-10T06:30:00', return_at: '2026-12-17T11:05:00', price: 100, transfers: 0, return_transfers: 1, duration_to: 240, duration_back: 260, origin_airport: 'CAI', destination_airport: 'DXB', link: '/search/SECRET' },
+      { airline: 'MS', flight_number: 'MS964', departure_at: '2026-12-10T06:30:00', return_at: '2026-12-17T11:05:00', price: 100, transfers: 0, return_transfers: 1, duration_to: 240, duration_back: 260, origin_airport: 'CAI', destination_airport: 'DXB', link: '/search/SECRET' },
       { airline: 'FZ', flight_number: 'FZ578', departure_at: '2026-12-10T09:15:00', return_at: '2026-12-17T14:20:00', price: 121, transfers: 1, return_transfers: 0, duration_to: 300, link: '/search/SECRET2' },
     ] }) };
   }
@@ -54,6 +54,7 @@ function check(name, cond, extra = '') { console.log((cond ? 'PASS' : 'FAIL'), n
   check('total for 2 pax = 11000', f0.price_egp_total === 11000, String(f0.price_egp_total));
   check('ceil5: 121 EUR -> 6655/person', r.json.results[1].price_egp_per_person === 6655, String(r.json.results[1].price_egp_per_person));
   check('provider link never exposed', !JSON.stringify(r.json).includes('SECRET') && !('link' in f0));
+  check('detail fields: airports + return duration', f0.origin_airport === 'CAI' && f0.destination_airport === 'DXB' && f0.duration_back_min === 260, JSON.stringify(f0));
   check('token sent upstream, currency eur', fetchCalls.some(u => u.includes('token=test-token') && u.includes('currency=eur')));
 
   r = await call({ url: '/api/flights?origin=CAI&destination=JED&departure_at=2026-12-10&return_at=2026-12-17&passengers=1' });

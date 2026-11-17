@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
   }
   const pax = Math.min(9, Math.max(1, parseInt(q.get('passengers') || '1', 10) || 1));
   const tclass = q.get('class') === 'business' ? '1' : '0';
-  const cacheKey = 'fl2:' + [origin, destination, dep, ret, pax, tclass].join(':');
+  const cacheKey = 'fl3:' + [origin, destination, dep, ret, pax, tclass].join(':');
   try {
     const c = await L.redis(['GET', cacheKey]);
     if (c) { L.send(res, 200, JSON.parse(c), L.browserCors(req)); return; }
@@ -101,7 +101,10 @@ module.exports = async (req, res) => {
         return_at: f.return_at || null,
         transfers: f.transfers || 0,
         return_transfers: f.return_transfers || 0,
+        origin_airport: f.origin_airport || origin,
+        destination_airport: f.destination_airport || destination,
         duration_min: f.duration_to || f.duration || null,
+        duration_back_min: f.duration_back || null,
         price_egp_per_person: perPerson,
         price_egp_total: perPerson * pax,
       });

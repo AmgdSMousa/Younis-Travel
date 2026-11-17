@@ -35,6 +35,9 @@ STYLE = """
 .fspin{color:var(--mute);text-align:center;padding:34px 0;font-size:18px}
 .fdisc{color:var(--mute);font-size:14.5px;margin-top:18px;text-align:center}
 .fnote{background:var(--field);border-radius:14px;padding:12px 18px;color:var(--ink);font-size:15.5px;margin-top:16px;text-align:center}
+.fleg{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.frow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:17px;color:var(--ink);margin-top:3px}
+.farrow{color:var(--gold);font-weight:700}
 </style>
 """
 
@@ -58,6 +61,7 @@ STR = {
   'note_ret': '، عودة {ret}',
   'approx': 'التواريخ دي بالذات مفيهاش أسعار متاحة حاليًا — دي أرخص الأسعار المتاحة في نفس الشهر حوالين تواريخك، وتاريخ كل رحلة مكتوب عليها بالظبط.',
   'kiwi': 'احجز أونلاين فورًا',
+  'nextday': '+1 يوم',
  },
  'en': {
   'loading': 'Searching for the cheapest fares…',
@@ -78,6 +82,7 @@ STR = {
   'note_ret': ', return {ret}',
   'approx': 'No fares are available for those exact dates right now — these are the cheapest fares in the same month around your dates, and each card shows its exact dates.',
   'kiwi': 'Book Online Instantly',
+  'nextday': '+1 day',
  },
 }
 
@@ -105,6 +110,33 @@ function fmt(n){ return Number(n).toLocaleString('en-US'); }
 function fdate(iso){ if(!iso) return ''; var d = new Date(iso); if(isNaN(d)) return esc(iso); return d.toLocaleDateString(document.documentElement.lang === 'ar' ? 'ar-EG' : 'en-GB', {weekday:'short', day:'numeric', month:'short', year:'numeric'}) + ' · ' + d.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'}); }
 function fdur(m){ if(!m) return ''; var h = Math.floor(m/60), r = m%60; return h + ':' + (r<10?'0':'') + r; }
 function stops(n){ return n===0 ? S.direct : n===1 ? S.stop1 : n===2 ? S.stop2 : S.stopn.replace('{n}', n); }
+var TZ = {CAI:'Africa/Cairo',HRG:'Africa/Cairo',SSH:'Africa/Cairo',LXR:'Africa/Cairo',ASW:'Africa/Cairo',ALY:'Africa/Cairo',
+JED:'Asia/Riyadh',RUH:'Asia/Riyadh',DMM:'Asia/Riyadh',MED:'Asia/Riyadh',AHB:'Asia/Riyadh',TIF:'Asia/Riyadh',
+DXB:'Asia/Dubai',AUH:'Asia/Dubai',SHJ:'Asia/Dubai',DOH:'Asia/Qatar',KWI:'Asia/Kuwait',BAH:'Asia/Bahrain',MCT:'Asia/Muscat',
+AMM:'Asia/Amman',BEY:'Asia/Beirut',IST:'Europe/Istanbul',SAW:'Europe/Istanbul',ATH:'Europe/Athens',LCA:'Asia/Nicosia',
+LHR:'Europe/London',CDG:'Europe/Paris',FRA:'Europe/Berlin',MUC:'Europe/Berlin',BER:'Europe/Berlin',AMS:'Europe/Amsterdam',
+FCO:'Europe/Rome',MAD:'Europe/Madrid',BCN:'Europe/Madrid',VIE:'Europe/Vienna',ZRH:'Europe/Zurich',
+JFK:'America/New_York',EWR:'America/New_York',IAD:'America/New_York',ORD:'America/Chicago',LAX:'America/Los_Angeles',
+BOM:'Asia/Kolkata',DEL:'Asia/Kolkata',KUL:'Asia/Kuala_Lumpur',SIN:'Asia/Singapore',BKK:'Asia/Bangkok',
+HAN:'Asia/Ho_Chi_Minh',SGN:'Asia/Ho_Chi_Minh',MLE:'Indian/Maldives',TBS:'Asia/Tbilisi',EVN:'Asia/Yerevan',GYD:'Asia/Baku',
+TUN:'Africa/Tunis',ALG:'Africa/Algiers',CMN:'Africa/Casablanca',ADD:'Africa/Addis_Ababa',NBO:'Africa/Nairobi',DAR:'Africa/Dar_es_Salaam'};
+function arrTime(iso, durMin, tz){
+  if (!iso || !durMin || !tz) return '';
+  var dep = new Date(iso); if (isNaN(dep)) return '';
+  var arr = new Date(dep.getTime() + durMin * 60000);
+  var tf = new Intl.DateTimeFormat('en-GB', {hour:'2-digit', minute:'2-digit', timeZone: tz});
+  var df = new Intl.DateTimeFormat('en-CA', {year:'numeric', month:'2-digit', day:'2-digit', timeZone: tz});
+  return tf.format(arr) + (df.format(arr) > df.format(dep) ? ' ' + S.nextday : '');
+}
+function dstr(iso){ var d = new Date(iso); if (isNaN(d)) return String(iso || ''); return d.toLocaleDateString(document.documentElement.lang === 'ar' ? 'ar-EG' : 'en-GB', {weekday:'short', day:'numeric', month:'short'}); }
+function leg(label, fromN, fromC, toN, toC, depIso, durMin, stopsN){
+  var arr = arrTime(depIso, durMin, TZ[toC]);
+  var arrow = document.documentElement.lang === 'ar' ? '←' : '→';
+  return '<div class="fleg"><div class="fmeta" style="font-weight:700;color:var(--ink)">' + esc(label) + ' · ' + esc(dstr(depIso)) + '<span class="fstop">' + esc(stops(stopsN)) + '</span></div>' +
+    '<div class="frow"><span><b>' + esc(String(depIso).slice(11, 16)) + '</b> ' + esc(fromN) + ' (' + esc(fromC) + ')</span><span class="farrow">' + arrow + '</span>' +
+    '<span>' + (arr ? '<b>' + esc(arr) + '</b> ' : '') + esc(toN) + ' (' + esc(toC) + ')</span></div>' +
+    (durMin ? '<div class="fmeta">' + esc(S.dur) + ' ' + esc(fdur(durMin)) + '</div>' : '') + '</div>';
+}
 (function(){
   var q = new URLSearchParams(location.search);
   var origin = (q.get('origin')||'').toUpperCase(), dest = (q.get('destination')||'').toUpperCase();
@@ -145,11 +177,9 @@ function stops(n){ return n===0 ? S.direct : n===1 ? S.stop1 : n===2 ? S.stop2 :
         .replace('{dname}', dname).replace('{dc}', dest).replace('{dep}', fdate(f.departure_at))
         .replace('{retpart}', f.return_at ? S.note_ret.replace('{ret}', fdate(f.return_at)) : '')
         .replace('{total}', fmt(f.price_egp_total)).replace('{pax}', pax).replace('{per}', fmt(f.price_egp_per_person));
-      html += '<div class="fcard"><div class="fmain"><div class="fair">' + esc(an) + (f.flight_number ? ' · ' + esc(f.flight_number) : '') +
-        '<span class="fstop">' + esc(stops(f.transfers)) + '</span></div>' +
-        '<div class="fmeta">' + esc(origin) + ' → ' + esc(dest) + ' · ' + esc(fdate(f.departure_at)) +
-        (f.duration_min ? ' · ' + esc(S.dur) + ' ' + esc(fdur(f.duration_min)) : '') + '</div>' +
-        (f.return_at ? '<div class="fmeta">' + esc(S.ret) + ': ' + esc(fdate(f.return_at)) + '<span class="fstop">' + esc(stops(f.return_transfers)) + '</span></div>' : '') +
+      html += '<div class="fcard"><div class="fmain"><div class="fair">' + esc(an) + (f.flight_number ? ' · ' + esc(f.flight_number) : '') + '</div>' +
+        leg(S.dep, oname, f.origin_airport || origin, dname, f.destination_airport || dest, f.departure_at, f.duration_min, f.transfers) +
+        (f.return_at ? leg(S.ret, dname, f.destination_airport || dest, oname, f.origin_airport || origin, f.return_at, f.duration_back_min, f.return_transfers) : '') +
         '</div><div class="fprice"><div><span class="amt">' + fmt(f.price_egp_total) + '</span> <span class="cur">EGP</span></div>' +
         '<div class="fmeta">' + esc(S.total) + ' · ' + fmt(f.price_egp_per_person) + ' ' + esc(S.per) + '</div>' +
         '<p style="margin-top:10px"><a class="cta-btn" href="' + reqLink(note) + '">' + esc(S.book) + '</a></p>' +
