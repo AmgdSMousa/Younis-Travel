@@ -73,13 +73,13 @@ def md_links(text):
 def main():
     V32.main()
     # images: destination cards display ~360-1080px wide; 900w is plenty and much lighter
-    for n in ('saudi', 'turkey', 'uae', 'vietnam', 'kenya', 'albania'):
+    for n, cap in (('saudi', 1080), ('turkey', 760), ('uae', 760), ('vietnam', 760), ('kenya', 760), ('albania', 760)):
         jpg = os.path.join(OUT, 'images', n + '.jpg')
         webp = os.path.join(OUT, 'images', n + '.webp')
         im = Image.open(jpg).convert('RGB')
-        if im.width > 900:
-            im = im.resize((900, round(im.height * 900 / im.width)), Image.LANCZOS)
-        im.save(webp, 'WEBP', quality=75)
+        if im.width > cap:
+            im = im.resize((cap, round(im.height * cap / im.width)), Image.LANCZOS)
+        im.save(webp, 'WEBP', quality=72)
     # robots.txt with content signals
     with open(os.path.join(OUT, 'robots.txt'), 'w', encoding='utf-8') as fh:
         fh.write(ROBOTS)

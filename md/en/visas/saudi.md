@@ -6,7 +6,7 @@ Source: https://younistravel.site/en/visas/saudi.html
 
 We book your Tasheer center appointment and review and prepare your complete file before submission — because a small mistake in the application or a booking that is not right is usually why visas get rejected.
 
-With Younis Travel, a Saudi visa starts with booking your Tasheer center appointment and a full review of your file: professional application filling, employment letters and certified translation, and confirmed preliminary flight and hotel bookings compliant with submission requirements — and we send you the exact document list for your visa type and case.
+With Younis Travel, a Saudi visa starts with booking your Tasheer center appointment and a full review of your file: professional application filling, employment letters and certified translation, and confirmed preliminary flight and hotel bookings compliant with submission requirements — and we send you the exact document list for your visa type and case. For the tourist visa specifically, see the [Saudi tourist visa requirements guide](/en/saudi-visa-guide.html).
 
 ## What We Do For You
 

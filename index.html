@@ -16,112 +16,163 @@
 <meta property="og:url" content="https://younistravel.site/">
 <meta property="og:locale" content="ar_EG">
 <meta property="og:image" content="https://younistravel.site/images/hero.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='28' y='28' width='44' height='44' fill='none' stroke='%23e8b84b' stroke-width='8' transform='rotate(45 50 50)'/></svg>">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/logo.png">
 <style>
 @font-face{font-family:'Plex';src:url('/fonts/IBMPlexSansArabic-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Plex';src:url('/fonts/IBMPlexSansArabic-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
-:root{--navy:#071626;--navy2:#0b2237;--gold:#e8b84b;--goldlt:#f5d078;--teal:#5ec8be;--cream:#f7f3ea;--gray:#aebcc8;--card:#0d2a42}
+:root{
+--fog:#f7f3ea;--paper:#ffffff;--fogdeep:#efe9dc;--line:#e3dcc9;
+--ink:#003262;--ink2:#0a4a80;--soft:#3d5a75;--mute:#58707f;
+--gold:#cd8e29;--goldlt:#e5b45c;--golddk:#8a5a10;--field:#f5e7c8;--field2:#efd9a7;
+--night:#00203f;--sky:#7fb0e0;
+--sh-card:0 1px 2px rgba(0,50,98,.05),0 18px 48px -18px rgba(0,50,98,.25);
+--sh-lift:0 30px 70px -30px rgba(0,32,63,.5);
+--r-md:18px;--r-lg:28px;--r-pill:999px}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Plex',system-ui,sans-serif;background:var(--navy);color:var(--cream);line-height:1.9}
-a{color:var(--goldlt);text-decoration:none}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-header{position:sticky;top:0;background:rgba(7,22,38,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(232,184,75,.25);z-index:10}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;flex-wrap:wrap}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;color:var(--cream)}
-.diamond{width:16px;height:16px;border:3px solid var(--gold);transform:rotate(45deg);display:inline-block}
-nav.links{display:flex;gap:22px;flex-wrap:wrap}
-nav.links a{color:var(--cream);font-size:16px}
-nav.links a:hover{color:var(--goldlt)}
-.cta-btn{background:var(--gold);color:#1a1405;font-weight:700;padding:10px 22px;border-radius:999px;display:inline-block}
-.cta-btn:hover{background:var(--goldlt);color:#1a1405}
-.hero{padding:84px 0 64px;text-align:center;background:radial-gradient(ellipse 700px 340px at 50% -60px,rgba(94,200,190,.28),transparent)}
-.hero h1{font-size:44px;line-height:1.7;color:var(--goldlt)}
-.hero p{font-size:20px;color:var(--cream);max-width:760px;margin:14px auto 26px}
-section{padding:52px 0}
-h2{font-size:30px;color:var(--goldlt);margin-bottom:10px;line-height:1.7}
-.lead{color:var(--gray);font-size:18px;max-width:820px}
+html{scroll-behavior:smooth}
+body{font-family:'Plex',system-ui,sans-serif;background:var(--fog);color:var(--soft);line-height:1.9;font-size:16.5px}
+a{color:var(--golddk);text-decoration:none;font-weight:600}
+a:hover{color:var(--gold)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:0;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:40}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:11px;font-weight:700;font-size:20px;color:var(--ink)}
+.logo-img{width:46px;height:46px;border-radius:50%;flex:0 0 auto;background:#fff;box-shadow:0 2px 10px rgba(0,50,98,.18)}
+nav.links{display:flex;gap:24px;flex-wrap:wrap}
+nav.links a{color:var(--ink);font-size:16px;font-weight:600}
+nav.links a:hover{color:var(--gold)}
+.cta-btn{background:var(--ink);color:#fff;font-weight:700;padding:11px 26px;border-radius:var(--r-pill);display:inline-block;box-shadow:0 10px 24px -10px rgba(0,50,98,.55);transition:background .16s,transform .16s}
+.cta-btn:hover{background:var(--ink2);color:#fff;transform:translateY(-1px)}
+.btn{background:var(--ink);color:#fff;font-weight:700;padding:11px 26px;border-radius:var(--r-pill);display:inline-block;border:none;cursor:pointer;font-family:inherit;font-size:16.5px}
+.btn:hover{background:var(--ink2);color:#fff}
+.btn-gold{background:var(--gold);color:#fff;font-weight:700;padding:11px 26px;border-radius:var(--r-pill);display:inline-block;border:none;cursor:pointer;font-family:inherit;font-size:16.5px;box-shadow:0 10px 24px -10px rgba(205,142,41,.6)}
+.btn-gold:hover{background:var(--goldlt);color:var(--night)}
+.label{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--golddk);text-transform:uppercase;margin-bottom:8px}
+.hero{padding:84px 0 64px;text-align:center}
+.hero h1{font-size:44px;line-height:1.6;color:var(--ink)}
+.hero p{font-size:20px;color:var(--soft);max-width:760px;margin:14px auto 26px}
+section{padding:64px 0}
+.section{padding:64px 0}
+h2{font-size:31px;color:var(--ink);margin-bottom:10px;line-height:1.55;font-weight:700}
+.lead{color:var(--mute);font-size:18px;max-width:820px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:28px}
-.card{background:var(--card);border:1px solid rgba(232,184,75,.18);border-radius:16px;padding:24px}
-.card h3{color:var(--gold);font-size:21px;margin-bottom:8px}
-.card p,.card li{color:var(--cream);font-size:16.5px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:26px;box-shadow:var(--sh-card)}
+.card h3{color:var(--ink);font-size:21px;margin-bottom:8px}
+.card p,.card li{color:var(--soft);font-size:16.5px}
 .card ul{list-style:none}
 .card li{padding:4px 0}
-.card li::before{content:'• ';color:var(--teal);font-weight:700}
+.card li::before{content:'• ';color:var(--gold);font-weight:700}
 .steps{counter-reset:step}
-.step{display:flex;gap:16px;align-items:flex-start;background:var(--card);border-radius:14px;padding:18px 20px;margin-top:12px;border:1px solid rgba(94,200,190,.16)}
-.step .n{flex:0 0 auto;width:44px;height:44px;border:2px solid var(--teal);border-radius:50%;color:var(--teal);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:19px}
-.page-hero{padding:64px 0 10px;text-align:center}
-.page-hero h1{font-size:38px;color:var(--goldlt);line-height:1.7}
-.page-hero p{color:var(--gray);font-size:19px;max-width:780px;margin:10px auto 0}
-.band{background:var(--navy2);border-radius:18px;padding:30px;margin-top:26px;text-align:center}
-.band h2{margin-bottom:6px}
+.step{display:flex;gap:16px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px;margin-top:12px;box-shadow:var(--sh-card)}
+.step .n{flex:0 0 auto;width:44px;height:44px;background:var(--ink);border-radius:50%;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:19px}
+.page-hero{padding:72px 0 6px;text-align:center}
+.page-hero h1{font-size:40px;color:var(--ink);line-height:1.55;font-weight:700}
+.page-hero p{color:var(--mute);font-size:19px;max-width:780px;margin:10px auto 0}
+.band{background:var(--field);border-radius:var(--r-lg);padding:38px 30px;margin-top:26px;text-align:center;box-shadow:var(--sh-card)}
+.band h2{color:var(--ink);margin-bottom:6px}
+.band p{color:var(--soft)}
+.band .cta-btn{margin-top:16px}
 form{display:grid;gap:14px;max-width:640px;margin:26px auto 0;text-align:start}
-label{font-size:15.5px;color:var(--gray)}
-input,select,textarea{width:100%;background:var(--card);border:1px solid rgba(232,184,75,.3);border-radius:10px;color:var(--cream);padding:12px 14px;font-family:inherit;font-size:16.5px}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.field-grid{grid-template-columns:1fr}}
+.fg{display:grid;gap:5px}
+label{font-size:15.5px;color:var(--soft);font-weight:600}
+input,select,textarea{width:100%;background:var(--paper);border:1px solid var(--line);border-radius:12px;color:var(--ink);padding:12px 14px;font-family:inherit;font-size:16.5px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--field)}
 textarea{min-height:110px}
 button.cta-btn{border:none;cursor:pointer;font-family:inherit;font-size:17px}
-.note{color:var(--gray);font-size:15px;text-align:center;margin-top:12px}
-footer{border-top:1px solid rgba(232,184,75,.22);padding:30px 0;margin-top:30px;text-align:center;color:var(--gray);font-size:15.5px}
+.note{color:var(--mute);font-size:15px;text-align:center;margin-top:12px}
+footer{background:var(--night);padding:38px 0;margin-top:0;text-align:center;color:rgba(255,255,255,.75);font-size:15.5px}
 footer a{color:var(--goldlt)}
-@media(max-width:640px){.hero h1{font-size:32px}.page-hero h1{font-size:29px}h2{font-size:25px}}
+footer a:hover{color:#fff}
+@media(max-width:640px){.hero h1{font-size:32px}.page-hero h1{font-size:29px}h2{font-size:25px}section{padding:44px 0}}
 
-.hero3{position:relative;padding:96px 0 120px;text-align:center;background:url('/images/hero.webp') center 30%/cover no-repeat}
-.hero3::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,22,38,.72),rgba(7,22,38,.88))}
+/* ---- v4: Fjelvik design language x Younis identity (2026-11-17) ---- */
+.hero3{position:relative;padding:110px 0 150px;text-align:center;background:url('/images/hero.webp') center 30%/cover no-repeat}
+.hero3::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,32,63,.52),rgba(0,32,63,.82))}
 .hero3 .wrap{position:relative}
-.hero3 h1{font-size:46px;line-height:1.7;color:var(--goldlt);text-shadow:0 2px 18px rgba(0,0,0,.5)}
-.hero3 p{font-size:20px;max-width:780px;margin:14px auto 0;color:var(--cream)}
-.widget{position:relative;max-width:960px;margin:-84px auto 0;background:#fdfbf5;color:#12242f;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.45);padding:22px 22px 26px;text-align:start}
-.widget h2{color:#0b2237;font-size:22px;margin-bottom:4px;line-height:1.6}
-.widget .wsub{color:#5a7182;font-size:15px;margin-bottom:14px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.tab{border:2px solid rgba(11,34,55,.18);background:transparent;color:#0b2237;font-family:inherit;font-weight:700;font-size:16px;padding:8px 18px;border-radius:999px;cursor:pointer}
-.tab.on{background:var(--gold);border-color:var(--gold);color:#1a1405}
+.hero3 h1{font-size:52px;line-height:1.55;color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.45);font-weight:700}
+.hero3 p{font-size:20px;max-width:780px;margin:16px auto 0;color:rgba(255,255,255,.88)}
+.pill-img{display:inline-block;width:92px;height:44px;border-radius:999px;overflow:hidden;vertical-align:middle;margin:0 6px;box-shadow:0 4px 16px rgba(0,0,0,.35);border:2px solid rgba(255,255,255,.65)}
+.pill-img img{width:100%;height:100%;object-fit:cover;display:block}
+.widget{position:relative;max-width:980px;margin:-92px auto 0;background:var(--paper);color:var(--soft);border-radius:var(--r-lg);box-shadow:var(--sh-lift);padding:26px 26px 30px;text-align:start}
+.widget h2{color:var(--ink);font-size:23px;margin-bottom:4px;line-height:1.6}
+.widget .wsub{color:var(--mute);font-size:15px;margin-bottom:16px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;background:var(--fogdeep);padding:6px;border-radius:var(--r-pill)}
+.tab{border:none;background:transparent;color:var(--ink);font-family:inherit;font-weight:700;font-size:16px;padding:9px 20px;border-radius:999px;cursor:pointer;transition:background .16s,color .16s}
+.tab.on{background:var(--ink);color:#fff;box-shadow:0 8px 20px -8px rgba(0,50,98,.6)}
 .panel{display:none}
 .panel.on{display:block}
 .wgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-.widget label{color:#40586b;font-size:14.5px;display:block;margin-bottom:4px}
-.widget input,.widget select{width:100%;background:#fff;border:1px solid #c9d6de;border-radius:10px;color:#12242f;padding:11px 12px;font-family:inherit;font-size:16px}
-.widget .chk{display:flex;align-items:center;gap:8px;font-size:15px;color:#40586b}
+.widget label{color:var(--soft);font-size:14.5px;font-weight:600;display:block;margin-bottom:4px}
+.widget input,.widget select{width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;color:var(--ink);padding:11px 12px;font-family:inherit;font-size:16px}
+.widget input:focus,.widget select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--field)}
+.widget .chk{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--soft)}
 .widget .chk input{width:auto}
-.wsum{display:none;margin-top:16px;background:#0d2a42;color:var(--cream);border-radius:12px;padding:18px}
-.wsum h3{color:var(--gold);margin-bottom:6px;font-size:19px}
+.wsum{display:none;margin-top:16px;background:var(--field);color:var(--soft);border-radius:var(--r-md);padding:20px}
+.wsum h3{color:var(--ink);margin-bottom:6px;font-size:19px}
 .usps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px}
-.usp{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid rgba(94,200,190,.2);border-radius:14px;padding:16px 18px}
-.usp .ic{font-size:24px;line-height:1.4}
-.usp p{font-size:16px}
-.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:28px}
-.dcard{background:var(--card);border:1px solid rgba(232,184,75,.18);border-radius:16px;overflow:hidden}
-.dcard img{width:100%;height:190px;object-fit:cover;display:block}
-.dcard .db{padding:18px 20px 20px}
-.dcard h3{color:var(--gold);font-size:21px;margin-bottom:4px}
-.badge{display:inline-block;background:rgba(94,200,190,.16);color:var(--teal);border:1px solid rgba(94,200,190,.4);font-size:13.5px;padding:2px 10px;border-radius:999px;margin-bottom:8px}
-.dcard p{font-size:16px;color:var(--cream)}
-.dcard a{font-weight:700}
-details.faq{background:var(--card);border:1px solid rgba(232,184,75,.18);border-radius:12px;padding:16px 20px;margin-top:12px}
-details.faq summary{cursor:pointer;font-weight:700;color:var(--goldlt);font-size:17.5px}
-details.faq p{margin-top:8px;color:var(--cream);font-size:16.5px}
-.floatmsg{position:fixed;bottom:20px;inset-inline-end:20px;z-index:50;background:var(--gold);color:#1a1405;font-weight:700;padding:12px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-.floatmsg:hover{background:var(--goldlt);color:#1a1405}
+.usp{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:18px;box-shadow:var(--sh-card)}
+.usp .ic{font-size:22px;line-height:1.5;background:var(--field);border-radius:50%;width:46px;height:46px;flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+.usp p{font-size:16px;color:var(--soft)}
+.dgrid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:245px;gap:16px;margin-top:28px}
+.dcard{position:relative;border-radius:var(--r-md);overflow:hidden;box-shadow:var(--sh-card)}
+.dcard:nth-child(1){grid-column:span 2;grid-row:span 2}
+.dcard:nth-child(2){grid-column:span 2}
+.dcard:nth-child(3){grid-column:span 1}
+.dcard:nth-child(4){grid-column:span 1}
+.dcard:nth-child(5){grid-column:span 2}
+.dcard:nth-child(6){grid-column:span 2}
+.dcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.dcard .db{position:absolute;inset-inline:0;bottom:0;padding:44px 20px 16px;background:linear-gradient(180deg,transparent,rgba(0,32,63,.88));color:#fff}
+.dcard h3{color:#fff;font-size:21px;margin-bottom:2px}
+.badge{display:inline-block;background:rgba(255,255,255,.18);backdrop-filter:blur(4px);color:#fff;border:1px solid rgba(255,255,255,.4);font-size:13px;font-weight:700;padding:2px 11px;border-radius:999px;margin-bottom:8px}
+.dcard p{font-size:15.5px;color:rgba(255,255,255,.85);display:none}
+.dcard:nth-child(1) p{display:block}
+.dcard a{color:var(--goldlt);font-weight:700}
+@media(max-width:760px){.dgrid{grid-template-columns:1fr;grid-auto-rows:230px}.dcard{grid-column:span 1!important;grid-row:span 1!important}.dcard p{display:block}}
+.photoband{position:relative;border-radius:var(--r-lg);overflow:hidden;padding:86px 30px;text-align:center;background:url('/images/saudi.webp') center 40%/cover no-repeat;box-shadow:var(--sh-lift)}
+.photoband::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,32,63,.45),rgba(0,32,63,.78))}
+.photoband .in{position:relative}
+.photoband h2{color:#fff;font-size:38px;margin-bottom:8px}
+.photoband p{color:var(--goldlt);font-size:19px;font-weight:700}
+details.faq{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 22px;margin-top:12px;box-shadow:var(--sh-card)}
+details.faq summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:17.5px;list-style:none}
+details.faq summary::after{content:'+';float:inline-end;color:var(--gold);font-size:22px;line-height:1.2}
+details.faq[open ] summary::after{content:'−'}
+details.faq p{margin-top:8px;color:var(--soft);font-size:16.5px}
+.floatmsg{position:fixed;bottom:20px;inset-inline-end:20px;z-index:50;background:var(--gold);color:#00203f;font-weight:700;padding:12px 22px;border-radius:999px;box-shadow:0 14px 34px -8px rgba(205,142,41,.65)}
+.floatmsg:hover{background:var(--goldlt);color:var(--night)}
 .stickybar{display:none}
-@media(max-width:640px){.hero3 h1{font-size:31px}.hero3{padding:64px 0 104px}
-.stickybar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:49;background:rgba(7,22,38,.97);border-top:1px solid rgba(232,184,75,.35);padding:10px 14px;gap:10px}
+@media(max-width:640px){.hero3 h1{font-size:33px}.hero3{padding:72px 0 120px}.photoband h2{font-size:27px}
+.stickybar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:49;background:rgba(255,255,255,.97);border-top:1px solid var(--line);padding:10px 14px;gap:10px;box-shadow:0 -8px 30px rgba(0,50,98,.12)}
 .stickybar a{flex:1;text-align:center}
-.floatmsg{bottom:76px}
+.floatmsg{bottom:78px}
 body{padding-bottom:64px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TravelAgency", "name": "Younis Travel", "url": "https://younistravel.site/", "description": "Younis Travel: إصدار التأشيرات، حجوزات الطيران والفنادق، تأمين سفر وبرامج سياحية متكاملة — من أول رسالة لحد ركوب الطيارة.", "sameAs": ["https://www.facebook.com/profile.php?id=61596173995345"], "areaServed": "EG", "inLanguage": "ar"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "إزاي أبدأ الحجز؟", "acceptedAnswer": {"@type": "Answer", "text": "بتبعتلنا رسالة على صفحة الفيسبوك أو بتملا نموذج الطلب هنا بالوجهة والتواريخ وعدد المسافرين، وهنرد عليك بالتفاصيل والخيارات المتاحة."}}, {"@type": "Question", "name": "إيه الأوراق المطلوبة للتأشيرة؟", "acceptedAnswer": {"@type": "Answer", "text": "بتختلف حسب الدولة ونوع التأشيرة، لكن الأساس غالبًا: جواز سفر سارٍ وصور شخصية حديثة، وحجوزات مبدئية مؤكدة للطيران والفندق. ابعتلنا الدولة اللي ناوي عليها وهنبعتلك قايمة الأوراق الدقيقة لملفك."}}, {"@type": "Question", "name": "الدفع بيتم إزاي؟", "acceptedAnswer": {"@type": "Answer", "text": "بعد ما تأكد العرض المناسب لك، الدفع متاح بطرق متعددة وسهلة: كاش، تحويل بنكي، أو دفع إلكتروني — وبتستلم تذكرتك في دقايق على الواتساب والإيميل."}}, {"@type": "Question", "name": "أقدر أعدّل أو ألغي حجزي؟", "acceptedAnswer": {"@type": "Answer", "text": "بنقدملك دعم كامل في تغيير المواعيد أو ترقية المقاعد أو الإلغاء، حسب شروط شركة الطيران أو الفندق — ومن غير تعقيدات التعامل المباشر معاهم."}}, {"@type": "Question", "name": "إيصالات الفنادق تنفع تتقدم للسفارة؟", "acceptedAnswer": {"@type": "Answer", "text": "أيوه — بنصدر إيصالات حجز وفواتير رسمية مقبولة بالكامل في السفارات والمطارات."}}, {"@type": "Question", "name": "تأمين السفر مهم فعلًا؟", "acceptedAnswer": {"@type": "Answer", "text": "هو مطلوب في سفارات كتير، وكمان من الأوراق اللي بتقوي ملف التأشيرة — غير إنه بيغطيك بتغطية شاملة طول رحلتك."}}]}</script><link rel="preload" as="image" href="/images/hero.webp">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "إزاي أبدأ الحجز؟", "acceptedAnswer": {"@type": "Answer", "text": "بتبعتلنا رسالة على صفحة الفيسبوك أو بتملا نموذج الطلب هنا بالوجهة والتواريخ وعدد المسافرين، وهنرد عليك بالتفاصيل والخيارات المتاحة."}}, {"@type": "Question", "name": "إيه الأوراق المطلوبة للتأشيرة؟", "acceptedAnswer": {"@type": "Answer", "text": "بتختلف حسب الدولة ونوع التأشيرة، لكن الأساس غالبًا: جواز سفر سارٍ وصور شخصية حديثة، وحجوزات مبدئية مؤكدة للطيران والفندق. ابعتلنا الدولة اللي ناوي عليها وهنبعتلك قايمة الأوراق الدقيقة لملفك."}}, {"@type": "Question", "name": "الدفع بيتم إزاي؟", "acceptedAnswer": {"@type": "Answer", "text": "بعد ما تأكد العرض المناسب لك، الدفع متاح بطرق متعددة وسهلة: كاش، تحويل بنكي، أو دفع إلكتروني — وبتستلم تذكرتك في دقايق على الواتساب والإيميل."}}, {"@type": "Question", "name": "أقدر أعدّل أو ألغي حجزي؟", "acceptedAnswer": {"@type": "Answer", "text": "بنقدملك دعم كامل في تغيير المواعيد أو ترقية المقاعد أو الإلغاء، حسب شروط شركة الطيران أو الفندق — ومن غير تعقيدات التعامل المباشر معاهم."}}, {"@type": "Question", "name": "إيصالات الفنادق تنفع تتقدم للسفارة؟", "acceptedAnswer": {"@type": "Answer", "text": "أيوه — بنصدر إيصالات حجز وفواتير رسمية مقبولة بالكامل في السفارات والمطارات."}}, {"@type": "Question", "name": "تأمين السفر مهم فعلًا؟", "acceptedAnswer": {"@type": "Answer", "text": "هو مطلوب في سفارات كتير، وكمان من الأوراق اللي بتقوي ملف التأشيرة — غير إنه بيغطيك بتغطية شاملة طول رحلتك."}}]}</script><link rel="preload" as="image" fetchpriority="high" href="/images/hero.webp">
+<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1" data-cmp-ab="2">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.setAttribute("data-cmp-ab","2");
+      script.src = 'https://emrldtp.com/NjAyNzU1.js?t=602755';
+      document.head.appendChild(script);
+  })();
+</script>
 <link rel="ai-catalog" href="/.well-known/ai-catalog.json">
 </head>
 <body>
 <header><div class="wrap nav">
-<a class="logo" href="/"><span class="diamond"></span> Younis Travel</a>
+<a class="logo" href="/"><img class="logo-img" src="https://younistravel.site/logo-96.png" alt="Younis Travel"> Younis Travel</a>
 <nav class="links"><a href="/">الرئيسية</a><a href="/visas.html">التأشيرات</a><a href="/flights.html">الطيران</a><a href="/hotels.html">الفنادق</a><a href="/trips.html">الرحلات والتأمين</a><a href="/faq.html">الأسئلة الشائعة</a></nav>
 <a class="cta-btn" href="/request.html">اطلب حجزك</a>
 </div></header><main>
 
 <section class="hero3"><div class="wrap">
-<h1>سفرك يبدأ من هنا — من غير لف ودوران</h1>
+<h1>سفرك يبدأ <span class="pill-img"><img src="/images/turkey.webp" alt=""></span> من هنا — من غير لف ودوران</h1>
 <p>من أول خطوة للتفكير في السفر لحد ما ترجع بالسلامة، إحنا معاك بباقة خدمات سياحية متكاملة: تأشيرات، طيران، فنادق، تأمين سفر وبرامج سياحية — بالراحة وأحسن سعر.</p>
 </div></section>
 <section style="padding-top:0"><div class="wrap">
@@ -130,9 +181,9 @@ body{padding-bottom:64px}}
 <h2>خطط رحلتك دلوقتي</h2><p class="wsub">املى بيانات رحلتك وهنرد عليك بأنسب الخيارات — ده طلب بس، مفيش دفع دلوقتي.</p>
 <div class="tabs"><button type="button" class="tab on" data-tab="flights">✈ طيران</button><button type="button" class="tab" data-tab="hotels">🏨 فنادق</button><button type="button" class="tab" data-tab="visas">🛂 تأشيرات</button><button type="button" class="tab" data-tab="trips">🧳 رحلات وتأمين</button></div>
 <div style="margin-bottom:12px"><label for="w-name">اسمك (اختياري)</label><input id="w-name" data-label="اسمك (اختياري)"></div>
-<div class="panel on" id="panel-flights"><div class="wgrid"><div><label for="f-type">نوع الرحلة</label><select id="f-type" data-label="نوع الرحلة"><option>ذهاب وعودة</option><option>ذهاب فقط</option></select></div><div><label for="f-from">من</label><input id="f-from" data-label="من" type="text" placeholder="المدينة"></div><div><label for="f-to">إلى</label><input id="f-to" data-label="إلى" type="text" placeholder="المدينة"></div><div><label for="f-dep">تاريخ الذهاب</label><input id="f-dep" data-label="تاريخ الذهاب" type="date" placeholder=""></div><div><label for="f-ret">تاريخ العودة</label><input id="f-ret" data-label="تاريخ العودة" type="date" placeholder=""></div><div><label for="f-pax">عدد المسافرين</label><input id="f-pax" data-label="عدد المسافرين" type="number" placeholder="2"></div><div><label for="f-class">الدرجة</label><select id="f-class" data-label="الدرجة"><option>اقتصادية</option><option>رجال أعمال</option></select></div><div class="chk"><input type="checkbox" id="f-flex" data-label="تواريخي مرنة — هات أرخص تاريخ"><label for="f-flex" style="margin:0">تواريخي مرنة — هات أرخص تاريخ</label></div></div></div><div class="panel" id="panel-hotels"><div class="wgrid"><div><label for="h-city">المدينة / الوجهة</label><input id="h-city" data-label="المدينة / الوجهة" type="text" placeholder="مثال: دبي"></div><div><label for="h-in">تاريخ الوصول</label><input id="h-in" data-label="تاريخ الوصول" type="date" placeholder=""></div><div><label for="h-out">تاريخ المغادرة</label><input id="h-out" data-label="تاريخ المغادرة" type="date" placeholder=""></div><div><label for="h-rooms">عدد الغرف</label><input id="h-rooms" data-label="عدد الغرف" type="number" placeholder="1"></div><div><label for="h-guests">عدد النزلاء</label><input id="h-guests" data-label="عدد النزلاء" type="number" placeholder="2"></div><div><label for="h-stars">فئة الفندق المفضلة</label><select id="h-stars" data-label="فئة الفندق المفضلة"><option>أي فئة</option><option>3 نجوم</option><option>4 نجوم</option><option>5 نجوم</option></select></div></div></div><div class="panel" id="panel-visas"><div class="wgrid"><div><label for="v-country">الدولة</label><input id="v-country" data-label="الدولة" type="text" placeholder="مثال: تركيا"></div><div><label for="v-type">نوع التأشيرة</label><select id="v-type" data-label="نوع التأشيرة"><option>سياحية</option><option>زيارة</option><option>عمل</option><option>عمرة</option></select></div><div><label for="v-date">تاريخ السفر المتوقع</label><input id="v-date" data-label="تاريخ السفر المتوقع" type="date" placeholder=""></div><div><label for="v-pax">عدد المتقدمين</label><input id="v-pax" data-label="عدد المتقدمين" type="number" placeholder="1"></div></div></div><div class="panel" id="panel-trips"><div class="wgrid"><div><label for="t-dest">الوجهة</label><input id="t-dest" data-label="الوجهة" type="text" placeholder="مثال: السعودية"></div><div><label for="t-type">نوع الطلب</label><select id="t-type" data-label="نوع الطلب"><option>تأمين سفر</option><option>برنامج سياحي متكامل</option></select></div><div><label for="t-start">تاريخ بداية الرحلة</label><input id="t-start" data-label="تاريخ بداية الرحلة" type="date" placeholder=""></div><div><label for="t-end">تاريخ نهاية الرحلة</label><input id="t-end" data-label="تاريخ نهاية الرحلة" type="date" placeholder=""></div><div><label for="t-pax">عدد المسافرين</label><input id="t-pax" data-label="عدد المسافرين" type="number" placeholder="2"></div></div></div>
+<div class="panel on" id="panel-flights"><div class="wgrid"><div><label for="f-type">نوع الرحلة</label><select id="f-type" data-label="نوع الرحلة"><option>ذهاب وعودة</option><option>ذهاب فقط</option></select></div><div><label for="f-from">من</label><input id="f-from" list="ac-from" autocomplete="off" data-label="من" type="text" placeholder="المدينة"></div><div><label for="f-to">إلى</label><input id="f-to" list="ac-to" autocomplete="off" data-label="إلى" type="text" placeholder="المدينة"></div><div><label for="f-dep">تاريخ الذهاب</label><input id="f-dep" data-label="تاريخ الذهاب" type="date" placeholder=""></div><div><label for="f-ret">تاريخ العودة</label><input id="f-ret" data-label="تاريخ العودة" type="date" placeholder=""></div><div><label for="f-pax">عدد المسافرين</label><input id="f-pax" data-label="عدد المسافرين" type="number" placeholder="2"></div><div><label for="f-class">الدرجة</label><select id="f-class" data-label="الدرجة"><option>اقتصادية</option><option>رجال أعمال</option></select></div><div class="chk"><input type="checkbox" id="f-flex" data-label="تواريخي مرنة — هات أرخص تاريخ"><label for="f-flex" style="margin:0">تواريخي مرنة — هات أرخص تاريخ</label></div></div></div><div class="panel" id="panel-hotels"><div class="wgrid"><div><label for="h-city">المدينة / الوجهة</label><input id="h-city" data-label="المدينة / الوجهة" type="text" placeholder="مثال: دبي"></div><div><label for="h-in">تاريخ الوصول</label><input id="h-in" data-label="تاريخ الوصول" type="date" placeholder=""></div><div><label for="h-out">تاريخ المغادرة</label><input id="h-out" data-label="تاريخ المغادرة" type="date" placeholder=""></div><div><label for="h-rooms">عدد الغرف</label><input id="h-rooms" data-label="عدد الغرف" type="number" placeholder="1"></div><div><label for="h-guests">عدد النزلاء</label><input id="h-guests" data-label="عدد النزلاء" type="number" placeholder="2"></div><div><label for="h-stars">فئة الفندق المفضلة</label><select id="h-stars" data-label="فئة الفندق المفضلة"><option>أي فئة</option><option>3 نجوم</option><option>4 نجوم</option><option>5 نجوم</option></select></div></div></div><div class="panel" id="panel-visas"><div class="wgrid"><div><label for="v-country">الدولة</label><input id="v-country" data-label="الدولة" type="text" placeholder="مثال: تركيا"></div><div><label for="v-type">نوع التأشيرة</label><select id="v-type" data-label="نوع التأشيرة"><option>سياحية</option><option>زيارة</option><option>عمل</option><option>عمرة</option></select></div><div><label for="v-date">تاريخ السفر المتوقع</label><input id="v-date" data-label="تاريخ السفر المتوقع" type="date" placeholder=""></div><div><label for="v-pax">عدد المتقدمين</label><input id="v-pax" data-label="عدد المتقدمين" type="number" placeholder="1"></div></div></div><div class="panel" id="panel-trips"><div class="wgrid"><div><label for="t-dest">الوجهة</label><input id="t-dest" data-label="الوجهة" type="text" placeholder="مثال: السعودية"></div><div><label for="t-type">نوع الطلب</label><select id="t-type" data-label="نوع الطلب"><option>تأمين سفر</option><option>برنامج سياحي متكامل</option></select></div><div><label for="t-start">تاريخ بداية الرحلة</label><input id="t-start" data-label="تاريخ بداية الرحلة" type="date" placeholder=""></div><div><label for="t-end">تاريخ نهاية الرحلة</label><input id="t-end" data-label="تاريخ نهاية الرحلة" type="date" placeholder=""></div><div><label for="t-pax">عدد المسافرين</label><input id="t-pax" data-label="عدد المسافرين" type="number" placeholder="2"></div></div></div>
 <p style="margin-top:16px"><button type="button" class="cta-btn" id="w-go" style="border:none;cursor:pointer;font-family:inherit;font-size:17px">جهز طلبي</button></p>
-<div class="wsum" id="w-sum"><h3>طلبك جاهز</h3><p id="w-sum-text" style="white-space:pre-line"></p>
+<datalist id="ac-from"></datalist><datalist id="ac-to"></datalist><div class="wsum" id="w-sum"><h3>طلبك جاهز</h3><p id="w-sum-text" style="white-space:pre-line"></p>
 <p style="margin-top:12px"><a class="cta-btn" href="https://www.facebook.com/profile.php?id=61596173995345" target="_blank" rel="noopener">إرسال عبر رسائل الصفحة</a></p></div>
 </div>
 <script>
@@ -145,6 +196,19 @@ document.querySelectorAll('.tab').forEach(function(b){ b.addEventListener('click
   document.getElementById('panel-' + curTab).classList.add('on');
 }); });
 document.getElementById('w-go').addEventListener('click', function(){
+  if (curTab === 'flights') {
+    var gv = function(id){ var e = document.getElementById(id); return e ? e.value.trim() : ''; };
+    var gc = function(v){ var m = v.match(/\(([A-Za-z]{3})\)\s*$/); return m ? m[1].toUpperCase() : ''; };
+    var gn = function(v){ return v.replace(/\s*\([A-Za-z]{3}\)\s*$/, ''); };
+    var oc = gc(gv('f-from')), dc = gc(gv('f-to')), dep = gv('f-dep');
+    if (oc && dc && dep) {
+      var u = '/flight-results.html?origin=' + oc + '&destination=' + dc + '&departure_at=' + encodeURIComponent(dep) + '&oname=' + encodeURIComponent(gn(gv('f-from'))) + '&dname=' + encodeURIComponent(gn(gv('f-to')));
+      var rt = gv('f-ret'); if (rt) u += '&return_at=' + encodeURIComponent(rt);
+      var px = gv('f-pax'); if (px) u += '&passengers=' + encodeURIComponent(px);
+      var cs = document.getElementById('f-class'); u += '&class=' + (cs && cs.selectedIndex === 1 ? 'business' : 'economy');
+      location.href = u; return;
+    }
+  }
   var lines = ['طلب حجز — موقع Younis Travel', 'Service: ' + SVC[curTab]];
   var nm = document.getElementById('w-name');
   if (nm.value.trim()) lines.push(nm.getAttribute('data-label') + ': ' + nm.value.trim());
@@ -156,6 +220,14 @@ document.getElementById('w-go').addEventListener('click', function(){
   var s = document.getElementById('w-sum'); s.style.display = 'block'; s.scrollIntoView({behavior:'smooth'});
 });
 </script>
+
+<script>
+function acWire(id, listId){ var inp = document.getElementById(id), dl = document.getElementById(listId); if (!inp || !dl) return; var t;
+  inp.addEventListener('input', function(){ clearTimeout(t); var v = inp.value.trim(); if (v.length < 2) return;
+    t = setTimeout(function(){ fetch('https://autocomplete.travelpayouts.com/places2?term=' + encodeURIComponent(v) + '&locale=ar&types[]=airport&types[]=city')
+      .then(function(r){ return r.json(); }).then(function(j){ dl.innerHTML = ''; (j || []).slice(0, 8).forEach(function(p){ var o = document.createElement('option'); o.value = p.name + ' (' + p.code + ')'; dl.appendChild(o); }); }).catch(function(){}); }, 250); }); }
+acWire('f-from', 'ac-from'); acWire('f-to', 'ac-to');
+</script>
 <div class="usps"><div class="usp"><div class="ic">🔍</div><p>مقارنة فورية بين أكثر من 500 شركة طيران في مكان واحد</p></div><div class="usp"><div class="ic">🏷️</div><p>أسعار فنادق B2B أرخص من بوابات الحجز المفتوحة</p></div><div class="usp"><div class="ic">🧾</div><p>إيصالات رسمية مقبولة في السفارات والمطارات</p></div><div class="usp"><div class="ic">🛟</div><p>دعم في التعديل والإلغاء — معاك لحد ما ترجع بالسلامة</p></div></div>
 </div></section>
 <section><div class="wrap">
@@ -164,6 +236,12 @@ document.getElementById('w-go').addEventListener('click', function(){
 <div class="grid"><div class="card"><h3>إصدار التأشيرات</h3><p>تأشيرات إلكترونية وعادية، ومساعدة في تجهيز كل الأوراق وحجز المواعيد — بدون أخطاء أو رفض.</p><p><a href="/visas.html">اعرف أكتر عن التأشيرات ←</a></p></div><div class="card"><h3>حجوزات الطيران</h3><p>بنقارن بين مئات خطوط الطيران عشان نجيبلك أقل سعر تذكرة وأنسب مسار لرحلتك.</p><p><a href="/flights.html">اعرف أكتر عن الطيران ←</a></p></div><div class="card"><h3>حجوزات الفنادق</h3><p>خصومات حصرية وتأكيدات فورية في أفخم وأنسب الفنادق والمنتجعات حول العالم.</p><p><a href="/hotels.html">اعرف أكتر عن الفنادق ←</a></p></div><div class="card"><h3>تأمين وبرامج سياحية</h3><p>تأمين سفر بتغطية شاملة، وجولات وبرامج ترفيهية بتناسب ميزانيتك.</p><p><a href="/trips.html">اعرف أكتر عن الرحلات والتأمين ←</a></p></div></div>
 </div></section>
 <section><div class="wrap"><h2>وجهات بيحبها مسافرينا</h2><p class="lead">أماكن حقيقية بنجهز لها رحلات وتأشيرات — اختر وجهتك واسألنا عن برنامجها.</p><div class="dgrid"><div class="dcard"><img src="/images/saudi.webp" alt="السعودية — العلا" loading="lazy"><div class="db"><span class="badge">مواعيد تأشير والسفارات</span><h3>السعودية — العلا</h3><p>آثار وتاريخ وطبيعة صحراوية مختلفة — من العلا لجدة البلد والرياض وأبها.</p><p style="margin-top:8px"><a href="/request.html?d=السعودية&s=visa">اسأل عن الوجهة دي ←</a></p></div></div><div class="dcard"><img src="/images/turkey.webp" alt="تركيا — إسطنبول" loading="lazy"><div class="db"><span class="badge">تأشيرة إلكترونية</span><h3>تركيا — إسطنبول</h3><p>مدينة بين قارتين: تاريخ عريق وأسواق وتسوق.</p><p style="margin-top:8px"><a href="/request.html?d=تركيا&s=visa">اسأل عن الوجهة دي ←</a></p></div></div><div class="dcard"><img src="/images/uae.webp" alt="الإمارات — دبي" loading="lazy"><div class="db"><span class="badge">تأشيرة إلكترونية</span><h3>الإمارات — دبي</h3><p>أبراج وتسوق وترفيه يناسب كل العيلة.</p><p style="margin-top:8px"><a href="/request.html?d=الإمارات&s=visa">اسأل عن الوجهة دي ←</a></p></div></div><div class="dcard"><img src="/images/vietnam.webp" alt="فيتنام — خليج ها لونج" loading="lazy"><div class="db"><span class="badge">تأشيرة إلكترونية</span><h3>فيتنام — خليج ها لونج</h3><p>خليج وجزر خضراء وطبيعة آسيوية هادية.</p><p style="margin-top:8px"><a href="/request.html?d=فيتنام&s=visa">اسأل عن الوجهة دي ←</a></p></div></div><div class="dcard"><img src="/images/kenya.webp" alt="كينيا — سفاري" loading="lazy"><div class="db"><span class="badge">تأشيرة إلكترونية</span><h3>كينيا — سفاري</h3><p>حياة برية وسفاري أفريقية حقيقية.</p><p style="margin-top:8px"><a href="/request.html?d=كينيا&s=trip">اسأل عن الوجهة دي ←</a></p></div></div><div class="dcard"><img src="/images/albania.webp" alt="ألبانيا — الريفييرا" loading="lazy"><div class="db"><span class="badge">تأشيرة إلكترونية</span><h3>ألبانيا — الريفييرا</h3><p>شواطئ أوروبية على البحر الأدرياتيكي.</p><p style="margin-top:8px"><a href="/request.html?d=ألبانيا&s=visa">اسأل عن الوجهة دي ←</a></p></div></div></div></div></section>
+<section><div class="wrap">
+<div class="photoband"><div class="in">
+<h2>رحلتك تبدأ مع يونس ترافيل</h2>
+<p>عمرة وحج · سياحة · حجز طيران وفنادق</p>
+</div></div>
+</div></section>
 <section><div class="wrap">
 <h2>التأشيرات على طول — من غير لف على السفارات</h2>
 <p class="lead">دول بنصدر تأشيراتها إلكترونيًا، ودول بنحجزلك مواعيد سفاراتها ومراكز التأشيرات — وملفك بيتراجع قبل التقديم.</p>

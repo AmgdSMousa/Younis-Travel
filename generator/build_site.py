@@ -22,8 +22,21 @@ def _seed_images():
         if not os.path.exists(t):
             shutil.copy(f, t)
 
+def _seed_brand():
+    # Official identity assets (owner-supplied logo, 2026-11-17): the round
+    # badge serves as header logo + favicon at the site root. Masters live in
+    # assets/brand/; copied verbatim on every build.
+    here = os.path.dirname(os.path.abspath(__file__))
+    src = os.path.join(here, 'assets', 'brand')
+    dst = os.path.join(here, '..', 'site_v3')
+    for name in ('logo.png', 'favicon.png', 'logo-96.png'):
+        f = os.path.join(src, name)
+        if os.path.exists(f):
+            shutil.copy(f, os.path.join(dst, name))
+
 _seed_images()
-from gen.faq_page import main
+_seed_brand()
+from gen.saudi_guide import main
 
 if __name__ == '__main__':
     main()

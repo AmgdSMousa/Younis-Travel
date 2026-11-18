@@ -60,7 +60,7 @@ FAQ_EN = [
      'Message our Facebook Page, or fill in the request form on the website, and the team will reply and review your request.'),
 ]
 STYLE = ('<style>.faq-item{border-bottom:1px solid #e7e2d9;padding:18px 0}'
-         '.faq-item h3{margin:0 0 8px;font-size:1.12rem}.faq-item p{margin:0;color:#444}</style>')
+         '.faq-item h3{margin:0 0 8px;font-size:1.12rem;color:#003262}.faq-item p{margin:0;color:#3d5a75}</style>')
 
 def _schema(faqs):
     data = {'@context': 'https://schema.org', '@type': 'FAQPage',

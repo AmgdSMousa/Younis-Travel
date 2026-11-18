@@ -15,13 +15,13 @@ FB = B.FB_PAGE
 STYLE = """<style>
 .sbar{display:flex;gap:6px;margin:18px 0}
 .sbar div{flex:1;text-align:center;padding:9px 4px;border-radius:10px;background:#efe9dc;color:#7a6a45;font-weight:700;font-size:.86rem}
-.sbar div.on{background:#0f2b46;color:#fff}
+.sbar div.on{background:#003262;color:#fff}
 .bstep{display:none}.bstep.on{display:block}
-.refbig{font-size:2rem;font-weight:800;letter-spacing:2px;color:#0f2b46;text-align:center;margin:8px 0}
+.refbig{font-size:2rem;font-weight:800;letter-spacing:2px;color:#003262;text-align:center;margin:8px 0}
 .tl{display:flex;gap:0;margin:16px 0}
 .tl div{flex:1;text-align:center;font-size:.8rem;color:#999;padding-top:16px;position:relative}
 .tl div:before{content:'';position:absolute;top:4px;inset-inline-start:calc(50% - 7px);width:14px;height:14px;border-radius:50%;background:#ddd}
-.tl div.done{color:#0f2b46;font-weight:700}.tl div.done:before{background:#c9a24d}
+.tl div.done{color:#003262;font-weight:700}.tl div.done:before{background:#cd8e29}
 .msg{display:none;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:.95rem}
 .msg.err{display:block;background:#fdecec;color:#8c1d1d}
 .msg.ok{display:block;background:#e9f7ee;color:#14532d}
@@ -374,7 +374,7 @@ def main():
     # --- API functions + package marker
     api_out = os.path.join(OUT, 'api')
     os.makedirs(api_out, exist_ok=True)
-    for fn in ('_lib.js', 'bookings.js', 'track.js', 'health.js', 'openapi.js', 'mcp.js'):
+    for fn in ('_lib.js', 'bookings.js', 'track.js', 'health.js', 'openapi.js', 'mcp.js', 'flights.js'):
         shutil.copy(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'api_src', fn),
                     os.path.join(api_out, fn))
     _write('package.json', json.dumps({"name": "younistravel-site", "private": True}, indent=2))
